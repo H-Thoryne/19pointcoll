@@ -1,0 +1,21 @@
+#root {
+  width: 750px;
+}
+
+.sliderWrapper-2 {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* .sliderWrapper-2 img {
+  margin: 0 auto;
+} */
+
+.slick-arrow {
+  z-index: 99999999 !important;
+
+}
+
+.slick-arrow::before {
+  color: red;
+}

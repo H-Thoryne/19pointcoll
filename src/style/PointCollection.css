@@ -1,0 +1,16 @@
+.infograf {
+  width: 100%;
+}
+
+.infograf__row {
+  display: block;
+}
+
+.infograf__item {
+  display: inline-block;
+  width: 375px;
+}
+
+.infograf__item svg {
+  width: 175px;
+}

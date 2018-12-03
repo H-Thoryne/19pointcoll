@@ -1,0 +1,76 @@
+.hovereffect2 {
+  position: relative;
+  width: 200px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.hovereffect2 div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #ed008c;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hovereffect2:hover div {
+  opacity: 0.8;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hovereffect2 figcaption {
+  text-align: left;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  align-content: center;
+}
+
+.hovereffect2 button {
+  font-size: 20px;
+  align-content: center;
+  text-align: center;
+  padding: 1em 0;
+  margin: auto;
+  opacity: 0;
+  color: white;
+  transition: opacity 0.5s, transform 0.5s;
+  transform: translate3d(100%, 0, 0);
+  /* pointer-events: none; */
+}
+
+.hovereffect2:hover button {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  /* pointer-events: none */
+}
+
+.hovereffect2 img {
+  transition: transform 0.5s;
+  transform: scale3d(1.1, 1.1, 1);
+}
+
+.hovereffect2:hover img {
+  transition: transform 0.5s;
+  transform: scale3d(1, 1, 1);
+}
+
+.hovereffect2 figcaption::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 150%;
+  background: rgba(255, 255, 255, 0.5);
+  content: '';
+  transition: transform 0.5s;
+  transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -100%, 0);
+}
+
+.hovereffect2:hover figcaption::before {
+  transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 200%, 0);
+}
