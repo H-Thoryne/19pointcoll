@@ -1,1 +1,0 @@
-export const FETCH_IP_POINTS = "FETCH_IP_POINTS"

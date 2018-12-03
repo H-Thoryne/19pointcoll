@@ -1,28 +1,38 @@
 import React, { Component } from 'react'
 import SimpleSlider from './SimpleSlider'
 import "../style/RedeemPoints.css"
-import Modal from "./Modal"
 
 class RedeemPoints extends Component {
+  constructor() {
+    super()
+    this.state = {
+      low: [],
+      mid: [],
+      high: []
+    }
+  }
+
+  componentDidMount() {
+    fetch("https://api.myjson.com/bins/14a6o2")
+      .then(res => res.json())
+      .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }));
+  }
+
   render() {
     return (
       <div>
         <h1>Redeem Points</h1>
         <div className="sliderWrapper-1">
-          <div>---=== 100 pont ===---</div>
-          <SimpleSlider />
-          <div>---=== 20 - 50 pont ===---</div>
-          <SimpleSlider />
-          <div>---=== 10 - 20 pont ===---</div>
-          <SimpleSlider />
+          <SimpleSlider data={this.state.high} />
+          <SimpleSlider data={this.state.mid} />
+          <SimpleSlider data={this.state.low} />
         </div>
-        <Modal>
-          <h1>Hullo</h1>
-          <p>This is modal</p>
-        </Modal>
       </div>
     );
   }
 }
 
 export default RedeemPoints;
+
+
+

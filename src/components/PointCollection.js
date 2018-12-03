@@ -4,8 +4,8 @@ import { Circle } from 'rc-progress'
 import "../style/PointCollection.css"
 
 class PointCollection extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       aws: 19000,
       target: 23000,

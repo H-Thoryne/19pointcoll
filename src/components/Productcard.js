@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
 import "../style/Productcard.css"
+import Modal from './Modal';
 
 class Productcard extends Component {
-  handleOrder = (ln, campNr, amount) => {
-    window.processOrder(ln, campNr, amount);
+  constructor(props) {
+    super(props);
+    this.state = { isOpen: false };
+  }
+
+  openModal = () => {
+    this.setState({
+      isOpen: true
+    });
+  }
+
+  closeModal = () => {
+    this.setState({
+      isOpen: false
+    });
   }
 
   render() {
     return (
       <div className="innerDiv" >
         <figure className="carouselItem hovereffect2">
-          <img src="http://placekitten.com/200/200" alt="Product img" />
+          <img src={this.props.item.img} alt="Product img" />
           <div className="dontDeleteMe"></div>
           <figcaption>
-            <button onClick={() => this.handleOrder('19000', 201801, 1)}> Click me </button>
+            <button onClick={this.openModal}>Toggle modal</button>
           </figcaption>
         </figure>
+        <Modal isOpen={this.state.isOpen} closeModal={this.closeModal} item={this.props.item} />
       </div>
     );
   }

@@ -24,39 +24,33 @@ class SimpleSlider extends Component {
       slidesToShow: 3,
       slidesToScroll: 1,
       centerMode: false,
-      dots: true,
+      dots: false,
       swipeToSlide: true,
       lazyLoad: true,
-      // responsive: [
-      //   {
-      //     breakpoint: 600,
-      //     settings: {
-      //       slidesToShow: 1,
-      //       slidesToScroll: 1,
-      //       infinite: true,
-      //       dots: true
-      //     }
-      //   }
-      // ]
     };
 
     return (
       <div>
-        <Slider ref={slider => (this.slider = slider)} {...settings} className="sliderWrapper-2">
-          <Productcard />
-          <Productcard />
-          <Productcard />
-          <Productcard />
-          <Productcard />
+        <h1>Összesen {this.props.data.length} termék</h1>
+        <Slider ref={slider => (this.slider = slider)} {...settings} className="sliderWrapper-2">{
+          this.props.data.map(function (item, i) {
+            return <Productcard key={i} item={item} />
+          })
+        }
         </Slider>
-        <br></br>
-        <div style={{ textAlign: "center" }}>
-          <button className="button" onClick={this.play}>
-            Play
+        <div>
+          <br />
+          <br />
+          <div style={{ textAlign: "center" }}>
+            <button className="button" onClick={this.play}>
+              Play
           </button>
-          <button className="button" onClick={this.pause}>
-            Pause
+            <button className="button" onClick={this.pause}>
+              Pause
           </button>
+          </div>
+          <br />
+          <br />
         </div>
       </div>
     );
