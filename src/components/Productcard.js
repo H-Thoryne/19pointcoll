@@ -30,7 +30,10 @@ class Productcard extends Component {
             <button onClick={this.openModal}>Toggle modal</button>
           </figcaption>
         </figure>
-        <Modal isOpen={this.state.isOpen} closeModal={this.closeModal} item={this.props.item} />
+        {this.state.isOpen ? (
+          <Modal onClose={this.closeModal} item={this.props.item}/>
+        ) : null}
+        {/* <Modal isOpen={this.state.isOpen} closeModal={this.closeModal} item={this.props.item} /> */}
       </div>
     );
   }

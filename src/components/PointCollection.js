@@ -52,8 +52,7 @@ class PointCollection extends Component {
           </div>
         </div>
         <h3>Lorem catnip</h3>
-        <p>Very<br></br>long<br></br>text<br></br>for<br></br>several<br></br>rows</p>
-        <div>Terms and cats ></div>
+        <p>Some random text comes here</p>
       </div>
     );
   }

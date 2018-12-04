@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Accordion from "./components/Accordion"
 
 //Navigation
 import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
@@ -13,9 +14,9 @@ class App extends Component {
     }
   }
 
-/*   componentDidMount = () => {
-    this.setState({ ipPoints: window.rIP })
-  } */
+  /*   componentDidMount = () => {
+      this.setState({ ipPoints: window.rIP })
+    } */
 
   render() {
     return (
@@ -27,13 +28,13 @@ class App extends Component {
             <NavLink to="/pontgyujtes">Point Collection </NavLink>
             <NavLink to="/pontbevaltas">Redeem Points</NavLink>
           </div>
-          
+
           <Switch>
             <Route exact path="/" component={PointCollection} />
             <Route path="/pontgyujtes" component={PointCollection} />
             <Route path="/pontbevaltas" component={RedeemPoints} />
-            <div>hi</div>
           </Switch>
+          <Accordion />
         </div>
       </BrowserRouter>
     );
