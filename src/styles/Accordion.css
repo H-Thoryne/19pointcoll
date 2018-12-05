@@ -1,0 +1,30 @@
+.t-and-c {
+  height: 200px;
+  width: 80%;
+  margin: auto;
+
+}
+
+.t-and-c__title {
+  background-color: #636363;
+  border-radius: 12px;
+  height: 30px;
+  position: relative;
+}
+
+.t-and-c__title .svg {
+  height: auto;
+  position: absolute;
+  line-height: 0;
+}
+
+.t-and-c__title .text {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.7px;
+  height: 30px;
+  color: white;
+  left: 10px;
+}

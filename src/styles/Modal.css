@@ -1,0 +1,36 @@
+.modal-singleimage {
+  height: 400px;
+  width: 400px;
+}
+
+.modal-carousel__main {
+  height: 400px;
+  width: 400px;
+}
+
+.modal-carousel__carouselImg {
+  height: 75px;
+  width: 75px;
+}
+
+.modal-bkg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9995;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  background: white;
+  position: absolute;
+  float: left;
+  min-width: 50%;
+  width: auto;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

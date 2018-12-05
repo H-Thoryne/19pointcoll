@@ -3,8 +3,10 @@ import Accordion from "./components/Accordion"
 
 //Navigation
 import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
-import PointCollection from "./components/PointCollection"
-import RedeemPoints from "./components/RedeemPoints";
+import PointCollection from "./PointCollection"
+import RedeemPoints from "./RedeemPoints";
+
+import "./styles/App.css"
 
 class App extends Component {
   constructor(props) {

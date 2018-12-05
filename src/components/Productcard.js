@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import "../style/Productcard.css"
 import Modal from './Modal';
+
+import "../styles/Productcard.css"
 
 class Productcard extends Component {
   constructor(props) {
@@ -30,10 +31,9 @@ class Productcard extends Component {
             <button onClick={this.openModal}>Toggle modal</button>
           </figcaption>
         </figure>
-        {this.state.isOpen ? (
-          <Modal onClose={this.closeModal} item={this.props.item}/>
-        ) : null}
-        {/* <Modal isOpen={this.state.isOpen} closeModal={this.closeModal} item={this.props.item} /> */}
+        {
+          this.state.isOpen ? (<Modal onClose={this.closeModal} item={this.props.item} />) : null
+        }
       </div>
     );
   }

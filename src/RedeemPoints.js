@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import SimpleSlider from './SimpleSlider'
-import "../style/RedeemPoints.css"
+import SimpleSlider from './components/SimpleSlider'
+import "./styles/RedeemPoints.css"
 
 class RedeemPoints extends Component {
   constructor() {
@@ -13,7 +13,7 @@ class RedeemPoints extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.myjson.com/bins/14a6o2")
+    fetch("https://api.myjson.com/bins/kaike")
       .then(res => res.json())
       .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }));
   }
