@@ -18,6 +18,31 @@
 </script>
 
 <script>
+  function ad_to_order_new(param) {
+    var path = parent.window.location.href;
+    var filename = path.split("/").pop(-1);
+    var rootpath = path.replace(filename, "");
+    $('#BBO_iframeContent').show();
+    $('#bbomask').show();
+    $('#bbopopup').show();
+    $('#BBO_iframeContent').attr('src', rootpath + 'buttonOffersDetails.page?KeepThis=true&prodparam=' + param + '&CurrentPage=' + filename);
+    $("#BBO_iframeContent").load(function () {
+      $("#BBO_iframeContent").contents().find("div#bbo_close_btn").css({
+        'display': 'none'
+      });
+    });
+
+    // Scroll top
+    $('html, body').animate({
+      scrollTop: 0
+    }, 400);
+    $('html, body', window.parent.document).animate({
+      scrollTop: 0
+    }, 400);
+  }
+</script>
+
+<script>
   var rIP = {
     IP1: "<variable name='IP1'>",
     IP2: "<variable name='IP2'>",
