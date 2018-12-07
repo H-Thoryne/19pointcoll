@@ -23,14 +23,11 @@ class Productcard extends Component {
 
   render() {
     return (
-      <div className="innerDiv" >
-        <figure className="carouselItem hovereffect2">
-          <img src={this.props.item.img} alt="Product img" />
-          <div className="dontDeleteMe"></div>
-          <figcaption>
-            <button onClick={this.openModal}>Toggle modal</button>
-          </figcaption>
-        </figure>
+      <div className="carouselItem" >
+        <img src={this.props.item.img} alt="Product img" onClick={this.openModal} />
+        {
+          this.props.is_new ? null : (<img className="badge_isnew" src="https://via.placeholder.com/80x80" alt="badge" />)
+        }
         {
           this.state.isOpen ? (<Modal onClose={this.closeModal} item={this.props.item} />) : null
         }

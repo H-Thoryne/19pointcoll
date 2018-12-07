@@ -1,11 +1,12 @@
-.hovereffect2 {
+/* THEME: PINK OVERLAY */
+/* .innerDiv {
   position: relative;
   width: 200px;
   margin: auto;
   overflow: hidden;
 }
 
-.hovereffect2 div {
+.innerDiv div {
   position: absolute;
   top: 0;
   left: 0;
@@ -16,12 +17,12 @@
   transition: opacity 0.5s ease-in-out;
 }
 
-.hovereffect2:hover div {
+.innerDiv:hover div {
   opacity: 0.8;
   transition: opacity 0.5s ease-in-out;
 }
 
-.hovereffect2 figcaption {
+.innerDiv figcaption {
   text-align: left;
   position: absolute;
   left: 0;
@@ -30,7 +31,7 @@
   align-content: center;
 }
 
-.hovereffect2 button {
+.innerDiv button {
   font-size: 20px;
   align-content: center;
   text-align: center;
@@ -40,26 +41,24 @@
   color: white;
   transition: opacity 0.5s, transform 0.5s;
   transform: translate3d(100%, 0, 0);
-  /* pointer-events: none; */
 }
 
-.hovereffect2:hover button {
+.innerDiv:hover button {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  /* pointer-events: none */
 }
 
-.hovereffect2 img {
+.innerDiv img {
   transition: transform 0.5s;
   transform: scale3d(1.1, 1.1, 1);
 }
 
-.hovereffect2:hover img {
+.innerDiv:hover img {
   transition: transform 0.5s;
   transform: scale3d(1, 1, 1);
 }
 
-.hovereffect2 figcaption::before {
+.innerDiv figcaption::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -71,6 +70,37 @@
   transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -100%, 0);
 }
 
-.hovereffect2:hover figcaption::before {
+.innerDiv:hover figcaption::before {
   transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 200%, 0);
+} */
+
+/* THEME: SHADOW BORDER */
+.carouselItem {
+  position: relative;
+  width: 200px;
+  height: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.carouselItem img {
+  height: 100%;
+  width: 100%;
+
+}
+
+
+
+
+
+
+
+
+
+.badge_isnew {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px !important;
+  width: 80px !important;
 }

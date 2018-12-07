@@ -19,6 +19,7 @@
   transform: translate(-50%, -50%);
   border-radius: 10px;
   display: flex;
+  overflow: hidden;
 }
 
 .modal-left {
@@ -54,7 +55,7 @@
   height: 75px;
   width: 75px;
   box-sizing: border-box;
-
+  margin: 3px;
 }
 
 .modal-right__close-x {

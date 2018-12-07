@@ -16,12 +16,11 @@ export default class Modal extends Component {
     window.processOrder(ln, campNr, amount);
   }
 
-  // Check if we clicked on modal content.
-  // If not (for example black background), we close the modal.
   handleClick = (e) => {
     if (this.node.contains(e.target)) {
       return;
     }
+    console.log("closing")
     this.props.onClose()
   }
 

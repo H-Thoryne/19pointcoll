@@ -1,26 +1,71 @@
-#root {
-  width: 750px;
-}
-
-.sliderWrapper-2 {
-  width: 90%;
+.slider {
+  width: 85%;
   margin: 0 auto;
 }
 
-/* .sliderWrapper-2 img {
-  margin: 0 auto;
-} */
 
+
+/* Arrows */
 .slick-arrow {
-  z-index: 999 !important;
-  color: red;
+  font-size: 0;
+  line-height: 0;
+
+  position: absolute;
+  top: 50%;
+
+  display: block;
+
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  transform: translate(0, -50%);
+
+
+  cursor: pointer;
+
+  color: white;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  outline: none;
+  background: white;
+}
+
+.slick-arrow:before {
+  font-family: "roboto";
+  font-size: 60px;
+  line-height: 40px;
+
+  color: #ff336d;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.slick-arrow:hover:before {
+  color: white;
+}
+
+.slick-arrow:hover {
+  background: #ff336d;
+  border: #ff336d;
+}
+
+.slick-prev {
+  left: -55px;
+}
+
+.slick-prev:before {
+  content: "\2039";
+  margin-left: 14px;
 
 }
 
-.slick-arrow::before {
-  color: red;
+.slick-next {
+  right: -55px;
 }
 
-.carouselItem img {
-  height: 200px;
+.slick-next:before {
+  content: "\203A";
+  margin-left: 17px;
 }

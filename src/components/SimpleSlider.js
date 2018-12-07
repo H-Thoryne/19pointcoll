@@ -3,11 +3,11 @@ import Slider from "react-slick";
 import Productcard from "./Productcard";
 
 import "../../node_modules/slick-carousel/slick/slick.css";
-import "../../node_modules/slick-carousel/slick/slick-theme.css";
+// import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
 import "../styles/SimpleSlider.css";
 
-class SimpleSlider extends Component {
+export default class SimpleSlider extends Component {
   play = () => {
     this.slider.slickPlay();
   }
@@ -27,12 +27,14 @@ class SimpleSlider extends Component {
       dots: false,
       swipeToSlide: true,
       lazyLoad: true,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />
     };
 
     return (
       <div>
         <h1>Összesen {this.props.data.length} termék</h1>
-        <Slider ref={slider => (this.slider = slider)} {...settings} className="sliderWrapper-2">
+        <Slider ref={slider => (this.slider = slider)} {...settings} className="slider">
           {
             this.props.data.map(function (item, i) {
               return <Productcard key={i} item={item} />
@@ -52,4 +54,19 @@ class SimpleSlider extends Component {
   }
 }
 
-export default SimpleSlider;
+const NextArrow = (props) => {
+  return (
+    <div className={props.className} onClick={props.onClick} >
+      Next
+    </div>
+  );
+};
+
+
+const PrevArrow = (props) => {
+  return (
+    <div className={props.className} onClick={props.onClick} >
+      prev
+    </div>
+  );
+};
