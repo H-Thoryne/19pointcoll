@@ -31,9 +31,25 @@ export default class SimpleSlider extends Component {
       prevArrow: <PrevArrow />
     };
 
+    let amount;
+    switch (this.props.section) {
+      case "high":
+        amount = "100+"
+        break;
+      case "mid":
+        amount = "20-50"
+        break;
+      case "low":
+        amount = "10-20"
+        break;
+      default:
+        amount = "ERROR"
+    }
+
     return (
-      <div>
-        <h1>Összesen {this.props.data.length} termék</h1>
+      <div className="simple-slider">
+        <div className="simple-slider__title">{amount} pont</div>
+        <div>Összesen {this.props.data.length} termék</div>
         <Slider ref={slider => (this.slider = slider)} {...settings} className="slider">
           {
             this.props.data.map(function (item, i) {

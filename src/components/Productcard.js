@@ -6,7 +6,10 @@ import "../styles/Productcard.css"
 class Productcard extends Component {
   constructor(props) {
     super(props);
-    this.state = { isOpen: false };
+    this.state = {
+      isOpen: false,
+      dragDistance: 0
+    };
   }
 
   openModal = () => {
@@ -19,6 +22,10 @@ class Productcard extends Component {
     this.setState({
       isOpen: false
     });
+  }
+
+  onMouseMove(e) {
+    this.setState({ dragDistance: -(e.screenX - this.state.clickPos) })
   }
 
   render() {
