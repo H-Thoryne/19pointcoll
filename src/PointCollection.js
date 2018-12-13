@@ -34,10 +34,18 @@ class PointCollection extends Component {
         <div className="infograf">
           <div className="infograf__row">
             <div className="infograf__item">
-              <h3>Base points: 0pt</h3>
+              <h3>Target: 19 000Ft</h3>
             </div>
             <div className="infograf__item">
-              <h3>Achieved extra: 0pt</h3>
+              <h3>Brosi: min 1 </h3>
+            </div>
+          </div>
+          <div className="infograf__row">
+            <div className="infograf__item">
+              <h3>Base points: 10pt</h3>
+            </div>
+            <div className="infograf__item">
+              <h3>Brosi bought: 10db</h3>
             </div>
           </div>
           <div className="infograf__row">
@@ -45,14 +53,22 @@ class PointCollection extends Component {
               <h3>Target {this.state.target} Ft</h3>
               <Circle percent={this.state.aws} strokeWidth="8" strokeColor="#888" trailWidth="4" trailColor="#ccc" />
             </div>
-            <div className="infograf__item">
-              <h3>AWS {this.state.aws} Ft</h3>
-              <Circle percent={this.state.aws} strokeWidth="8" strokeColor="#888" trailWidth="4" trailColor="#ccc" />
-            </div>
           </div>
         </div>
-        <h3>Lorem catnip</h3>
-        <p>Some random text comes here</p>
+
+        <div>Egyéni célkitűzésed teljesítésével és legalább 1 db katalógus vásárlásával szerezz pontokat kampányról kampányra, majd februártól váltsd be egy vagy akár több Neked tetsző termékre!</div>
+
+        <ul className="link-collection">
+          <li className="button13 sim-button">
+            <a href="https://google.com" target="_blank" rel="noopener noreferrer">Szabályzat</a>
+          </li>
+          <li className="button13 sim-button">
+            <a href="https://google.com" target="_blank" rel="noopener noreferrer">GY.I.K.</a>
+          </li>
+          <li className="button13 sim-button">
+            <a href="https://google.com" target="_blank" rel="noopener noreferrer">Digitális szórólap</a>
+          </li>
+        </ul>
       </div>
     );
   }

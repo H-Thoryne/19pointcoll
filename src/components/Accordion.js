@@ -32,11 +32,24 @@ class Accordion extends Component {
         {
           this.state.accordionOpen ? (
             <ul className="t-and-c__list">
-              <li>Content</li>
-              <li>Content</li>
-              <li>Content</li>
-              <li>Content</li>
-              <li>Content</li>
+              <li>
+                <div>A program érvényessége:</div>
+                <ul>
+                  <li>pontgyűjtés: 2019. december 28. 21:00 – 2019. március 29. 21:00</li>
+                  <li>pontbeváltás: 2019. február 6. 12:00 – 2019. április 30. 21:00.</li>
+                </ul>
+              </li>
+              <li>Egyéni összmegrendelés célkitűzésed meghatározásánál korábbi megrendeléseidet vettük figyelembe.</li>
+              <li>Minél nagyobb az átlagmegrendelésed, annál több pontra lehetsz jogosult.</li>
+              <li>A megrendelések kampányonként adódnak össze.</li>
+              <li>Egyéni célkitűzéseidet minden kampány elején küldjük e-mailben.</li>
+              <li>A programban Koordinátorok és Zone Managerek is részt vehetnek.</li>
+              <li>A program során keletkezett visszáru jóváírások levonásra kerülnek az összmegrendelés értékéből.</li>
+              <li>Az ösztönző kiértékelésekor csak és kizárólag az AVON-hoz beérkezett és a Tanácsadó egyenlegén könyvelt befizetéseket vizsgáljuk. Sem a függőben lévő bankkártyás fizetéseket, sem a befizetett, de le nem könyvelt összegeket nem tudjuk figyelembe venni.</li>
+              <li>A programban szereplő termékek önállóan nem rendelhetőek meg.</li>
+              <li>Az ajánlat a készlet erejéig érvényes. Esetleges készlethiány esetén megteszünk mindent, hogy hasonló színvonalú termékekkel kárpótoljunk.</li>
+              <li>A kedvezményes árak további árengedményt nem tartalmaznak, nem számítanak bele az összmegrendelésbe,nem számítanak bele az árengedmény-számítás alapjába és nem számítanak bele a meghatározott költési határba sem.</li>
+              <li>A Tanácsadói szerződés 13. pontjában foglalt rendelkezések jelen ösztönző programra is irányadóak.</li>
             </ul>
           ) : null
         }

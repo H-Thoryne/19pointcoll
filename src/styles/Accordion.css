@@ -2,7 +2,8 @@
   height: 200px;
   width: 80%;
   margin: auto;
-
+  font-size: 12px;
+  font-weight: normal;
 }
 
 .t-and-c__title {
