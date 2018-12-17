@@ -1,5 +1,10 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Helvetica Neue LT Pro' !important;
+  /* font-family: 'Roboto', sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   font-size: 14px;
   font-weight: normal;
+  color: #444444;
 }
