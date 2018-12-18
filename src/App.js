@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import Accordion from "./components/Accordion"
 
 //Navigation
-import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
+import { HashRouter, Route, NavLink, Switch } from "react-router-dom";
 import PointCollection from "./PointCollection"
 import RedeemPoints from "./RedeemPoints";
 
@@ -22,10 +22,14 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div className="app-container">
-          <h1>Catchy title on the image</h1>
-          <img src="http://placekitten.com/750/350" alt="hero" />
+        
+          <div>
+            <h1>Catchy title on the image</h1>
+            <img src="http://placekitten.com/750/350" alt="hero" />
+          </div>
+
           <div>
             <NavLink to="/pontgyujtes">Point Collection </NavLink>
             <NavLink to="/pontbevaltas">Redeem Points</NavLink>
@@ -36,9 +40,11 @@ class App extends Component {
             <Route path="/pontgyujtes" component={PointCollection} />
             <Route path="/pontbevaltas" component={RedeemPoints} />
           </Switch>
+
           <Accordion />
+
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

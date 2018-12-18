@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="http://www.avon.hu/REPSuite/static/_minisites/react_test/main.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+<script>
+  /* FIXME: insert proper order processing */
+  processOrder = (p1, p2) => {
+    console.log(p1 + " 11 " + p2);
+  }
+</script>
+
+<script>
+  function ad_to_order_new(o) {
+    var t = parent.window.location.href,
+      e = t.split("/").pop(-1),
+      n = t.replace(e, "");
+    $("#BBO_iframeContent").show(), $("#bbomask").show(), $("#bbopopup").show(), $("#BBO_iframeContent").attr("src", n + "buttonOffersDetails.page?KeepThis=true&prodparam=" + o + "&CurrentPage=" + e), $("#BBO_iframeContent").load(function () {
+      $("#BBO_iframeContent").contents().find("div#bbo_close_btn").css({
+        display: "none"
+      })
+    }), $("html, body").animate({
+      scrollTop: 0
+    }, 400), $("html, body", window.parent.document).animate({
+      scrollTop: 0
+    }, 400)
+  }
+</script>
+
+<script>
+  var rIP = {
+    IP1: "<variable name='IP1'>",
+    IP2: "<variable name='IP2'>",
+    IP3: "<variable name='IP3'>",
+    IP4: "<variable name='IP4'>",
+    IP5: "<variable name='IP5'>",
+    IP6: "<variable name='IP6'>",
+    IP7: "<variable name='IP7'>",
+    IP8: "<variable name='IP8'>",
+    IP9: "<variable name='IP9'>",
+    IP10: "<variable name='IP10'>",
+    IP11: "<variable name='IP11'>",
+    IP12: "<variable name='IP12'>",
+    IP13: "<variable name='IP13'>",
+    IP14: "<variable name='IP14'>",
+    IP15: "<variable name='IP15'>",
+    IP16: "<variable name='IP16'>",
+    IP17: "<variable name='IP17'>",
+    IP18: "<variable name='IP18'>",
+    IP19: "<variable name='IP19'>",
+    IP20: "<variable name='IP20'>",
+    IP21: "<variable name='IP21'>",
+    IP22: "<variable name='IP22'>",
+    IP23: "<variable name='IP23'>",
+    IP24: "<variable name='IP24'>",
+    IP25: "<variable name='IP25'>",
+    IP26: "<variable name='IP26'>",
+    IP27: "<variable name='IP27'>",
+    IP28: "<variable name='IP28'>",
+    IP29: "<variable name='IP29'>",
+    IP30: "<variable name='IP30'>",
+    IP31: "<variable name='IP31'>",
+    IP32: "<variable name='IP32'>",
+    IP33: "<variable name='IP33'>",
+    IP34: "<variable name='IP34'>",
+    IP35: "<variable name='IP35'>",
+    IP36: "<variable name='IP36'>",
+    IP37: "<variable name='IP37'>",
+    IP38: "<variable name='IP38'>",
+    IP39: "<variable name='IP39'>",
+    IP40: "<variable name='IP40'>",
+    IP41: "<variable name='IP41'>",
+    IP42: "<variable name='IP42'>",
+    IP43: "<variable name='IP43'>",
+    IP44: "<variable name='IP44'>",
+    IP45: "<variable name='IP45'>",
+    IP46: "<variable name='IP46'>",
+    IP47: "<variable name='IP47'>",
+    IP48: "<variable name='IP48'>",
+    IP49: "<variable name='IP49'>",
+    IP50: "<variable name='IP50'>"
+  };
+</script>
+
+<noscript>You need to enable JavaScript to run this app.</noscript>
+
+<div id="root" style="width:750px"></div>
+<div id="modal-root"></div>
+
+<script>
+  let a = document.createElement('link');
+  let b = document.createElement('script');
+
+  let aFirst = "http://ww";
+  let aSecond = "w.av";
+  let aThird = "on.hu/REPSuite/static/_minisites/react_test/main.css";
+  let aComplete = aFirst + aSecond + aThird;
+  a.href = aComplete;
+
+  let bFirst = "http://ww";
+  let bSecond = "w.av";
+  let bThird = "on.hu/REPSuite/static/_minisites/react_test/main.js";
+  let bComplete = bFirst + bSecond + bThird;
+  b.src = bComplete;
+
+  document.querySelector(".body").appendChild(a);
+  document.querySelector(".body").appendChild(b);
+</script>
