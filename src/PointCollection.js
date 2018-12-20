@@ -44,7 +44,7 @@ class PointCollection extends Component {
         <div className="datatable">
           <div className="datatable--col">
             <div className="datatable--col__item">
-              <div className="datatable--col__item__title">Minimum katalógusok</div>
+              <div className="datatable--col__item__title">Minimum katalógus</div>
               <div className="datatable--col__item__content">1 db</div>
             </div>
             <div className="datatable--col__item">
@@ -70,11 +70,11 @@ class PointCollection extends Component {
             <Circle percent={this.state.percent} strokeWidth="10" strokeColor="#ff336d" trailWidth="10" trailColor="#ECECEC" />
           </div>
           <div className="infograf--col__right">
-            <div className="infograf--col__right__title">Célkitűzésed</div>
-            <div className="infograf--col__right__number">{this.state.target} Ft</div>
-
             <div className="infograf--col__right__title">Eddigi összmegrendelésed</div>
             <div className="infograf--col__right__number">{this.state.aws} Ft</div>
+
+            <div className="infograf--col__right__title">Célkitűzésed aktuális kampányra</div>
+            <div className="infograf--col__right__number">{this.state.target} Ft</div>
 
             <div className="infograf--col__right__title">Még ennyiért rendelj a teljesítéshez</div>
             <div className="infograf--col__right__number">{this.state.target - this.state.aws} Ft</div>
