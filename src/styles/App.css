@@ -3,7 +3,7 @@
   font-family: "Roboto", sans-serif !important;
   font-weight: normal;
   font-size: 14px;
-  line-height: 1;
+  line-height: 1.2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -13,4 +13,8 @@
   color: #646464;
 
   list-style: none;
+}
+
+.navLinks {
+  visibility: hidden;
 }

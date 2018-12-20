@@ -59,7 +59,7 @@
 
 .datatable--col__item__title {
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 0.3px;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -67,7 +67,7 @@
 
 .datatable--col__item__content {
   font-size: 30px;
-  font-weight: lighter;
+  font-weight: 100;
 }
 
 .link-collection {
@@ -133,8 +133,6 @@
   pointer-events: none
 }
 
-
-
 .button13:hover a {
   color: white;
   text-decoration: none;
@@ -155,7 +153,6 @@
   transform: scale(1, 1);
 }
 
-
 .aws {
   font-size: 30px;
 }
@@ -164,8 +161,10 @@
   display: flex;
   flex-wrap: nowrap;
   width: 80%;
-  padding-top: 140px;
+  padding-top: 180px;
   margin: 0 auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .infograf--col__left {
@@ -175,10 +174,45 @@
   min-width: 0;
 }
 
+.infograf--col__left svg path {
+  stroke-linecap: butt;
+}
+
+
+.infograf--col__left__aws {
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
 .infograf--col__right {
   display: block;
   flex: 0 0 70%;
   position: relative;
   min-width: 0;
   text-align: right;
+
+}
+
+.infograf--col__right__title {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px !important;
+  color: #ff336d;
+}
+
+.infograf--col__right__number {
+  font-size: 30px;
+  font-weight: 100;
+  margin: 10px 0;
+}
+
+.pc-information {
+  width: 80%;
+  margin: 40px auto;
 }

@@ -7,8 +7,9 @@ class PointCollection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      aws: 19000,
+      aws: 18000,
       target: 23000,
+      percent: 0,
       displayPercent: 0,
       displayAws: 0,
       displayBrochures: 0,
@@ -20,17 +21,18 @@ class PointCollection extends Component {
   }
 
   startCounters = () => {
-    const percent = this.state.displayPercent + (this.state.aws / this.state.target) * 0.2;
+    const percent = this.state.percent + (this.state.aws / this.state.target) * 0.5;
     const maxallowed = this.state.aws / this.state.target * 100;
 
     if (percent >= 100) {
-      this.setState({ displayPercent: 105 }); // Closing the visual gap between the ends.
+      this.setState({ percent: 105 }); // Closing the visual gap between the ends.
       this.setState({ displayAws: this.state.aws })
       clearTimeout(this.timeout);
       return;
     }
     if (percent <= maxallowed) {
-      this.setState({ displayPercent: percent })
+      this.setState({ percent: percent })
+      this.setState({ displayPercent: Math.round(percent) })
       this.setState({ displayAws: Math.round((this.state.aws * percent) * 0.01) })
     }
     this.timeout = setTimeout(this.startCounters, 1);
@@ -64,26 +66,31 @@ class PointCollection extends Component {
 
         <div className="infograf">
           <div className="infograf--col__left">
-            <div className="aws">AWS: {this.state.displayAws}</div>
-            <Circle percent={this.state.displayPercent} strokeWidth="10" strokeColor="#888" trailWidth="4" trailColor="#ccc" />
+            <div className="infograf--col__left__aws">{this.state.displayPercent}%</div>
+            <Circle percent={this.state.percent} strokeWidth="10" strokeColor="#ff336d" trailWidth="10" trailColor="#ECECEC" />
           </div>
           <div className="infograf--col__right">
-            <div>
-              <div>Célkitűzésed</div>
-              <div>123 456 Ft</div>
-            </div>
-            <div>
-              <div>Eddigi összmegrendelésed</div>
-              <div>10 000 Ft</div>
-            </div>
-            <div>
-              <div>Még ennyiért rendelj a teljesítéshez</div>
-              <div>50 000 Ft</div>
-            </div>
+            <div className="infograf--col__right__title">Célkitűzésed</div>
+            <div className="infograf--col__right__number">{this.state.target} Ft</div>
+
+            <div className="infograf--col__right__title">Eddigi összmegrendelésed</div>
+            <div className="infograf--col__right__number">{this.state.aws} Ft</div>
+
+            <div className="infograf--col__right__title">Még ennyiért rendelj a teljesítéshez</div>
+            <div className="infograf--col__right__number">{this.state.target - this.state.aws} Ft</div>
           </div>
         </div>
+        <div class="pc-information">
 
-        <div>Egyéni célkitűzésed teljesítésével és legalább 1 db katalógus vásárlásával szerezz pontokat kampányról kampányra, majd februártól váltsd be egy vagy akár több Neked tetsző termékre!</div>
+          <div>Egyéni célkitűzésed teljesítésével és legalább 1 db katalógus vásárlásával szerezz pontokat kampányról kampányra, majd februártól váltsd be egy vagy akár több Neked tetsző termékre!</div>
+          <br></br>
+          <div>Lehetőséged van extra pontok gyűjtésére is!</div>
+          <div>Hogyan?</div>
+          <div>
+            <div>Célkitűzésed túlteljesítésével, 2000 Ft-onként további 1 pont szerezhető, maximum 10 pontig</div>
+            <div>Két egymást követő kampányban teljesítettcélkitűzésedért plusz 5 pont szerezhető</div>
+          </div>
+        </div>
 
         <ul className="link-collection">
           <li className="button13 sim-button">
@@ -96,6 +103,15 @@ class PointCollection extends Component {
             <a href="https://google.com" target="_blank" rel="noopener noreferrer">Digitális szórólap</a>
           </li>
         </ul>
+
+        <div class="pc-information">
+          <div>Egy kis ízelítő a termékekből, hogy miket szerezhetsz a 2019. februári kampánytól:</div>
+        </div>
+        <br />
+        <img src={require("./products.jpg")} alt="banner" />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }

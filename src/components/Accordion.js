@@ -26,7 +26,7 @@ class Accordion extends Component {
             </svg>
           </div>
           <div className="text">
-            Terms and conditions &rsaquo;
+            További információk <span>&rsaquo;</span>
           </div>
         </div>
         {
