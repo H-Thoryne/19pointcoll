@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 .pointCollection {
   position: relative;
   width: 750px;
@@ -31,22 +27,22 @@
   transform: translate(-50%, -50%);
 }
 
-.datatable--col {
+.datatable__column {
   display: block;
   position: relative;
   flex: 1 50%;
   min-width: 0;
 }
 
-.datatable--col__item {
+.datatable__row {
   margin: 15px 0;
 }
 
-.datatable--col__item:first-child {
+.datatable__row:first-child {
   margin-bottom: 25px;
 }
 
-.datatable--col__item:first-child::before {
+.datatable__row:first-child::before {
   content: '';
   background: lightgray;
   height: 1px;
@@ -57,7 +53,7 @@
   transform: translate(-50%, -50%);
 }
 
-.datatable--col__item__title {
+.datatable__label {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.3px;
@@ -65,9 +61,15 @@
   margin-bottom: 10px;
 }
 
-.datatable--col__item__content {
+.datatable__content {
   font-size: 30px;
   font-weight: 100;
+}
+
+.content--nya{
+  font-size: 16px;
+  line-height: 34px;
+  font-weight: 400;
 }
 
 .link-collection {
@@ -80,51 +82,51 @@
   padding: 0;
 }
 
-.sim-button {
-  line-height: 50px;
-  height: 50px;
+.link-collection__button {
   width: 200px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.button13 {
-  color: #ff336d;
-  transition: all 0.5s;
+  height: 50px;
   position: relative;
+
+  line-height: 50px;
+  text-align: center;
   list-style-type: none;
+  color: #ff336d;
+
+  cursor: pointer;
+
   transition: all 0.3s;
 }
 
-.button13 a {
+.link-collection__link {
   color: #ff336d;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 500;
   text-decoration: none;
   display: block;
   transition: all 0.3s;
 }
 
-.button13::before {
+.link-collection__button::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
   border: 1px solid #ff336d;
   border-radius: 5px;
   transition: all 0.3s;
   pointer-events: none
 }
 
-.button13::after {
+.link-collection__background {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
   opacity: 0;
   background-color: #ff336d;
   border-radius: 5px;
@@ -133,22 +135,22 @@
   pointer-events: none
 }
 
-.button13:hover a {
+.link-collection__button:hover .link-collection__link {
   color: white;
   text-decoration: none;
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
 }
 
-.button13:hover .text {
-  background: black;
-}
-
-.button13:hover::before {
+.link-collection__button:hover::before {
   opacity: 0;
   transform: scale(1.2, 1.2);
 }
 
-.button13:hover::after {
+.link-collection__button:hover .link-collection__background {
   opacity: 1;
   transform: scale(1, 1);
 }
@@ -167,19 +169,18 @@
   justify-content: center;
 }
 
-.infograf--col__left {
+.infograf__left-column {
   display: block;
   position: relative;
   flex: 0 0 30%;
   min-width: 0;
 }
 
-.infograf--col__left svg path {
+.infograf__left-column svg path {
   stroke-linecap: butt;
 }
 
-
-.infograf--col__left__aws {
+.infograf__percent {
   font-size: 30px;
   font-weight: 700;
   position: absolute;
@@ -189,7 +190,7 @@
 }
 
 
-.infograf--col__right {
+.infograf__right-column {
   display: block;
   flex: 0 0 70%;
   position: relative;
@@ -198,7 +199,7 @@
 
 }
 
-.infograf--col__right__title {
+.infograf__label {
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 700;
@@ -206,13 +207,53 @@
   color: #ff336d;
 }
 
-.infograf--col__right__number {
+.infograf__number {
   font-size: 30px;
   font-weight: 100;
   margin: 10px 0;
 }
 
-.pc-information {
+.infobox {
   width: 80%;
-  margin: 40px auto;
+  margin: 50px auto;
+  line-height: 1.3;
+
+}
+
+.infobox__generic {
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.infobox__label {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 40px;
+}
+
+.label--pink {
+  color: #ff336d;
+}
+
+.infobox__list {
+  margin: 10px 0 0 20px;
+}
+
+.infobox__list-element {
+  position: relative;
+}
+
+.infobox__list-element::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -15px;
+  height: 6px;
+  width: 6px;
+  background: #ff336d;
+  border-radius: 50%;
+}
+
+.sample-products{
+  margin-bottom: 20px;
 }

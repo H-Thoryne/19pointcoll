@@ -37,12 +37,12 @@ class App extends Component {
         <div className="app-container">
 
           <div>
-            {/* <img src="http://placekitten.com/750/350" alt="hero" /> */}
-            <img src={require("./banner.jpg")} alt="banner" />
+            <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="hero" />
+            {/* <img src={require("./banner.jpg")} alt="banner" /> */}
           </div>
 
           <div className="navLinks">
-            <NavLink to="/pontgyujtes">Point Collection </NavLink>
+            <NavLink to="/pontgyujtes">Point Collection</NavLink>
             <NavLink to="/pontbevaltas">Redeem Points</NavLink>
           </div>
 

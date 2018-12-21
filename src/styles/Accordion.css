@@ -1,7 +1,7 @@
 .t-and-c {
-  height: 200px;
+  height: auto;
   width: 80%;
-  margin: auto;
+  margin: 20px auto;
   font-size: 12px;
   font-weight: normal;
 }
@@ -38,4 +38,13 @@
   font-size: 20px;
   line-height: 30px;
   height: 30px;
+}
+
+.t-and-c__list {
+  margin: 10px 20px;
+  line-height: 1.2;
+}
+
+.t-and-c__list ul li {
+  margin-left: 20px;
 }
