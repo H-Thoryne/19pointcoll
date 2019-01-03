@@ -101,7 +101,7 @@ class PointCollection extends Component {
             <div className="infograf__label">Eddigi összmegrendelésed</div>
             <div className="infograf__number">{this.state.aws} Ft</div>
 
-            <div className="infograf__label">Célkitűzésed aktuális kampányra</div>
+            <div className="infograf__label">Célkitűzésed az aktuális kampányra</div>
             <div className="infograf__number">{this.state.target} Ft</div>
 
             <div className="infograf__label">Még ennyiért rendelj a teljesítéshez</div>
@@ -115,7 +115,7 @@ class PointCollection extends Component {
           {/* <div className="infobox__label">Hogyan?</div> */}
           <div className="infobox__list">
             <div className="infobox__list-element">Célkitűzésed túlteljesítésével, 2000 Ft-onként további 1 pont szerezhető, maximum 10 pontig</div>
-            <div className="infobox__list-element">Két egymást követő kampányban teljesítettcélkitűzésedért plusz 5 pont szerezhető</div>
+            <div className="infobox__list-element">Két egymást követő kampányban teljesített célkitűzésedért plusz 5 pont szerezhető</div>
           </div>
         </div>
 
