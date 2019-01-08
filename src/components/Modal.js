@@ -90,3 +90,46 @@ class SingleImage extends Component {
     )
   }
 }
+
+
+/*const startingAmount = 30;
+const ln = 56123
+
+const dateToday = new Date().getDay();
+const dateToEmpty = new Date().getDay() + 30;
+
+const daysUntilEmpty = dateToEmpty - dateToday;
+const daysPassed = 30; //startdate - today
+
+let seed = ln;
+let actual = startingAmount;
+
+let debugMin = Math.round((startingAmount / daysUntilEmpty) - (startingAmount / 100))
+let debugMax = Math.round((startingAmount / daysUntilEmpty) + (startingAmount / 100)) + 1
+console.log("_______________________________________________")
+console.log("debugMin: " + debugMin)
+console.log("debugMax: " + debugMax)
+
+const seededRandom = (min, max) => {
+  seed = (seed * 9301 + 49297) % 233280;
+  const rnd = seed / 233280;
+
+  return min + rnd * (max - min);
+}
+
+if (daysPassed > daysUntilEmpty) {
+  actual = 0;
+  console.log("0db - elfogyott")
+} else {
+  for (x = 0; x <= daysPassed; x++) {
+    const result = Math.round((seededRandom(debugMin, debugMax))-0.5)
+    actual -= result
+
+    if (actual < 0) {
+      actual = 0
+    }
+
+    console.log("rng: " + result)
+    console.log("stock: " + actual)
+  }
+}*/
