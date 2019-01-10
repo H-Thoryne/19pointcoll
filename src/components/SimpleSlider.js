@@ -17,7 +17,7 @@ export default class SimpleSlider extends Component {
 
   render() {
     const settings = {
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 3000,
       infinite: true,
       speed: 1000,
@@ -82,7 +82,7 @@ const NextArrow = (props) => {
 const PrevArrow = (props) => {
   return (
     <div className={props.className} onClick={props.onClick} >
-      prev
+      Prev
     </div>
   );
 };

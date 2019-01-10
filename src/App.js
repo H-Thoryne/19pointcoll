@@ -7,7 +7,7 @@ import PointCollection from "./PointCollection"
 import RedeemPoints from "./RedeemPoints";
 import "./banner.jpg"
 
-import "./styles/App.css"
+import "./styles/App.scss"
 
 class App extends Component {
   constructor(props) {

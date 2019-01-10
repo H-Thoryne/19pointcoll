@@ -29,8 +29,6 @@ class RedeemPoints extends Component {
   render() {
     return (
       <div>
-        <h1>Redeem Points</h1>
-        <p className="fixme">Fix productcard click / drag & drop</p>
         <div className="sliderWrapper-1">
           <SimpleSlider section="high" data={this.state.high} />
           <SimpleSlider section="mid" data={this.state.mid} />

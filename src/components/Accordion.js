@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import "../styles/Accordion.css"
+import "../styles/Accordion.scss"
 
 class Accordion extends Component {
   constructor(props) {
@@ -18,20 +18,18 @@ class Accordion extends Component {
 
   render() {
     return (
-      <div className="t-and-c">
-        <div onClick={this.accordionClick} className="t-and-c__title">
+      <div className="tandc">
+        <div onClick={this.accordionClick} className="tandc__title">
           <div className="svg">
             <svg xmlns="http://www.w3.org/2000/svg" width="224px" height="30px">
               <path fillRule="evenodd" fill="rgb(63, 188, 161)" d="M17.195,-0.000 C25.984,-0.000 165.299,-0.000 173.183,-0.000 C196.214,-0.000 199.420,30.000 222.313,30.000 C245.206,30.000 23.634,29.969 17.195,29.969 C10.757,29.969 0.000,31.678 0.000,13.985 C0.000,0.468 8.407,-0.000 17.195,-0.000 Z" />
             </svg>
           </div>
-          <div className="text">
-            További információk <span>&rsaquo;</span>
-          </div>
+          <div className="tandc__text">További információk <span>&rsaquo;</span></div>
         </div>
         {
           this.state.accordionOpen ? (
-            <ul className="t-and-c__list">
+            <ul className="tandc__list">
               <li>
                 <div>A program érvényessége:</div>
                 <ul>

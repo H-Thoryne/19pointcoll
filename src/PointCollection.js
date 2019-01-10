@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Circle } from 'rc-progress'
 
-import "./styles/PointCollection.css"
+import "./styles/PointCollection.scss"
 
 class PointCollection extends Component {
   constructor(props) {
