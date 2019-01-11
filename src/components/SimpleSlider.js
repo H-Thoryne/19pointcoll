@@ -5,7 +5,7 @@ import Productcard from "./Productcard";
 import "../../node_modules/slick-carousel/slick/slick.css";
 // import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
-import "../styles/SimpleSlider.css";
+import "../styles/SimpleSlider.scss";
 
 export default class SimpleSlider extends Component {
   play = () => {

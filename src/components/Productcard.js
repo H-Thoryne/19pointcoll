@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from './Modal';
 
-import "../styles/Productcard.css"
+import "../styles/Productcard.scss"
 
 class Productcard extends Component {
   constructor(props) {
@@ -25,12 +25,13 @@ class Productcard extends Component {
 
   render() {
     return (
-      <div className="p-card" >
-        <img className="p-card__image" src={this.props.item.img} alt="Product img" onClick={this.openModal} />
-        <div className="p-card__text" >{this.props.item.name}</div>
-        <div className="p-card__subtext">{this.props.item.price_points} pont</div>
+      <div className="product-card" >
+        <img className="product-card__image" src={this.props.item.img} alt="Product img" onClick={this.openModal} />
+        <div className="product-card__text" >{this.props.item.name}</div>
+        <div className="product-card__subtext">{this.props.item.price_points} pont</div>
+        <div className="product-card__subtext">{this.props.item.amountCurrent} db</div>
         {
-          this.props.is_new ? (<img className="p-card__badge" src="https://via.placeholder.com/80x80" alt="badge" />) : null
+          this.props.is_new ? (<img className="product-card__badge" src="https://via.placeholder.com/80x80" alt="badge" />) : null
         }
         {
           this.state.isOpen ? (<Modal onClose={this.closeModal} item={this.props.item} />) : null

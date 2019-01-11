@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ReactDOM from "react-dom"
 
 import "../styles/Modal.scss"
@@ -13,24 +13,25 @@ export default class Modal extends Component {
 
   modalRoot = document.getElementById('modal-root')
   handleOrder = (ln, campNr, amount) => {
-    window.processOrder(ln, campNr, amount);
+    window.processOrder(ln, campNr, amount)
   }
 
   handleClick = (e) => {
     if (this.node.contains(e.target)) {
-      return;
+      return
     }
     console.log("closing")
     this.props.onClose()
   }
 
+  
 
   render() {
-    const item = this.props.item;
-    let str = String(item.ln);
+    const item = this.props.item
+    let str = String(item.ln)
     /* Can it be done in an even more complicated way?  Regex for "1234 5" ln format. */
-    let ln_partone = str.match(/\d{4}/);
-    let ln_parttwo = str.match(/\d$/);
+    let ln_partone = str.match(/\d{4}/)
+    let ln_parttwo = str.match(/\d$/)
     return ReactDOM.createPortal(
       <div className="modal__background" onClick={this.handleClick}>
         <div className="modal__body" ref={node => this.node = node} >
@@ -84,7 +85,7 @@ class ImageCarousel extends Component {
           })}
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -98,17 +99,17 @@ class SingleImage extends Component {
 }
 
 
-/*const startingAmount = 30;
+/*const startingAmount = 30
 const ln = 56123
 
-const dateToday = new Date().getDay();
-const dateToEmpty = new Date().getDay() + 30;
+const dateToday = new Date().getDay()
+const dateToEmpty = new Date().getDay() + 30
 
-const daysUntilEmpty = dateToEmpty - dateToday;
-const daysPassed = 30; //startdate - today
+const daysUntilEmpty = dateToEmpty - dateToday
+const daysPassed = 30 //startdate - today
 
-let seed = ln;
-let actual = startingAmount;
+let seed = ln
+let actual = startingAmount
 
 let debugMin = Math.round((startingAmount / daysUntilEmpty) - (startingAmount / 100))
 let debugMax = Math.round((startingAmount / daysUntilEmpty) + (startingAmount / 100)) + 1
@@ -117,17 +118,17 @@ console.log("debugMin: " + debugMin)
 console.log("debugMax: " + debugMax)
 
 const seededRandom = (min, max) => {
-  seed = (seed * 9301 + 49297) % 233280;
-  const rnd = seed / 233280;
+  seed = (seed * 9301 + 49297) % 233280
+  const rnd = seed / 233280
 
-  return min + rnd * (max - min);
+  return min + rnd * (max - min)
 }
 
 if (daysPassed > daysUntilEmpty) {
-  actual = 0;
+  actual = 0
   console.log("0db - elfogyott")
 } else {
-  for (x = 0; x <= daysPassed; x++) {
+  for (x = 0 x <= daysPassed x++) {
     const result = Math.round((seededRandom(debugMin, debugMax))-0.5)
     actual -= result
 

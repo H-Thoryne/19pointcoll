@@ -17,16 +17,6 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
-    const hostname = window.location.hostname;
-    let url;
-    if (hostname === "www.avon.com") {
-      url = "NotYetConfigured"
-    } else {
-      url = "https://api.myjson.com/bins/kaike"
-    }
-  }
-
   /*   componentDidMount = () => {
       this.setState({ ipPoints: window.rIP })
     } */
