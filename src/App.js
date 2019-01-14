@@ -7,6 +7,7 @@ import PointCollection from "./PointCollection"
 import RedeemPoints from "./RedeemPoints";
 import "./banner.jpg"
 
+import styled from "styled-components"
 import "./styles/App.scss"
 
 class App extends Component {
@@ -25,25 +26,17 @@ class App extends Component {
     return (
       <HashRouter>
         <div className="app-container">
-
-          <div>
-            <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="hero" />
-            {/* <img src={require("./banner.jpg")} alt="banner" /> */}
-          </div>
-
+          <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="hero" />
           <div className="navLinks">
-            <NavLink to="/pontgyujtes">Point Collection</NavLink>
-            <NavLink to="/pontbevaltas">Redeem Points</NavLink>
+            <NavLinkStyled to="/pontgyujtes">Point Collection</NavLinkStyled>
+            <NavLinkStyled to="/pontbevaltas">Redeem Points</NavLinkStyled>
           </div>
-
           <Switch>
             <Route exact path="/" component={PointCollection} />
             <Route path="/pontgyujtes" component={PointCollection} />
             <Route path="/pontbevaltas" component={RedeemPoints} />
           </Switch>
-
           <Accordion />
-
         </div>
       </HashRouter>
     );
@@ -51,3 +44,7 @@ class App extends Component {
 }
 
 export default App;
+
+const NavLinkStyled = styled(NavLink)`
+  color: red;
+`;

@@ -25,7 +25,7 @@ export default class SimpleSlider extends Component {
       slidesToScroll: 1,
       centerMode: false,
       dots: false,
-      swipeToSlide: true,
+      swipeToSlide: false,
       lazyLoad: true,
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />
@@ -49,7 +49,7 @@ export default class SimpleSlider extends Component {
     return (
       <div className="simple-slider">
         <div className="simple-slider__title">{amount} pont</div>
-        <div>Összesen {this.props.data.length} termék</div>
+        {/* <div>Összesen {this.props.data.length} termék</div> */}
         <Slider ref={slider => (this.slider = slider)} {...settings} className="slider">
           {
             this.props.data.map(function (item, i) {
@@ -57,13 +57,9 @@ export default class SimpleSlider extends Component {
             })
           }
         </Slider>
-        <div style={{ textAlign: "center" }}>
-          <button className="button" onClick={this.play}>
-            Play
-          </button>
-          <button className="button" onClick={this.pause}>
-            Pause
-          </button>
+        <div>
+          <button onClick={this.play}>Play</button>
+          <button onClick={this.pause}>Pause</button>
         </div>
       </div>
     );
@@ -72,17 +68,13 @@ export default class SimpleSlider extends Component {
 
 const NextArrow = (props) => {
   return (
-    <div className={props.className} onClick={props.onClick} >
-      Next
-    </div>
+    <div className={props.className} onClick={props.onClick} >Next</div>
   );
 };
 
 
 const PrevArrow = (props) => {
   return (
-    <div className={props.className} onClick={props.onClick} >
-      Prev
-    </div>
+    <div className={props.className} onClick={props.onClick} >Prev</div>
   );
 };

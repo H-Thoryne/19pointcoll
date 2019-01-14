@@ -40,12 +40,15 @@ class PointCollection extends Component {
     if (isNaN(point)) {
       return "ERROR: NaN"
     }
-    // If it's a number that can't be zero but it's a zero
+
+    // If it's a number that CAN'T be zero but IT IS a zero
     if (canBeZero === false && point === 0) {
-      return "ERROR: ZerpExcetion"
+      return "ERROR: ZeroException"
     }
 
-    // If it IS a number that CAN be zero
+    // It IS a number that CAN be zero
+    // or
+    // It IS a number that CAN'T be zero and IS NOT zero
     return point;
   }
 
