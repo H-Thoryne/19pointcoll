@@ -4,11 +4,8 @@ import styled from "styled-components"
 /* import "../styles/Accordion.scss" */
 
 class Accordion extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      accordionOpen: false,
-    }
+  state = {
+    accordionOpen: false,
   }
 
   accordionClick = () => {

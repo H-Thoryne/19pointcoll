@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import Modal from './Modal';
+import Modal from './Modal/Modal';
 
 import "../styles/Productcard.scss"
 
 class Productcard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
+  state = {
+    isOpen: false,
   }
 
   openModal = () => {

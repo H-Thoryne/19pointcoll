@@ -1,23 +1,21 @@
 import React, { Component } from 'react'
 import { Circle } from 'rc-progress'
 
-import "./styles/PointCollection.scss"
+import "../styles/PointCollection.scss"
+import NaviButton from '../components/NaviButton';
 
 class PointCollection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      aws: 0,
-      target: 0,
-      brochures: 0,
-      basePoints: 0,
-      percent: 0,
-      displayAws: 0,
-      displayTarget: 0,
-      displayBrochures: 0,
-      displayBasePoints: 0,
-      displayPercent: 0,
-    }
+  state = {
+    aws: 0,
+    target: 0,
+    brochures: 0,
+    basePoints: 0,
+    percent: 0,
+    displayAws: 0,
+    displayTarget: 0,
+    displayBrochures: 0,
+    displayBasePoints: 0,
+    displayPercent: 0,
   }
 
   componentWillMount = () => {
@@ -114,6 +112,7 @@ class PointCollection extends Component {
 
         <div className="infobox">
           <div className="infobox__generic">Egyéni célkitűzésed teljesítésével és legalább 1 db katalógus vásárlásával szerezz pontokat kampányról kampányra, majd februártól váltsd be egy vagy akár több Neked tetsző termékre!</div>
+          <NaviButton to="/pontbevaltas" text="Fixme, I'm ugly" />
           <div className="infobox__label  label--pink">Lehetőséged van extra pontok gyűjtésére is!</div>
           {/* <div className="infobox__label">Hogyan?</div> */}
           <div className="infobox__list">
@@ -140,7 +139,7 @@ class PointCollection extends Component {
         <div className="infobox">
           <div className="infobox__generic">Egy kis ízelítő a termékekből, hogy miket szerezhetsz a 2019. februári kampánytól:</div>
         </div>
-        
+
         {/* <img className="sample-products" src={require("./sampleproducts.jpg")} alt="banner" /> */}
         <img className="sample-products" src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/sampleproducts.jpg" alt="banner" />
       </div>

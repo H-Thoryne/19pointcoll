@@ -72,7 +72,6 @@ const NextArrow = (props) => {
   );
 };
 
-
 const PrevArrow = (props) => {
   return (
     <div className={props.className} onClick={props.onClick} >Prev</div>

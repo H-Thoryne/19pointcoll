@@ -1,23 +1,22 @@
 import React, { Component } from "react"
-import SimpleSlider from "./components/SimpleSlider"
-import "./styles/RedeemPoints.scss"
+import SimpleSlider from "../components/SimpleSlider"
+import NaviButton from "../components/NaviButton"
+
+import "../styles/RedeemPoints.scss"
 
 class RedeemPoints extends Component {
-  constructor() {
-    super()
-    this.state = {
-      low: [],
-      mid: [],
-      high: []
-    }
+  state = {
+    low: [],
+    mid: [],
+    high: []
   }
-
-  /*  */
+  
   seededCountdown = (seed, startingAmount) => {
     const dateStart = "2019-01-10T0:0:0";
     const dateToday = new Date();
     const dateToEmpty = "2019-01-21T0:0:0";
-    const daysUntilEmpty = Math.ceil((Date.parse(dateToEmpty) - dateToday) / 86400000); /* 1000 * 3600 * 24 */
+    const daysUntilEmpty = Math.ceil((Date.parse(dateToEmpty) - Date.parse(dateStart)) / 86400000);
+    /* const daysUntilEmpty = Math.ceil((Date.parse(dateToEmpty) - dateToday) / 86400000); */ /* 1000 * 3600 * 24 */
     const daysPassed = Math.floor((dateToday - Date.parse(dateStart)) / 86400000); /* 1000 * 3600 * 24 */
 
     let actual = startingAmount;
@@ -60,7 +59,7 @@ class RedeemPoints extends Component {
 
   /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
   componentDidMount() {
-    fetch("https://api.myjson.com/bins/1e29g0")
+    fetch("https://api.myjson.com/bins/wqec8")
       .then(res => res.json())
       .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }, () => this.updateAmount()))
   }
@@ -76,6 +75,8 @@ class RedeemPoints extends Component {
   render() {
     return (
       <div>
+        <NaviButton to="/pontgyujtes" text="Fixme, I'm ugly" />
+        <div>Beváltható pontjaid: 666</div>
         <div className="sliderWrapper-1">
           <SimpleSlider section="high" data={this.state.high} />
           <SimpleSlider section="mid" data={this.state.mid} />

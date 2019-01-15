@@ -2,30 +2,6 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 <script>
-  /* FIXME: insert proper order processing */
-  processOrder = (p1, p2) => {
-    console.log(p1 + " 11 " + p2);
-  }
-</script>
-
-<script>
-  function ad_to_order_new(o) {
-    var t = parent.window.location.href,
-      e = t.split("/").pop(-1),
-      n = t.replace(e, "");
-    $("#BBO_iframeContent").show(), $("#bbomask").show(), $("#bbopopup").show(), $("#BBO_iframeContent").attr("src", n + "buttonOffersDetails.page?KeepThis=true&prodparam=" + o + "&CurrentPage=" + e), $("#BBO_iframeContent").load(function () {
-      $("#BBO_iframeContent").contents().find("div#bbo_close_btn").css({
-        display: "none"
-      })
-    }), $("html, body").animate({
-      scrollTop: 0
-    }, 400), $("html, body", window.parent.document).animate({
-      scrollTop: 0
-    }, 400)
-  }
-</script>
-
-<script>
   var rIP = {
     IP1: "<variable name='IP1'>",
     IP2: "<variable name='IP2'>",

@@ -1,13 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 
-const ImageSingle = (props) => {
+const MainImage = (props) => {
   return (
-    <Image src={props.item.img} alt="SingleImage" />
+    <Image src={props.src} alt="Main Image" />
   );
 };
 
-export default ImageSingle;
+export default MainImage;
 
 const Image = styled.img`
     height: 300px;

@@ -13,10 +13,30 @@
   @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 </style>
 
+<!-- GI3 CTA -->
 <script>
-  /* FIXME: insert proper order processing */
-  processOrder = (p1, p2) => {
-    console.log(p1 + " 11 " + p2);
+  /* $(document).ready(function () {
+    campaignVal_sixdigit = (function () {
+      var currCampFull = AvonAnalyticsObjex.Profile.campaignInfo;
+      var campArr = currCampFull.split(':');
+      var oldCamp = campArr[1].replace("C", "");
+      var newCamp = ("0" + String(oldCamp)).slice(-2);
+      campArr[1] = newCamp;
+      return campArr.join("");
+    })();
+  }); */
+
+  window.campaignVal_sixdigit = 201901;
+
+  function processOrder(finalName, finalCamp, finalAmount) {
+    var orderData = "LN:" + finalName + ";CM:" + finalCamp + ";Q:" + finalAmount;
+    if (console.info) {
+      console.info(orderData)
+    } else {
+      console.log(orderData)
+    }
+    /* ######################################## !UNCOMMENT ME FOR BUILD! ######################################## */
+    /* ad_to_order(orderData); */
   }
 </script>
 

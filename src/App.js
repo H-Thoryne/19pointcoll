@@ -3,19 +3,15 @@ import Accordion from "./components/Accordion"
 
 //Navigation
 import { HashRouter, Route, NavLink, Switch } from "react-router-dom";
-import PointCollection from "./PointCollection"
-import RedeemPoints from "./RedeemPoints";
-import "./banner.jpg"
+import PointCollection from "./containers/PointCollection"
+import RedeemPoints from "./containers/RedeemPoints";
 
 import styled from "styled-components"
-import "./styles/App.scss"
+/* import "./styles/App.scss" */
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      ipPoints: {},
-    }
+  state = {
+    ipPoints: {},
   }
 
   /*   componentDidMount = () => {
@@ -25,19 +21,15 @@ class App extends Component {
   render() {
     return (
       <HashRouter>
-        <div className="app-container">
-          <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="hero" />
-          <div className="navLinks">
-            <NavLinkStyled to="/pontgyujtes">Point Collection</NavLinkStyled>
-            <NavLinkStyled to="/pontbevaltas">Redeem Points</NavLinkStyled>
-          </div>
+        <AppContainer>
+          <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="Banner" />
           <Switch>
             <Route exact path="/" component={PointCollection} />
             <Route path="/pontgyujtes" component={PointCollection} />
             <Route path="/pontbevaltas" component={RedeemPoints} />
           </Switch>
           <Accordion />
-        </div>
+        </AppContainer>
       </HashRouter>
     );
   }
@@ -45,6 +37,21 @@ class App extends Component {
 
 export default App;
 
-const NavLinkStyled = styled(NavLink)`
-  color: red;
+const AppContainer = styled.div`
+  /* font-family: "Helvetica Neue LT Pro" !important; */
+  font-family: "Roboto", sans-serif !important;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-align: initial;
+
+  /* color: #444444; */
+  color: #646464;
+
+  box-sizing: border-box;
+  
+  list-style: none;
 `;
