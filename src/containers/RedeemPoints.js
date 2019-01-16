@@ -2,8 +2,6 @@ import React, { Component } from "react"
 import SimpleSlider from "../components/SimpleSlider"
 import NaviButton from "../components/NaviButton"
 
-import "../styles/RedeemPoints.scss"
-
 class RedeemPoints extends Component {
   state = {
     low: [],
@@ -75,7 +73,7 @@ class RedeemPoints extends Component {
   render() {
     return (
       <div>
-        <NaviButton to="/pontgyujtes" text="Fixme, I'm ugly" />
+        <NaviButton to="/pontgyujtes" text="Fixme, I'm an ugly button" />
         <div>Beváltható pontjaid: 666</div>
         <div className="sliderWrapper-1">
           <SimpleSlider section="high" data={this.state.high} />

@@ -1,13 +1,11 @@
 import React, { Component } from "react"
-import Accordion from "./components/Accordion"
+import { HashRouter, Route, Switch } from "react-router-dom";
 
-//Navigation
-import { HashRouter, Route, NavLink, Switch } from "react-router-dom";
 import PointCollection from "./containers/PointCollection"
 import RedeemPoints from "./containers/RedeemPoints";
+import Accordion from "./components/Accordion"
 
 import styled from "styled-components"
-/* import "./styles/App.scss" */
 
 class App extends Component {
   state = {

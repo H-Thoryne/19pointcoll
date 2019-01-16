@@ -12,6 +12,6 @@ export default MainImage;
 const Image = styled.img`
     height: 300px;
     width: 300px;
-    margin: 20px auto;
+    margin: auto;
     display: block;
 `;

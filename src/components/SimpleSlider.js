@@ -1,20 +1,13 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import Productcard from "./Productcard";
+import React, { Component } from "react"
+import Slider from "react-slick"
+import Productcard from "./Productcard"
 
-import "../../node_modules/slick-carousel/slick/slick.css";
-// import "../../node_modules/slick-carousel/slick/slick-theme.css";
+import "../../node_modules/slick-carousel/slick/slick.css"
 
-import "../styles/SimpleSlider.scss";
+import "../styles/SlickSlider.scss"
+import styled from "styled-components"
 
 export default class SimpleSlider extends Component {
-  play = () => {
-    this.slider.slickPlay();
-  }
-  pause = () => {
-    this.slider.slickPause();
-  }
-
   render() {
     const settings = {
       autoplay: false,
@@ -29,7 +22,7 @@ export default class SimpleSlider extends Component {
       lazyLoad: true,
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />
-    };
+    }
 
     let amount;
     switch (this.props.section) {
@@ -47,24 +40,42 @@ export default class SimpleSlider extends Component {
     }
 
     return (
-      <div className="simple-slider">
-        <div className="simple-slider__title">{amount} pont</div>
+      <SliderContainer>
+        <Header>{amount} pont</Header>
         {/* <div>Összesen {this.props.data.length} termék</div> */}
-        <Slider ref={slider => (this.slider = slider)} {...settings} className="slider">
+        <Slider ref={slider => (this.slider = slider)} {...settings}>
           {
             this.props.data.map(function (item, i) {
               return <Productcard key={i} item={item} />
             })
           }
         </Slider>
-        <div>
-          <button onClick={this.play}>Play</button>
-          <button onClick={this.pause}>Pause</button>
-        </div>
-      </div>
+      </SliderContainer>
     );
   }
 }
+
+const SliderContainer = styled.div`
+  margin-top: 50px;
+`;
+
+const Header = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+
+  &::before,
+  &::after {
+    content: "";
+    height: 5px;
+    width: 35%;
+    background: #ff336d;
+    margin: 0 30px 4px 30px;
+    display: inline-block;
+  }
+`;
 
 const NextArrow = (props) => {
   return (

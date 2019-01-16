@@ -14,7 +14,7 @@ export default class Modal extends Component {
   }
 
   modalRoot = document.getElementById("modal-root")
-  
+
   handleOrder = (ln, campNr, amount) => {
     window.processOrder(ln, campNr, amount)
   }
@@ -39,17 +39,17 @@ export default class Modal extends Component {
         <Body ref={node => this.node = node} >
           <LeftContent >
             {
-              /* Only render the ImageCaroousel if there are secondary images available */
+              /* Only render the ImageCarousel if there are secondary images available */
               item.img_alt.length > 0 ? <Carousel item={item} /> : <MainImage src={item.img} />
             }
           </LeftContent>
           <RightContent>
-            <div className="rc-close" onClick={this.props.onClose} />
-            <div className="rc-name">{item.name}</div>
-            <div className="rc-description">{item.description}</div>
-            <div className="rc-ln">Cikkszám: {formatted_ln}</div>
-            <div className="rc-price">{item.price_points} pont és {item.price_huf} Ft</div>
-            <button onClick={() => this.handleOrder(item.ln, window.campaignVal_sixdigit, this.state.itemAmount)}>Megrendel</button>
+            <Close onClick={this.props.onClose} />
+            <Name>{item.name}</Name>
+            <Description>{item.description}</Description>
+            <Price><div>{item.price_points} pont</div> és <div>{item.price_huf} Ft</div></Price>
+            <LineNumber>Cikkszám: {formatted_ln}</LineNumber>
+            <PurchaseButton onClick={() => this.handleOrder(item.ln, window.campaignVal_sixdigit, this.state.itemAmount)}>Megrendelem</PurchaseButton>
           </RightContent>
         </Body>
       </Container>,
@@ -90,7 +90,7 @@ const Body = styled.div`
   position: absolute;
   float: left;
   width: 840px;
-  height: 470px;
+  height: auto;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -101,47 +101,79 @@ const Body = styled.div`
 
 const LeftContent = styled.div`
   flex: 50%;
-  padding: 20px;
+  padding: 40px 20px;
 `;
 
 const RightContent = styled.div`
   flex: 50%;
-  padding: 20px;
+  padding: 40px 20px;
   background: whitesmoke;
   position: relative;
 
-  .rc-close {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+`;
+
+const Close = styled.div`
+  position: absolute;
+  background: lightgray;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+      
+  ::before {
+    content: "✕";
     position: absolute;
-    background: lightgray;
-    height: 30px;
-    width: 30px;
-    border-radius: 15px;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-        
-    ::before {
-      content: "✕";
-      position: absolute;
-      font-size: 15px;
-      margin: auto;
-      left: 9px;
-      top: 6px;
-    }
+    font-size: 15px;
+    margin: auto;
+    left: 9px;
+    top: 6px;
   }
+`;
 
-  .rc-name {
-    font-size: 24px;
-    font-weight: 300;
-    margin: 60px 0 30px 0;
-  }
+const Name = styled.div`
+  font-size: 24px;
+  font-weight: 300;
+  margin: 20px 0;
+`;
 
-  .rc-description {
-    height: 135px;
-    border: 1px solid red;
-  }
+const Description = styled.div`
+  flex-grow: 1;
+  margin-bottom: 20px;
+`;
 
-  .rc-ln {
-    margin: 30px 0;
+const LineNumber = styled.div`
+  margin-bottom: 20px;
+`;
+
+const Price = styled.div`
+  margin-bottom: 20px;
+
+  div {
+    font-weight: bolder;
+    font-size: 14px;
+    color: black;
+    display: inline;
   }
+`;
+
+const PurchaseButton = styled.div`
+  background: #FF336D;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: normal;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+
+  padding: 10px 15px;
+  border-radius: 5px;
+  width: 250px;
+  display: block;
+  margin: auto;
 `;

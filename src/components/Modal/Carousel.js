@@ -24,34 +24,37 @@ class Carousel extends Component {
 
   render() {
     return (
-      <ImageCarousel>
+      <Container>
         <MainImage src={this.state.img} />
         <SecondaryImages >
           {
             this.props.item.img_alt.map((img, i) => {
-              return <SecondaryImage key={i} src={img} onClick={this.handleClick} alt="Secondary Image" />
+              return <Image key={i} src={img} onClick={this.handleClick} alt="Secondary Image" />
             })
           }
         </SecondaryImages>
-      </ImageCarousel>
+      </Container>
     )
   }
 }
 
 export default Carousel;
 
-const ImageCarousel = styled.div``;
+const Container = styled.div``;
 
 const SecondaryImages = styled.div`
   display: flex;
   align-content: center;
   width: fit-content;
-  margin: auto;
-  border: 1px solid red;
+  margin: 10px auto 0 auto;
   box-sizing: border-box;
+
+  &:hover{
+    cursor: pointer;
+  }
 `;
 
-const SecondaryImage = styled.img`
+const Image = styled.img`
   height: 75px;
   width: 75px;
   box-sizing: border-box;

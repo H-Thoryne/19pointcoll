@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-
 import styled from "styled-components"
-/* import "../styles/Accordion.scss" */
 
 class Accordion extends Component {
   state = {
@@ -44,8 +42,8 @@ class Accordion extends Component {
               <li>Az ösztönző kiértékelésekor csak és kizárólag az AVON-hoz beérkezett és a Tanácsadó egyenlegén könyvelt befizetéseket vizsgáljuk. Sem a függőben lévő bankkártyás fizetéseket, sem a befizetett, de le nem könyvelt összegeket nem tudjuk figyelembe venni.</li>
               <li>A programban szereplő termékek önállóan nem rendelhetőek meg.</li>
               <li>Az ajánlat a készlet erejéig érvényes. Esetleges készlethiány esetén megteszünk mindent, hogy hasonló színvonalú termékekkel kárpótoljunk.</li>
-              <li>A kedvezményes árak további árengedményt nem tartalmaznak, nem számítanak bele az összmegrendelésbe,nem számítanak bele az árengedmény-számítás alapjába és nem számítanak bele a meghatározott költési határba sem.</li>
-              <li>A Tanácsadói szerződés 13. pontjában foglalt rendelkezések jelen ösztönző programra is irányadóak.</li>
+              <li>A kedvezményes árak további árengedményt nem tartalmaznak, nem számítanak bele az összmegrendelésbe, nem számítanak bele az árengedmény-számítás alapjába és nem számítanak bele a meghatározott költési határba sem.</li>
+              <li>A <a href="http://www.avon.hu/REPSuite/static/downloads/Tanacsadoi_ASZF.pdf" target="_blank" rel="noopener noreferrer">Tanácsadói szerződés 13.</a> pontjában foglalt rendelkezések jelen ösztönző programra is irányadóak.</li>
             </List>
           ) : null
         }
@@ -82,27 +80,34 @@ const Title = styled.div`
   position: absolute;
   font-size: 14px;
   font-weight: 500;
-  height: 30px;
+  height: 28px;
   color: white;
   left: 10px;
   text-align: center;
   align-content: center;
   vertical-align: middle;
-  line-height: 30px;
+  line-height: 28px;
   text-transform: uppercase;
 
   span {
     font-size: 20px;
-    line-height: 30px;
-    height: 30px;
+    line-height: 28px;
+    height: 28px;
   }
 `;
 
 const List = styled.ul`
   margin: 10px 20px;
-  line-height: 1.2;
+  line-height: 1.3;
+  padding: 0;
+  text-align: justify;
+  text-justify: inter-word;
+
+a{
+  color: #ff336d;
+}
 
   ul li {
-    margin-left: 20px;
+    /* margin-left: 20px; */
   }
 `;
