@@ -8,36 +8,37 @@ import InfoText from '../components/InfoText';
 import styled from "styled-components"
 
 class PointCollection extends Component {
-  state = {
-    aws: 0,
-    target: 0,
-    acquiredPoints: 0,
-    brochures: 0,
-    basePoints: 0,
-    percent: 0,
-    displayAws: 0,
-    displayTarget: 0,
-    displayBrochures: 0,
-    displayAcquiredPoints: 0,
-    displayBasePoints: 0,
-    displayPercent: 0,
+  constructor(props) {
+    super(props)
+    this.state = {
+      percent: 0,
+      aws: "Töltés...",
+      target: "Töltés...",
+      brochures: "Töltés...",
+      acquiredPoints: "Töltés...",
+      basePoints: "Töltés...",
+      displayPercent: "Töltés...",
+    }
   }
 
-  componentWillMount = () => {
-    this.setState({ aws: window.rIP.IP22 })
-    this.setState({ target: window.rIP.IP28 })
-    this.setState({ basePoints: window.rIP.IP48 })
-    this.setState({ acquiredPoints: 1000 })
-    this.setState({ brochures: window.rIP.IP23 })
+  /* Runs on first load when we get the props from App.js */
+  componentWillReceiveProps = (newProps) => {
+    this.updateDisplayStates(newProps)
   }
 
+  /* Runs on every other occasion when the page is loaded. It's to update state from "Töltés..." again */
   componentDidMount = () => {
-    this.setState({ displayAws: this.validateIpPoint(this.state.aws, true) })
-    this.setState({ displayTarget: this.validateIpPoint(this.state.target, false) })
-    this.setState({ displayBrochures: this.validateIpPoint(this.state.brochures, true) })
-    this.setState({ displayAcquiredPoints: this.validateIpPoint(this.state.acquiredPoints, true) })
-    this.setState({ displayBasePoints: this.validateIpPoint(this.state.basePoints, false) })
-    this.startCounter();
+    this.updateDisplayStates(this.props)
+  }
+
+  updateDisplayStates = (newProps) => {
+    this.setState({
+      aws: this.validateIpPoint(window.allPoints[newProps.ip.aws], true),
+      target: this.validateIpPoint(window.allPoints[newProps.ip.target], false),
+      brochures: this.validateIpPoint(window.allPoints[newProps.ip.brochures], true),
+      acquiredPoints: this.validateIpPoint(window.allPoints[newProps.ip.acquiredPoints], true),
+      basePoints: this.validateIpPoint(window.allPoints[newProps.ip.basePoints], false)
+    }, () => this.startCounter())
   }
 
   validateIpPoint = (point, canBeZero) => {
@@ -76,15 +77,14 @@ class PointCollection extends Component {
   render() {
     return (
       <Container>
-        <DataTable displayBrochures={this.state.displayBrochures} displayBasePoints={this.state.displayBasePoints} displayAcquiredPoints={this.state.displayAcquiredPoints} />
-        <DataList displayPercent={this.state.displayPercent} aws={this.state.aws} target={this.state.target} />
+        <DataTable brochures={this.state.brochures} basePoints={this.state.basePoints} acquiredPoints={this.state.acquiredPoints} />
+        <DataList percent={this.state.displayPercent} aws={this.state.aws} target={this.state.target} />
         <InfoText />
         <LinkButtons />
-
-        <div className="infobox">
+        {/* <div className="infobox">
           <div className="infobox__generic">Egy kis ízelítő a termékekből, hogy miket szerezhetsz a 2019. februári kampánytól:</div>
         </div>
-        <img className="sample-products" src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/sampleproducts.jpg" alt="banner" />
+        <img className="sample-products" src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/sampleproducts.jpg" alt="banner" /> */}
       </Container>
     );
   }

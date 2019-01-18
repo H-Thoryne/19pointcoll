@@ -1,14 +1,18 @@
 import React, { Component } from "react"
+
 import SimpleSlider from "../components/SimpleSlider"
 import NaviButton from "../components/NaviButton"
+
+import styled from "styled-components"
 
 class RedeemPoints extends Component {
   state = {
     low: [],
     mid: [],
-    high: []
+    high: [],
+    acquiredPoints: "Töltés..."
   }
-  
+
   seededCountdown = (seed, startingAmount) => {
     const dateStart = "2019-01-10T0:0:0";
     const dateToday = new Date();
@@ -55,9 +59,35 @@ class RedeemPoints extends Component {
     return actual;
   }
 
+  /* Runs on first load when we get the props from App.js */
+  componentWillReceiveProps = (newProps) => {
+    this.updateDisplayStates(newProps)
+  }
+
+  /* Runs on every other occasion when the page is loaded. It's to update state from "Töltés..." again */
+  componentDidMount = () => {
+    this.updateDisplayStates(this.props)
+  }
+
+  updateDisplayStates = (newProps) => {
+    this.setState({
+      acquiredPoints: this.validateIpPoint(window.allPoints[newProps.ip.acquiredPoints], true),
+    })
+  }
+
+  validateIpPoint = (point, canBeZero) => {
+    if (isNaN(point)) {
+      return "ERROR: NaN"
+    }
+    if (canBeZero === false && point === 0) {
+      return "ERROR: ZeroException"
+    }
+    return point;
+  }
+
   /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
-  componentDidMount() {
-    fetch("https://api.myjson.com/bins/195f34")
+  componentWillMount() {
+    fetch("https://api.myjson.com/bins/wbcts")
       .then(res => res.json())
       .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }, () => this.updateAmount()))
   }
@@ -72,20 +102,53 @@ class RedeemPoints extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
+        <Table>
+          <Label>Megszerzett pontjaid</Label>
+          <Content>{this.state.acquiredPoints}</Content>
+        </Table>
+        <Spacer />
         <NaviButton to="/pontgyujtes" text="Fixme, I'm an ugly button" />
-        <div>Beváltható pontjaid: 666</div>
         <div className="sliderWrapper-1">
           <SimpleSlider section="high" data={this.state.high} />
           <SimpleSlider section="mid" data={this.state.mid} />
           <SimpleSlider section="low" data={this.state.low} />
         </div>
-      </div>
+      </Container>
     );
   }
 }
 
 export default RedeemPoints;
 
+const Container = styled.div`
+  position: relative;
+`;
 
+const Table = styled.div`
+  padding: 20px;
+  text-align: center !important;
+  box-shadow: 0px 10px 40px 1px rgba(0, 0, 0, 0.3);
+  background: white;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translate(-50%, 0);
+`;
 
+const Label = styled.div`
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+`;
+
+const Content = styled.div`
+  font-size: 30px;
+  font-weight: 100;
+`;
+
+const Spacer = styled.div`
+padding-top: 80px
+`;

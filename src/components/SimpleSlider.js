@@ -36,7 +36,7 @@ export default class SimpleSlider extends Component {
       autoplay: false,
       autoplaySpeed: 3000,
       infinite: true,
-      speed: 1000,
+      speed: 750,
       slidesToShow: 3,
       slidesToScroll: 1,
       centerMode: false,
@@ -68,7 +68,7 @@ const SliderContainer = styled.div`
 `;
 
 const Header = styled.div`
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
   width: 100%;

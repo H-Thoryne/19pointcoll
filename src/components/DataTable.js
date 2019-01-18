@@ -11,17 +11,17 @@ const DataTable = (props) => {
         </Row>
         <Row>
           <Label>Megrendelt katalógusok</Label>
-          <Content>{props.displayBrochures} db</Content>
+          <Content>{props.brochures} db</Content>
         </Row>
       </Column>
       <Column>
         <Row>
           <Label>Megszerzett pontjaid</Label>
-          <Content>{props.displayAcquiredPoints}</Content>
+          <Content>{props.acquiredPoints}</Content>
         </Row>
         <Row>
           <Label>Szerezhető alappontok</Label>
-          <Content>{props.displayBasePoints}</Content>
+          <Content>{props.basePoints}</Content>
         </Row>
       </Column>
     </Table>

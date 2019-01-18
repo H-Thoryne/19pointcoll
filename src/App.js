@@ -12,8 +12,8 @@ class App extends Component {
     ip: {}
   }
 
-  componentDidMount() {
-    fetch("https://api.myjson.com/bins/1ecj74")
+  componentWillMount() {
+    fetch("https://api.myjson.com/bins/65zxs")
       .then(res => res.json())
       .then(data => this.setState({ ip: data }))
   }
@@ -24,9 +24,9 @@ class App extends Component {
         <AppContainer>
           <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="Banner" />
           <Switch>
-            <Route exact path="/" component={PointCollection} ip={this.state.ip} />
-            <Route path="/pontgyujtes" component={PointCollection} ip={this.state.ip} />
-            <Route path="/pontbevaltas" component={RedeemPoints} ip={this.state.ip} />
+            <Route exact path="/" render={(routeProps) => <PointCollection {...routeProps} ip={this.state.ip} />} />
+            <Route path="/pontgyujtes" render={(routeProps) => <PointCollection {...routeProps} ip={this.state.ip} />} />
+            <Route path="/pontbevaltas" render={(routeProps) => <RedeemPoints {...routeProps} ip={this.state.ip} />} />
           </Switch>
           <Accordion />
         </AppContainer>
