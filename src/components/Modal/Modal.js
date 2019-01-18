@@ -40,14 +40,14 @@ export default class Modal extends Component {
           <LeftContent >
             {
               /* Only render the ImageCarousel if there are secondary images available */
-              item.img_alt.length > 0 ? <Carousel item={item} /> : <MainImage src={item.img} />
+              item.imgSecondary.length > 0 ? <Carousel item={item} /> : <MainImage src={item.img} />
             }
           </LeftContent>
           <RightContent>
             <Close onClick={this.props.onClose} />
             <Name>{item.name}</Name>
             <Description>{item.description}</Description>
-            <Price><div>{item.price_points} pont</div> és <div>{item.price_huf} Ft</div></Price>
+            <Price><div>{item.pricePoints} pont</div> és <div>{item.priceHUF} Ft</div></Price>
             <LineNumber>Cikkszám: {formatted_ln}</LineNumber>
             <PurchaseButton onClick={() => this.handleOrder(item.ln, window.campaignVal_sixdigit, this.state.itemAmount)}>Megrendelem</PurchaseButton>
           </RightContent>
@@ -138,11 +138,11 @@ const Close = styled.div`
 const Name = styled.div`
   font-size: 24px;
   font-weight: 300;
-  margin: 20px 0;
+  margin: 40px 0 20px 0;
 `;
 
 const Description = styled.div`
-  flex-grow: 1;
+  flex-grow: 0.8;
   margin-bottom: 20px;
 `;
 

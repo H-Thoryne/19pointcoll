@@ -24,8 +24,8 @@ class Productcard extends Component {
       <ProductCard>
         <Image src={this.props.item.img} onClick={this.openModal} alt="Product Image" />
         <Text>{this.props.item.name}</Text>
-        <SubText>{this.props.item.price_points} pont</SubText>
-        <SubText>{this.props.item.amountCurrent} db</SubText>
+        <SubText>{this.props.item.pricePoints} pont</SubText>
+        <SubText center>- {this.props.item.amountCurrent} db -</SubText>
         {
           this.props.is_new ? (<Badge src="https://via.placeholder.com/80x80" alt="Badge" />) : null
         }
@@ -45,7 +45,7 @@ const ProductCard = styled.div`
   height: 100%;
   margin: 25px 0px 25px 15px;
   overflow: hidden;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.025);
   transition: 0.2s all ease;
 
   box-sizing: border-box;
@@ -67,10 +67,12 @@ const Text = styled.div`
   margin: 10px 0 10px 5px;
   font-size: 14px;
   font-weight: bold;
+  height: 34px;
 `;
 
 const SubText = styled.div`
   margin: 10px 0 10px 5px;
+  text-align: ${props => props.center ? "center" : "inherit"};
 `;
 
 const Badge = styled.img`

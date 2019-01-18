@@ -9,12 +9,14 @@ import styled from "styled-components"
 
 class App extends Component {
   state = {
-    ipPoints: {},
+    ip: {}
   }
 
-  /*   componentDidMount = () => {
-      this.setState({ ipPoints: window.rIP })
-    } */
+  componentDidMount() {
+    fetch("https://api.myjson.com/bins/1ecj74")
+      .then(res => res.json())
+      .then(data => this.setState({ ip: data }))
+  }
 
   render() {
     return (
@@ -22,9 +24,9 @@ class App extends Component {
         <AppContainer>
           <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="Banner" />
           <Switch>
-            <Route exact path="/" component={PointCollection} />
-            <Route path="/pontgyujtes" component={PointCollection} />
-            <Route path="/pontbevaltas" component={RedeemPoints} />
+            <Route exact path="/" component={PointCollection} ip={this.state.ip} />
+            <Route path="/pontgyujtes" component={PointCollection} ip={this.state.ip} />
+            <Route path="/pontbevaltas" component={RedeemPoints} ip={this.state.ip} />
           </Switch>
           <Accordion />
         </AppContainer>

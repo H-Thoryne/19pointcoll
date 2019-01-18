@@ -57,7 +57,7 @@ class RedeemPoints extends Component {
 
   /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
   componentDidMount() {
-    fetch("https://api.myjson.com/bins/wqec8")
+    fetch("https://api.myjson.com/bins/195f34")
       .then(res => res.json())
       .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }, () => this.updateAmount()))
   }

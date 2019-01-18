@@ -12,7 +12,7 @@ class Carousel extends Component {
 
   componentWillMount = () => {
     this.setState({
-      img: this.props.item.img_alt[0]
+      img: this.props.item.img
     })
   }
 
@@ -27,8 +27,9 @@ class Carousel extends Component {
       <Container>
         <MainImage src={this.state.img} />
         <SecondaryImages >
+          <Image src={this.props.item.img} onClick={this.handleClick} alt="Secondary Image" />
           {
-            this.props.item.img_alt.map((img, i) => {
+            this.props.item.imgSecondary.map((img, i) => {
               return <Image key={i} src={img} onClick={this.handleClick} alt="Secondary Image" />
             })
           }

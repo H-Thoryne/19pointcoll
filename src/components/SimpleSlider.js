@@ -8,6 +8,29 @@ import "../styles/SlickSlider.scss"
 import styled from "styled-components"
 
 export default class SimpleSlider extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      arr: [],
+      min: 0,
+      max: 0
+    }
+  }
+
+  /* !FIXME: This sucks. Gets called like a billion times, find a way to update state only once, after all props have been received */
+  componentWillReceiveProps = () => {
+    for (let i = 0; i < this.props.data.length; i++) {
+      this.setState(prevState => ({
+        arr: [...prevState.arr, this.props.data[i].pricePoints]
+      }), () => this.logstuff())
+    }
+  }
+
+  logstuff = () => {
+    this.setState({ min: Math.min.apply(null, this.state.arr) })
+    this.setState({ max: Math.max.apply(null, this.state.arr) })
+  }
+
   render() {
     const settings = {
       autoplay: false,
@@ -24,24 +47,9 @@ export default class SimpleSlider extends Component {
       prevArrow: <PrevArrow />
     }
 
-    let amount;
-    switch (this.props.section) {
-      case "high":
-        amount = "100+"
-        break;
-      case "mid":
-        amount = "20-50"
-        break;
-      case "low":
-        amount = "10-20"
-        break;
-      default:
-        amount = "ERROR"
-    }
-
     return (
       <SliderContainer>
-        <Header>{amount} pont</Header>
+        <Header>{this.state.min} - {this.state.max} pont</Header>
         {/* <div>Összesen {this.props.data.length} termék</div> */}
         <Slider ref={slider => (this.slider = slider)} {...settings}>
           {
@@ -70,7 +78,7 @@ const Header = styled.div`
   &::after {
     content: "";
     height: 5px;
-    width: 35%;
+    width: 30%;
     background: #ff336d;
     margin: 0 30px 4px 30px;
     display: inline-block;
