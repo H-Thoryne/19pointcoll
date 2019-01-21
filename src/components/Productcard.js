@@ -31,14 +31,11 @@ class Productcard extends Component {
             <Price huf>{this.props.item.priceHUF} Ft</Price>
           </Header>
           {
-            this.props.isNew ? null : <Badge text="I'm a badge!" bgColor="#D42929" />
+            this.props.isNew ? null : null
           }
           <Image src={this.props.item.img} alt="Product Image" />
           <Name>{this.props.item.name}</Name>
           <Text center>- {this.props.item.amountCurrent} db -</Text>
-          {/*  {
-            this.props.is_new ? (<Badge src="https://via.placeholder.com/80x80" alt="Badge" />) : null
-          }  */}
         </div>
         {
           this.state.isOpen ? (<Modal onClose={this.closeModal} item={this.props.item} />) : null
@@ -56,13 +53,13 @@ const ProductCard = styled.div`
   height: 100%;
   margin: 25px 0px 25px 15px;
   overflow: hidden;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
   transition: 0.2s all ease;
 
   box-sizing: border-box;
   
   &:hover {
-    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.2);
     transform: scale(1.02, 1.02);
     transition: 0.2s all ease;
     cursor: pointer;

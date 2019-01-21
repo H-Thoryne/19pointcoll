@@ -22,24 +22,18 @@ class PointCollection extends Component {
     }
   }
 
-  /* Runs on first load when we get the props from App.js */
-  componentWillReceiveProps = (newProps) => {
-    this.updateDisplayStates(newProps)
-  }
-
   /* Runs on every other occasion when the page is loaded. It's to update state from "Töltés..." again */
   componentDidMount = () => {
-    this.updateDisplayStates(this.props)
-  }
-
-  updateDisplayStates = (newProps) => {
-    this.setState({
-      aws: this.validateIpPoint(window.allPoints[newProps.ip.aws], true),
-      target: this.validateIpPoint(window.allPoints[newProps.ip.target], false),
-      brochures: this.validateIpPoint(window.allPoints[newProps.ip.brochures], true),
-      acquiredPoints: this.validateIpPoint(window.allPoints[newProps.ip.acquiredPoints], true),
-      basePoints: this.validateIpPoint(window.allPoints[newProps.ip.basePoints], false)
-    }, () => this.startCounter())
+    fetch("https://api.myjson.com/bins/oncy4")
+      .then(res => res.json())
+      .then(data => this.setState({
+        aws: this.validateIpPoint(window.allPoints[data.aws], true),
+        target: this.validateIpPoint(window.allPoints[data.target], false),
+        brochures: this.validateIpPoint(window.allPoints[data.brochures], true),
+        acquiredPoints: this.validateIpPoint(window.allPoints[data.acquiredPoints], true),
+        basePoints: this.validateIpPoint(window.allPoints[data.basePoints], false)
+      }, () => this.startCounter())
+      )
   }
 
   validateIpPoint = (point, canBeZero) => {
@@ -60,8 +54,7 @@ class PointCollection extends Component {
   }
 
   startCounter = () => {
-    const percentVar = this.state.percent + (this.state.aws / this.state.target) * 0.5;
-
+    const percentVar = this.state.percent + 1 ;
     if (percentVar >= 100) {
       this.setState({ percent: 100 });
       this.setState({ displayPercent: 100 });
@@ -69,10 +62,17 @@ class PointCollection extends Component {
       return;
     }
 
+    if (percentVar >= (this.state.aws / this.state.target) * 100) {
+      this.setState({ percent: percentVar });
+      this.setState({ displayPercent: Math.round(percentVar) });
+      clearTimeout(this.timeout);
+      return;
+    }
+
     this.setState({ percent: percentVar })
     this.setState({ displayPercent: Math.round(percentVar) })
 
-    this.timeout = setTimeout(this.startCounter, 1);
+    this.timeout = setTimeout(this.startCounter, 10);
   }
 
   render() {

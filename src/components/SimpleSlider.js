@@ -1,11 +1,13 @@
 import React, { Component } from "react"
+
 import Slider from "react-slick"
 import Productcard from "./Productcard"
+import Spinner from "./Spinner"
 
 import "../../node_modules/slick-carousel/slick/slick.css"
 import "../styles/SlickSlider.scss"
 
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 
 export default class SimpleSlider extends Component {
   constructor(props) {
@@ -85,30 +87,6 @@ const Header = styled.div`
     background: #ff336d;
     margin: 0 30px 4px 30px;
     display: inline-block;
-  }
-`;
-
-const rotate = keyframes`
-  0% {transform: rotate(0deg); }
-  100% {transform: rotate(360deg); }
-`;
-
-const Spinner = styled.div`
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 40px auto;
-
-  &::after{
-    content: "";
-    display: block;
-    width: 46px;
-    height: 46px;
-    margin: 1px;
-    border-radius: 50%;
-    border: 5px solid #FF336D;
-    border-color: #FF336D transparent #FF336D transparent;
-    animation: ${rotate} 1.2s linear infinite;
   }
 `;
 

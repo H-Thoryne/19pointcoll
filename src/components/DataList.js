@@ -4,9 +4,9 @@ import { Circle } from 'rc-progress'
 import styled from "styled-components"
 
 class DataList extends Component {
-/*   componentWillReceiveProps(newProps) {
-    this.setState({ displayPercent: newProps.displayPercent });
-  } */
+  /*   componentWillReceiveProps(newProps) {
+      this.setState({ displayPercent: newProps.displayPercent });
+    } */
 
   render() {
     return (
@@ -21,7 +21,11 @@ class DataList extends Component {
           <Label>Célkitűzésed az aktuális kampányra</Label>
           <Content>{this.props.target} Ft</Content>
           <Label>Még ennyiért rendelj a teljesítéshez</Label>
-          <Content>{this.props.target - this.props.aws} Ft</Content>
+          <Content>
+            {
+              (this.props.target - this.props.aws) < 0 ? 0 : (this.props.target - this.props.aws)
+            } Ft
+          </Content>
         </RightColumn>
       </List>
     );
