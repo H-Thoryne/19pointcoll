@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { NavLink } from "react-router-dom";
 
 const NaviButton = (props) => {
-  console.log(props.redeempoints)
   return (
     <Button to={props.to}>{props.text} </Button>
   );

@@ -11,13 +11,14 @@ class PointCollection extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      scanned: false,
       percent: 0,
       aws: "Töltés...",
       target: "Töltés...",
       brochures: "Töltés...",
       acquiredPoints: "Töltés...",
       basePoints: "Töltés...",
-      displayPercent: "Töltés...",
+      displayPercent: 0,
     }
   }
 
@@ -59,17 +60,17 @@ class PointCollection extends Component {
   }
 
   startCounter = () => {
-    const percent = this.state.percent + (this.state.aws / this.state.target) * 0.5;
+    const percentVar = this.state.percent + (this.state.aws / this.state.target) * 0.5;
 
-    if (percent >= 100) {
+    if (percentVar >= 100) {
       this.setState({ percent: 100 });
       this.setState({ displayPercent: 100 });
       clearTimeout(this.timeout);
       return;
     }
 
-    this.setState({ percent: percent })
-    this.setState({ displayPercent: Math.round(percent) })
+    this.setState({ percent: percentVar })
+    this.setState({ displayPercent: Math.round(percentVar) })
 
     this.timeout = setTimeout(this.startCounter, 1);
   }
@@ -78,7 +79,7 @@ class PointCollection extends Component {
     return (
       <Container>
         <DataTable brochures={this.state.brochures} basePoints={this.state.basePoints} acquiredPoints={this.state.acquiredPoints} />
-        <DataList percent={this.state.displayPercent} aws={this.state.aws} target={this.state.target} />
+        <DataList displayPercent={this.state.displayPercent} aws={this.state.aws} target={this.state.target} />
         <InfoText />
         <LinkButtons />
         {/* <div className="infobox">

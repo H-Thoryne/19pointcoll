@@ -77,11 +77,8 @@ const Container = styled.div`
   text-rendering: optimizeLegibility;
   text-align: initial;
 
-  /* color: #444444; */
   color: #646464;
-
   box-sizing: border-box;
-
   list-style: none;
 `;
 

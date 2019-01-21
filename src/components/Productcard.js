@@ -56,13 +56,13 @@ const ProductCard = styled.div`
   height: 100%;
   margin: 25px 0px 25px 15px;
   overflow: hidden;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.025);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.05);
   transition: 0.2s all ease;
 
   box-sizing: border-box;
   
   &:hover {
-    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.1);
     transform: scale(1.02, 1.02);
     transition: 0.2s all ease;
     cursor: pointer;

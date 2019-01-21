@@ -4,20 +4,16 @@ import { Circle } from 'rc-progress'
 import styled from "styled-components"
 
 class DataList extends Component {
-  state = {
-    displayPercent: 0
-  }
-
-  componentWillReceiveProps(newProps) {
-    this.setState({ displayPercent: newProps.percent });
-  }
+/*   componentWillReceiveProps(newProps) {
+    this.setState({ displayPercent: newProps.displayPercent });
+  } */
 
   render() {
     return (
       <List>
         <LeftColumn>
-          <CircleLabel>{this.state.displayPercent}%</CircleLabel>
-          <Circle percent={this.state.displayPercent} strokeWidth="10" strokeColor="#FF336D" trailWidth="10" trailColor="#ECECEC" />
+          <CircleLabel>{this.props.displayPercent}%</CircleLabel>
+          <Circle percent={this.props.displayPercent} strokeWidth="10" strokeColor="#FF336D" trailWidth="10" trailColor="#ECECEC" />
         </LeftColumn>
         <RightColumn>
           <Label>Eddigi összmegrendelésed</Label>

@@ -12,8 +12,9 @@ class App extends Component {
     ip: {}
   }
 
+  /* Request the IP point json */
   componentWillMount() {
-    fetch("https://api.myjson.com/bins/65zxs")
+    fetch("https://api.myjson.com/bins/oncy4")
       .then(res => res.json())
       .then(data => this.setState({ ip: data }))
   }
