@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 
 import Modal from "./Modal/Modal"
-import Badge from "./Badge";
 
 import styled from "styled-components"
 
@@ -25,7 +24,10 @@ class Productcard extends Component {
   render() {
     return (
       <ProductCard>
-        <div onClick={this.openModal}>
+        {/* <Overlay>
+          <div>Elfogyott :(</div>
+        </Overlay> */}
+        <Content onClick={this.openModal}>
           <Header>
             <Price>{this.props.item.pricePoints} pont</Price>
             <Price huf>{this.props.item.priceHUF} Ft</Price>
@@ -35,8 +37,8 @@ class Productcard extends Component {
           }
           <Image src={this.props.item.img} alt="Product Image" />
           <Name>{this.props.item.name}</Name>
-          <Text center>- {this.props.item.amountCurrent} db -</Text>
-        </div>
+          <Text center>- {this.props.item.amountCurrent} -</Text>
+        </Content>
         {
           this.state.isOpen ? (<Modal onClose={this.closeModal} item={this.props.item} />) : null
         }
@@ -66,6 +68,20 @@ const ProductCard = styled.div`
   }
 `;
 
+const Overlay = styled.div`
+  background: rgba(1, 1, 1, 0.2);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+`;
+
+const Content = styled.div`
+
+`;
+
 const Header = styled.div`
   background: #59C3B2;
   padding: 5px 0;
@@ -79,8 +95,9 @@ const Price = styled.div`
 `;
 
 const Image = styled.img`
-  height: 100%;
-  width: 100%;
+  height: 190px;
+  width: 190px;
+
 `;
 
 const Name = styled.div`

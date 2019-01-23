@@ -24,6 +24,7 @@ class PointCollection extends Component {
 
   /* Runs on every other occasion when the page is loaded. It's to update state from "Töltés..." again */
   componentDidMount = () => {
+    /* fetch("http://www.avon.hu/REPSuite/static/_minisites/react_test/ippoints.json") */
     fetch("https://api.myjson.com/bins/oncy4")
       .then(res => res.json())
       .then(data => this.setState({
@@ -54,7 +55,7 @@ class PointCollection extends Component {
   }
 
   startCounter = () => {
-    const percentVar = this.state.percent + 1 ;
+    const percentVar = this.state.percent + 1;
     if (percentVar >= 100) {
       this.setState({ percent: 100 });
       this.setState({ displayPercent: 100 });
@@ -76,10 +77,11 @@ class PointCollection extends Component {
   }
 
   render() {
+    const { aws, target, brochures, acquiredPoints, basePoints, displayPercent } = this.state
     return (
       <Container>
-        <DataTable brochures={this.state.brochures} basePoints={this.state.basePoints} acquiredPoints={this.state.acquiredPoints} />
-        <DataList displayPercent={this.state.displayPercent} aws={this.state.aws} target={this.state.target} />
+        <DataTable brochures={brochures} aws={aws} target={target} basePoints={basePoints} acquiredPoints={acquiredPoints} />
+        <DataList displayPercent={displayPercent} aws={aws} target={target} />
         <InfoText />
         <LinkButtons />
         {/* <div className="infobox">

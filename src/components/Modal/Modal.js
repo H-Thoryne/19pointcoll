@@ -62,38 +62,39 @@ const Container = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 9995;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9995;
 
   /* font-family: "Helvetica Neue LT Pro" !important; */
   font-family: "Roboto", sans-serif !important;
   font-weight: normal;
   font-size: 14px;
-  line-height: 1.2;
+  line-height: 1.3;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   text-align: initial;
 
   color: #646464;
+  background-color: rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
   list-style: none;
 `;
 
 const Body = styled.div`
-  background: white;
-  position: absolute;
-  float: left;
   width: 840px;
   height: auto;
+  position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
+  float: left;
   display: flex;
+
+  background: white;
+  border-radius: 10px;
   overflow: hidden;
+  transform: translate(-50%, -50%);
 `;
 
 const LeftContent = styled.div`
@@ -135,7 +136,7 @@ const Close = styled.div`
 const Name = styled.div`
   font-size: 24px;
   font-weight: 300;
-  margin: 40px 0 20px 0;
+  margin: 30px 0;
 `;
 
 const Description = styled.div`

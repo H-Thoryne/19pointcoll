@@ -11,3 +11,9 @@ splitChunks: {
 // Keep the runtime chunk separated to enable long term caching
 // https://twitter.com/wSokra/status/969679223278505985
 runtimeChunk: false,
+
+
+
+- TODO: Add overlays (Elfogyott, utolsó darabok, stb...) to Productcard
+- FIXME: "Utolsó darabok" @Productcard (make it into a badge)
+- FIXME: if brosi IP kötőjel resulting in Error: NaN (make it 0)

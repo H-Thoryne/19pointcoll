@@ -8,26 +8,15 @@ import Accordion from "./components/Accordion"
 import styled from "styled-components"
 
 class App extends Component {
-  state = {
-    ip: {}
-  }
-
-  /* Request the IP point json */
-  componentWillMount() {
-    fetch("https://api.myjson.com/bins/oncy4")
-      .then(res => res.json())
-      .then(data => this.setState({ ip: data }))
-  }
-
   render() {
     return (
       <HashRouter>
         <AppContainer>
           <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="Banner" />
           <Switch>
-            <Route exact path="/" render={(routeProps) => <PointCollection {...routeProps} ip={this.state.ip} />} />
-            <Route path="/pontgyujtes" render={(routeProps) => <PointCollection {...routeProps} ip={this.state.ip} />} />
-            <Route path="/pontbevaltas" render={(routeProps) => <RedeemPoints {...routeProps} ip={this.state.ip} />} />
+            <Route exact path="/" component={PointCollection} />
+            <Route path="/pontgyujtes" component={PointCollection} />
+            <Route path="/pontbevaltas" component={RedeemPoints} />
           </Switch>
           <Accordion />
         </AppContainer>

@@ -11,7 +11,7 @@ const DataTable = (props) => {
         </Row>
         <Row>
           <Label>Megrendelt katalógusok</Label>
-          <Content>{props.brochures} db</Content>
+          <Content>{props.brochures} db </Content>
         </Row>
       </Column>
       <Column>
@@ -21,7 +21,9 @@ const DataTable = (props) => {
         </Row>
         <Row>
           <Label>Szerezhető alappontok</Label>
-          <Content>{props.basePoints}</Content>
+          {
+            props.brochures > 1 && props.aws > props.target ? <ContentWithCheckMark>{props.basePoints}</ContentWithCheckMark> : <Content>{props.basePoints}</Content>
+          }
         </Row>
       </Column>
     </Table>
@@ -91,4 +93,22 @@ const Label = styled.div`
 const Content = styled.div`
   font-size: 30px;
   font-weight: 100;
+`;
+
+const ContentWithCheckMark = styled.div`
+  font-size: 30px;
+  font-weight: 100;
+  position: relative;
+
+  &:after{
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 16px;
+    margin: 4px 10px;
+    position: absolute;
+    border: solid #20ae35;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+  }
 `;

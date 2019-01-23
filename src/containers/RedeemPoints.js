@@ -14,9 +14,9 @@ class RedeemPoints extends Component {
   }
 
   seededCountdown = (seed, startingAmount) => {
-    const dateStart = "2019-01-10T0:0:0";
     const dateToday = new Date();
-    const dateToEmpty = "2019-01-21T0:0:0";
+    const dateStart = "2019-01-11T0:0:0";
+    const dateToEmpty = "2019-01-24T0:0:0";
     const daysUntilEmpty = Math.ceil((Date.parse(dateToEmpty) - Date.parse(dateStart)) / 86400000);
     /* const daysUntilEmpty = Math.ceil((Date.parse(dateToEmpty) - dateToday) / 86400000); */ /* 1000 * 3600 * 24 */
     const daysPassed = Math.floor((dateToday - Date.parse(dateStart)) / 86400000); /* 1000 * 3600 * 24 */
@@ -25,27 +25,24 @@ class RedeemPoints extends Component {
 
     let min = Math.round((startingAmount / daysUntilEmpty) - (startingAmount / 100));
     let max = Math.round((startingAmount / daysUntilEmpty) + (startingAmount / 100)) + 1;
-    /* console.log("###############################################");
-    console.log("days until empty: " + daysUntilEmpty);
-    console.log("days passed: " + daysPassed);
-    console.log("min: " + min);
-    console.log("max: " + max);
-    console.log("_______________________________________________"); */
+    /* console.log("###############################################"); */
+    /* console.log(`seed: ${seed} min: ${min}; max: ${max}`); */
 
     const seededRandom = (min, max) => {
       seed = (seed * 9301 + 49297) % 233280;
       const rnd = seed / 233280;
 
+      /* console.log(`min + rnd * (max - min) --- ${min} - ${rnd} * (${max} - ${min})`) */
       return min + rnd * (max - min);
     }
 
     if (daysPassed > daysUntilEmpty) {
       actual = 0;
-      console.log("0db - elfogyott");
+      /* console.log(`0db - elfogyott`); */
     } else {
-      /* console.log("starting: " + startingAmount) */
+      /* console.log(`starting: ${startingAmount}`) */
       for (let x = 0; x <= daysPassed; x++) {
-        const result = Math.round((seededRandom(min, max)) - 0.5);
+        const result = Math.round(seededRandom(min, max) - 1);
         actual -= result;
 
         if (actual < 0) {
@@ -53,26 +50,14 @@ class RedeemPoints extends Component {
           break;
         }
 
-        /* console.log("rng: " + result + " stock: " + actual) */
+        /* console.log(`rng: ${result}; stock: ${actual}`) */
       }
     }
-    return actual;
-  }
 
-  /* Runs on first load when we get the props from App.js */
-  componentWillReceiveProps = (newProps) => {
-    this.updateDisplayStates(newProps)
-  }
-
-  /* Runs on every other occasion when the page is loaded. It's to update state from "Töltés..." again */
-  componentDidMount = () => {
-    this.updateDisplayStates(this.props)
-  }
-
-  updateDisplayStates = (newProps) => {
-    this.setState({
-      acquiredPoints: this.validateIpPoint(window.allPoints[newProps.ip.acquiredPoints], true),
-    })
+    if (actual < 5 || daysUntilEmpty < 3) {
+      return "Utolsó darabok"
+    }
+    return `${actual} db`;
   }
 
   validateIpPoint = (point, canBeZero) => {
@@ -87,9 +72,15 @@ class RedeemPoints extends Component {
 
   /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
   componentWillMount() {
+    /* fetch("http://www.avon.hu/REPSuite/static/_minisites/react_test/products.json") */
     fetch("https://api.myjson.com/bins/wbcts")
       .then(res => res.json())
       .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }, () => this.updateAmount()))
+
+    /* fetch("http://www.avon.hu/REPSuite/static/_minisites/react_test/ippoints.json") */
+    fetch("https://api.myjson.com/bins/oncy4")
+      .then(res => res.json())
+      .then(data => this.setState({ acquiredPoints: this.validateIpPoint(window.allPoints[data.acquiredPoints], true) }))
   }
 
   /* Iterates through all 3 arrays' elements to update the value of amountCurrent */
@@ -101,18 +92,19 @@ class RedeemPoints extends Component {
   }
 
   render() {
+    const { acquiredPoints, high, mid, low } = this.state
     return (
       <Container>
         <Table>
           <Label>Megszerzett pontjaid</Label>
-          <Content>{this.state.acquiredPoints}</Content>
+          <Content>{acquiredPoints}</Content>
         </Table>
         <Spacer />
-        <NaviButton to="/pontgyujtes" text="Fixme, I'm an ugly button" />
+        <NaviButton to="/pontgyujtes" text="Temporary button" />
         <div className="sliderWrapper-1">
-          <SimpleSlider section="high" data={this.state.high} />
-          <SimpleSlider section="mid" data={this.state.mid} />
-          <SimpleSlider section="low" data={this.state.low} />
+          <SimpleSlider section="high" data={high} />
+          <SimpleSlider section="mid" data={mid} />
+          <SimpleSlider section="low" data={low} />
         </div>
       </Container>
     );
