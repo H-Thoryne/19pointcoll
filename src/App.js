@@ -28,7 +28,6 @@ class App extends Component {
 export default App;
 
 const AppContainer = styled.div`
-  /* font-family: "Helvetica Neue LT Pro" !important; */
   font-family: "Roboto", sans-serif !important;
   font-weight: normal;
   font-size: 14px;

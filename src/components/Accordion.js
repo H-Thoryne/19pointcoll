@@ -98,16 +98,16 @@ const Title = styled.div`
 
 const List = styled.ul`
   margin: 10px 20px;
-  line-height: 1.3;
+  line-height: 1.4;
   padding: 0;
   text-align: justify;
   text-justify: inter-word;
 
-a{
-  color: #ff336d;
-}
+  a {
+    color: #ff336d;
+  }
 
-  ul li {
-    /* margin-left: 20px; */
+  ul {
+    padding-left: 30px;
   }
 `;

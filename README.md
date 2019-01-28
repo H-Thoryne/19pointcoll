@@ -15,5 +15,5 @@ runtimeChunk: false,
 
 
 - TODO: Add overlays (Elfogyott, utolsó darabok, stb...) to Productcard
-- FIXME: "Utolsó darabok" @Productcard (make it into a badge)
 - FIXME: if brosi IP kötőjel resulting in Error: NaN (make it 0)
+- DONE: "Utolsó darabok" @Productcard (make it into a badge)

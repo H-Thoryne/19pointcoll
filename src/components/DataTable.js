@@ -10,17 +10,17 @@ const DataTable = (props) => {
           <Content>1 db</Content>
         </Row>
         <Row>
-          <Label>Megrendelt katalógusok</Label>
+          <Label>A kampányban megrendelt katalógusok</Label>
           <Content>{props.brochures} db </Content>
         </Row>
       </Column>
       <Column>
         <Row>
-          <Label>Megszerzett pontjaid</Label>
+          <Label>Beváltható pontjaid</Label>
           <Content>{props.acquiredPoints}</Content>
         </Row>
         <Row>
-          <Label>Szerezhető alappontok</Label>
+          <Label>A kampányban szerezhető alappontok</Label>
           {
             props.brochures > 1 && props.aws > props.target ? <ContentWithCheckMark>{props.basePoints}</ContentWithCheckMark> : <Content>{props.basePoints}</Content>
           }

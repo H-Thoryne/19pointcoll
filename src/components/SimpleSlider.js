@@ -24,11 +24,11 @@ export default class SimpleSlider extends Component {
     for (let i = 0; i < this.props.data.length; i++) {
       this.setState(prevState => ({
         arr: [...prevState.arr, this.props.data[i].pricePoints]
-      }), () => this.logstuff())
+      }), () => this.processMinMax())
     }
   }
 
-  logstuff = () => {
+  processMinMax = () => {
     this.setState({ min: Math.min.apply(null, this.state.arr) })
     this.setState({ max: Math.max.apply(null, this.state.arr) })
   }
@@ -40,7 +40,7 @@ export default class SimpleSlider extends Component {
       infinite: true,
       speed: 750,
       slidesToShow: 3,
-      slidesToScroll: 1,
+      slidesToScroll: 2,
       centerMode: false,
       dots: false,
       swipeToSlide: false,

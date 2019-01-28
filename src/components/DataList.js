@@ -4,15 +4,11 @@ import { Circle } from 'rc-progress'
 import styled from "styled-components"
 
 class DataList extends Component {
-  /*   componentWillReceiveProps(newProps) {
-      this.setState({ displayPercent: newProps.displayPercent });
-    } */
-
   render() {
     return (
       <List>
         <LeftColumn>
-          <CircleLabel>{this.props.displayPercent}%</CircleLabel>
+          <CircleLabel>{this.props.displayPercent} %</CircleLabel>
           <Circle percent={this.props.displayPercent} strokeWidth="10" strokeColor="#FF336D" trailWidth="10" trailColor="#ECECEC" />
         </LeftColumn>
         <RightColumn>
@@ -23,6 +19,7 @@ class DataList extends Component {
           <Label>Még ennyiért rendelj a teljesítéshez</Label>
           <Content>
             {
+              /* If target is achieved, then display "0 Ft" */
               (this.props.target - this.props.aws) < 0 ? 0 : (this.props.target - this.props.aws)
             } Ft
           </Content>

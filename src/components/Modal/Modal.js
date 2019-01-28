@@ -31,7 +31,7 @@ export default class Modal extends Component {
     const item = this.props.item
 
     /* Regex for "1234 5" ln format. Can it be done in an even more complicated way? */
-    let formatted_ln = String(item.ln).match(/\d{4}/) + " " + String(item.ln).match(/\d$/)
+    /* let formatted_ln = String(item.ln).match(/\d{4}/) + " " + String(item.ln).match(/\d$/) */
 
     /* Portal for the modal window outside the original React #root to make sure it's actually the topmost element */
     return ReactDOM.createPortal(
@@ -43,16 +43,21 @@ export default class Modal extends Component {
               item.imgSecondary.length > 0 ? <Carousel item={item} /> : <MainImage src={item.img} />
             }
           </LeftContent>
+
           <RightContent>
             <Close onClick={this.props.onClose} />
             <Name>{item.name}</Name>
             <Description>{item.description}</Description>
-            <Price><div>{item.pricePoints} pont</div> és <div>{item.priceHUF} Ft</div></Price>
-            <LineNumber>Cikkszám: {formatted_ln}</LineNumber>
+            <Prices>
+              <Price>{item.pricePoints} pont</Price>
+              <div>és</div>
+              <Price>{item.priceHUF} Ft</Price>
+            </Prices>
+            <LineNumber>Cikkszám: {item.ln}</LineNumber>
             <PurchaseButton onClick={() => this.handleOrder(item.ln, window.campaignVal_sixdigit, this.state.itemAmount)}>Megrendelem</PurchaseButton>
           </RightContent>
         </Body>
-      </Container>,
+      </Container >,
       this.modalRoot,
     )
   }
@@ -148,14 +153,23 @@ const LineNumber = styled.div`
   margin-bottom: 20px;
 `;
 
+const Prices = styled.div`
+  div {
+    display: inline-block;
+    margin: 0px 3px;
+  }
+`;
+
 const Price = styled.div`
   margin-bottom: 20px;
+  display: inline-block;
 
-  div {
-    font-weight: bolder;
-    font-size: 14px;
-    color: black;
-    display: inline;
+  ::before{
+    content: '${props => props.before}'
+  }
+
+  ::after{
+    content: '${props => props.after}'
   }
 `;
 

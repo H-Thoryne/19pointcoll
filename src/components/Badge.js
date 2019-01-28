@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import styled from "styled-components"
 
-
 class Badge extends Component {
   render() {
     return (

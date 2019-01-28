@@ -15,18 +15,19 @@ class RedeemPoints extends Component {
 
   seededCountdown = (seed, startingAmount) => {
     const dateToday = new Date();
-    const dateStart = "2019-01-11T0:0:0";
-    const dateToEmpty = "2019-01-24T0:0:0";
-    const daysUntilEmpty = Math.ceil((Date.parse(dateToEmpty) - Date.parse(dateStart)) / 86400000);
-    /* const daysUntilEmpty = Math.ceil((Date.parse(dateToEmpty) - dateToday) / 86400000); */ /* 1000 * 3600 * 24 */
-    const daysPassed = Math.floor((dateToday - Date.parse(dateStart)) / 86400000); /* 1000 * 3600 * 24 */
+    const dateStart = Date.parse("2019-01-20T0:0:0");
+    const dateEnd = Date.parse("2019-02-01T0:0:0");
+    const daysTotal = Math.ceil((dateEnd - dateStart) / 86400000); /* 1000 * 3600 * 24 */
+    const daysPassed = Math.floor((dateToday - dateStart) / 86400000); /* 1000 * 3600 * 24 */
+    const daysRemaining = Math.ceil((dateEnd - dateToday) / 86400000); /* 1000 * 3600 * 24 */
 
-    let actual = startingAmount;
+    let actualAmount = startingAmount;
 
-    let min = Math.round((startingAmount / daysUntilEmpty) - (startingAmount / 100));
-    let max = Math.round((startingAmount / daysUntilEmpty) + (startingAmount / 100)) + 1;
+    let min = Math.round((startingAmount / daysTotal) - (startingAmount / 100));
+    let max = Math.round((startingAmount / daysTotal) + (startingAmount / 100) + 1);
     /* console.log("###############################################"); */
     /* console.log(`seed: ${seed} min: ${min}; max: ${max}`); */
+    /* console.log(`daysTotal: ${daysTotal}; daysPassed: ${daysPassed}; daysRemaining: ${daysRemaining}`) */
 
     const seededRandom = (min, max) => {
       seed = (seed * 9301 + 49297) % 233280;
@@ -36,28 +37,26 @@ class RedeemPoints extends Component {
       return min + rnd * (max - min);
     }
 
-    if (daysPassed > daysUntilEmpty) {
-      actual = 0;
-      /* console.log(`0db - elfogyott`); */
+    if (daysPassed > daysTotal) {
+      actualAmount = 0;
     } else {
       /* console.log(`starting: ${startingAmount}`) */
       for (let x = 0; x <= daysPassed; x++) {
-        const result = Math.round(seededRandom(min, max) - 1);
-        actual -= result;
+        const result = Math.round(seededRandom(min, max) - 0.5);
+        actualAmount -= result;
 
-        if (actual < 0) {
-          actual = 0;
+        if (actualAmount < 0) {
+          actualAmount = 0;
           break;
         }
-
-        /* console.log(`rng: ${result}; stock: ${actual}`) */
+        /* console.log(`day: ${x}; rng: ${result}; stock: ${actualAmount}`) */
       }
     }
 
-    if (actual < 5 || daysUntilEmpty < 3) {
+    if (actualAmount < 5 || daysRemaining < 3) {
       return "Utolsó darabok"
     }
-    return `${actual} db`;
+    return actualAmount;
   }
 
   validateIpPoint = (point, canBeZero) => {
@@ -96,7 +95,7 @@ class RedeemPoints extends Component {
     return (
       <Container>
         <Table>
-          <Label>Megszerzett pontjaid</Label>
+          <Label>Beváltható pontjaid</Label>
           <Content>{acquiredPoints}</Content>
         </Table>
         <Spacer />

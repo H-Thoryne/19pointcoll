@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 
 import Modal from "./Modal/Modal"
+import Badge from "./Badge"
 
 import styled from "styled-components"
 
@@ -22,25 +23,32 @@ class Productcard extends Component {
   }
 
   render() {
+    const item = this.props.item;
     return (
       <ProductCard>
-        {/* <Overlay>
-          <div>Elfogyott :(</div>
-        </Overlay> */}
         <Content onClick={this.openModal}>
           <Header>
-            <Price>{this.props.item.pricePoints} pont</Price>
-            <Price huf>{this.props.item.priceHUF} Ft</Price>
+            <Price>{item.pricePoints} pont</Price>
+            <Price huf>{item.priceHUF} Ft</Price>
           </Header>
           {
-            this.props.isNew ? null : null
+            /* item.isNew ? <Badge text="Új termék" bgColor="#40b3c4" /> : null */
+            isNaN(item.amountCurrent)
+              ? <Badge text="Utolsó darabok!" bgColor="#d42929" />
+              : null
           }
-          <Image src={this.props.item.img} alt="Product Image" />
-          <Name>{this.props.item.name}</Name>
-          <Text center>- {this.props.item.amountCurrent} -</Text>
+          <Image src={item.img} alt="Product Image" />
+          <Name>{item.name}</Name>
+          {
+            isNaN(item.amountCurrent)
+              ? <Text>- {item.amountCurrent} -</Text>
+              : <Text>- {item.amountCurrent} db -</Text>
+          }
         </Content>
         {
-          this.state.isOpen ? (<Modal onClose={this.closeModal} item={this.props.item} />) : null
+          this.state.isOpen
+            ? <Modal onClose={this.closeModal} item={item} isAvailable={item.isAvailable} />
+            : null
         }
       </ProductCard>
     );
@@ -66,16 +74,6 @@ const ProductCard = styled.div`
     transition: 0.2s all ease;
     cursor: pointer;
   }
-`;
-
-const Overlay = styled.div`
-  background: rgba(1, 1, 1, 0.2);
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
 `;
 
 const Content = styled.div`
@@ -110,13 +108,5 @@ const Name = styled.div`
 
 const Text = styled.div`
   margin: 10px 0 10px 5px;
-  text-align: ${props => props.center ? "center" : "inherit"};
+  text-align: center;
 `;
-
-/* const Badge = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 80px !important;
-  width: 80px !important;
-`; */
