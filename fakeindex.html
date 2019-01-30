@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="http://www.avon.hu/REPSuite/static/_minisites/react_test/main.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 <script>
@@ -62,21 +61,23 @@
 <div id="modal-root"></div>
 
 <script>
-  let a = document.createElement('link');
-  let b = document.createElement('script');
+  let css = document.createElement('link');
+  let js = document.createElement('script');
 
-  let aFirst = "http://ww";
-  let aSecond = "w.av";
-  let aThird = "on.hu/REPSuite/static/_minisites/react_test/main.css";
-  let aComplete = aFirst + aSecond + aThird;
-  a.href = aComplete;
+  let cssFirst = "http://ww";
+  let cssSecond = "w.av";
+  let cssThird = "on.hu/REPSuite/static/_minisites/react_test/main.css";
+  let cssComplete = cssFirst + cssSecond + cssThird;
+  css.href = cssComplete;
+  css.rel = "stylesheet";
+  css.type = "text/css";
 
-  let bFirst = "http://ww";
-  let bSecond = "w.av";
-  let bThird = "on.hu/REPSuite/static/_minisites/react_test/main.js";
-  let bComplete = bFirst + bSecond + bThird;
-  b.src = bComplete;
+  let jsFirst = "http://ww";
+  let jsSecond = "w.av";
+  let jsThird = "on.hu/REPSuite/static/_minisites/react_test/main.js";
+  let jsComplete = jsFirst + jsSecond + jsThird;
+  js.src = jsComplete;
 
-  document.querySelector(".body").appendChild(a);
-  document.querySelector(".body").appendChild(b);
+  document.querySelector(".body").appendChild(css);
+  document.querySelector(".body").appendChild(js);
 </script>

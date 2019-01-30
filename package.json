@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
+    "dotenv": "^6.2.0",
     "node-sass": "^4.11.0",
     "rc-progress": "^2.2.6",
     "react": "^16.6.3",

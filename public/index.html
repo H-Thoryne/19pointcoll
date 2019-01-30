@@ -11,14 +11,11 @@
 
 <style>
   @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
-  #root{
-    margin: 0 auto;
-  }
 </style>
 
 <!-- GI3 CTA -->
 <script>
-  /* $(document).ready(function () {
+  $(document).ready(function () {
     campaignVal_sixdigit = (function () {
       var currCampFull = AvonAnalyticsObjex.Profile.campaignInfo;
       var campArr = currCampFull.split(':');
@@ -27,9 +24,7 @@
       campArr[1] = newCamp;
       return campArr.join("");
     })();
-  }); */
-
-  window.campaignVal_sixdigit = 201901;
+  });
 
   function processOrder(finalName, finalCamp, finalAmount) {
     var orderData = "LN:" + finalName + ";CM:" + finalCamp + ";Q:" + finalAmount;
@@ -38,33 +33,7 @@
     } else {
       console.log(orderData)
     }
-    /* ######################################## !UNCOMMENT ME FOR BUILD! ######################################## */
-    /* ad_to_order(orderData); */
-  }
-</script>
-
-<script>
-  function ad_to_order_new(param) {
-    var path = parent.window.location.href;
-    var filename = path.split("/").pop(-1);
-    var rootpath = path.replace(filename, "");
-    $('#BBO_iframeContent').show();
-    $('#bbomask').show();
-    $('#bbopopup').show();
-    $('#BBO_iframeContent').attr('src', rootpath + 'buttonOffersDetails.page?KeepThis=true&prodparam=' + param + '&CurrentPage=' + filename);
-    $("#BBO_iframeContent").load(function () {
-      $("#BBO_iframeContent").contents().find("div#bbo_close_btn").css({
-        'display': 'none'
-      });
-    });
-
-    // Scroll top
-    $('html, body').animate({
-      scrollTop: 0
-    }, 400);
-    $('html, body', window.parent.document).animate({
-      scrollTop: 0
-    }, 400);
+    ad_to_order(orderData);
   }
 </script>
 
@@ -127,8 +96,8 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
-  <div id="modal-root"></div>
   <div id="root" style="width: 750px;"></div>
+  <div id="modal-root"></div>
 </body>
 
 </html>

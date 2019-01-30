@@ -4,8 +4,8 @@ import Slider from "react-slick"
 import Productcard from "./Productcard"
 import Spinner from "./Spinner"
 
-import "../../node_modules/slick-carousel/slick/slick.css"
-import "../styles/SlickSlider.scss"
+import "../../../node_modules/slick-carousel/slick/slick.css"
+import "../../styles/SlickSlider.scss"
 
 import styled from "styled-components"
 
@@ -51,11 +51,11 @@ export default class SimpleSlider extends Component {
 
     return (
       <SliderContainer>
-        
         <Header>{this.state.min} - {this.state.max} pont</Header>
         {
-          this.state.arr.length === 0 ? <Spinner /> :
-            <Slider ref={slider => (this.slider = slider)} {...settings}>
+          this.state.arr.length === 0
+            ? <Spinner />
+            : <Slider ref={slider => (this.slider = slider)} {...settings}>
               {
                 this.props.data.map(function (item, i) {
                   return <Productcard key={i} item={item} />

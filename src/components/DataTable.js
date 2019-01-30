@@ -22,7 +22,9 @@ const DataTable = (props) => {
         <Row>
           <Label>A kampányban szerezhető alappontok</Label>
           {
-            props.brochures > 1 && props.aws > props.target ? <ContentWithCheckMark>{props.basePoints}</ContentWithCheckMark> : <Content>{props.basePoints}</Content>
+            props.brochures > 1 && props.aws > props.target
+              ? <ContentWithCheckMark>{props.basePoints}</ContentWithCheckMark>
+              : <Content>{props.basePoints}</Content>
           }
         </Row>
       </Column>

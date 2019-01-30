@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import SimpleSlider from "../components/SimpleSlider"
+import SimpleSlider from "../components/Slider/SimpleSlider"
 import NaviButton from "../components/NaviButton"
 
 import styled from "styled-components"
@@ -16,7 +16,7 @@ class RedeemPoints extends Component {
   seededCountdown = (seed, startingAmount) => {
     const dateToday = new Date();
     const dateStart = Date.parse("2019-01-20T0:0:0");
-    const dateEnd = Date.parse("2019-02-01T0:0:0");
+    const dateEnd = Date.parse("2019-02-20T0:0:0");
     const daysTotal = Math.ceil((dateEnd - dateStart) / 86400000); /* 1000 * 3600 * 24 */
     const daysPassed = Math.floor((dateToday - dateStart) / 86400000); /* 1000 * 3600 * 24 */
     const daysRemaining = Math.ceil((dateEnd - dateToday) / 86400000); /* 1000 * 3600 * 24 */
@@ -24,7 +24,7 @@ class RedeemPoints extends Component {
     let actualAmount = startingAmount;
 
     let min = Math.round((startingAmount / daysTotal) - (startingAmount / 100));
-    let max = Math.round((startingAmount / daysTotal) + (startingAmount / 100) + 1);
+    let max = Math.round((startingAmount / daysTotal) + (startingAmount / 100) + 1.5);
     /* console.log("###############################################"); */
     /* console.log(`seed: ${seed} min: ${min}; max: ${max}`); */
     /* console.log(`daysTotal: ${daysTotal}; daysPassed: ${daysPassed}; daysRemaining: ${daysRemaining}`) */
@@ -42,7 +42,7 @@ class RedeemPoints extends Component {
     } else {
       /* console.log(`starting: ${startingAmount}`) */
       for (let x = 0; x <= daysPassed; x++) {
-        const result = Math.round(seededRandom(min, max) - 0.5);
+        const result = Math.round(seededRandom(min, max) - 1);
         actualAmount -= result;
 
         if (actualAmount < 0) {
@@ -71,13 +71,11 @@ class RedeemPoints extends Component {
 
   /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
   componentWillMount() {
-    /* fetch("http://www.avon.hu/REPSuite/static/_minisites/react_test/products.json") */
-    fetch("https://api.myjson.com/bins/wbcts")
+    fetch(process.env.REACT_APP_PRODUCT_LIST)
       .then(res => res.json())
       .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }, () => this.updateAmount()))
 
-    /* fetch("http://www.avon.hu/REPSuite/static/_minisites/react_test/ippoints.json") */
-    fetch("https://api.myjson.com/bins/oncy4")
+    fetch(process.env.REACT_APP_IP_POINTS)
       .then(res => res.json())
       .then(data => this.setState({ acquiredPoints: this.validateIpPoint(window.allPoints[data.acquiredPoints], true) }))
   }
@@ -99,7 +97,7 @@ class RedeemPoints extends Component {
           <Content>{acquiredPoints}</Content>
         </Table>
         <Spacer />
-        <NaviButton to="/pontgyujtes" text="Temporary button" />
+        <NaviButton to="/pontgyujtes" text="Vissza a pontgyűjtéshez" />
         <div className="sliderWrapper-1">
           <SimpleSlider section="high" data={high} />
           <SimpleSlider section="mid" data={mid} />

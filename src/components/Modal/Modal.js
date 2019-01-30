@@ -16,6 +16,8 @@ export default class Modal extends Component {
   modalRoot = document.getElementById("modal-root")
 
   handleOrder = (ln, campNr, amount) => {
+    console.log("Closing modal")
+    this.props.onClose()
     window.processOrder(ln, campNr, amount)
   }
 
@@ -35,12 +37,14 @@ export default class Modal extends Component {
 
     /* Portal for the modal window outside the original React #root to make sure it's actually the topmost element */
     return ReactDOM.createPortal(
-      <Container onClick={this.handleClick}>
+      <Container onClick={this.handleClick} onMouseDown={e => e.stopPropagation()} >
         <Body ref={node => this.node = node} >
           <LeftContent >
             {
               /* Only render the ImageCarousel if there are secondary images available */
-              item.imgSecondary.length > 0 ? <Carousel item={item} /> : <MainImage src={item.img} />
+              item.imgSecondary.length > 0
+                ? <Carousel item={item} />
+                : <MainImage src={item.img} />
             }
           </LeftContent>
 
@@ -53,8 +57,12 @@ export default class Modal extends Component {
               <div>és</div>
               <Price>{item.priceHUF} Ft</Price>
             </Prices>
-            <LineNumber>Cikkszám: {item.ln}</LineNumber>
-            <PurchaseButton onClick={() => this.handleOrder(item.ln, window.campaignVal_sixdigit, this.state.itemAmount)}>Megrendelem</PurchaseButton>
+            <LineNumber>Cikkszám: <span>{item.ln}</span></LineNumber>
+            {
+              item.isAvailable
+                ? <PurchaseButton onClick={() => this.handleOrder(item.ln, window.campaignVal_sixdigit, this.state.itemAmount)}>Megrendelem</PurchaseButton>
+                : <DisabledButton>Elfogyott</DisabledButton>
+            }
           </RightContent>
         </Body>
       </Container >,
@@ -149,11 +157,10 @@ const Description = styled.div`
   margin-bottom: 20px;
 `;
 
-const LineNumber = styled.div`
-  margin-bottom: 20px;
-`;
 
 const Prices = styled.div`
+  text-align: center;
+
   div {
     display: inline-block;
     margin: 0px 3px;
@@ -161,15 +168,16 @@ const Prices = styled.div`
 `;
 
 const Price = styled.div`
-  margin-bottom: 20px;
-  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FF336D;
+`;
 
-  ::before{
-    content: '${props => props.before}'
-  }
-
-  ::after{
-    content: '${props => props.after}'
+const LineNumber = styled.div`
+  margin: 10px auto;
+  
+  span {
+    font-weight: 700;
   }
 `;
 
@@ -182,6 +190,23 @@ const PurchaseButton = styled.div`
   text-decoration: none;
   text-align: center;
   cursor: pointer;
+
+  padding: 10px 15px;
+  border-radius: 5px;
+  width: 250px;
+  display: block;
+  margin: auto;
+`;
+
+const DisabledButton = styled.div`
+  background: #AFAFAF;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: normal;
+  text-decoration: none;
+  text-align: center;
+  pointer-events: none;
 
   padding: 10px 15px;
   border-radius: 5px;

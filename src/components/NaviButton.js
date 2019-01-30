@@ -1,6 +1,7 @@
 import React from "react"
-import styled from "styled-components"
 import { NavLink } from "react-router-dom";
+
+import styled from "styled-components"
 
 const NaviButton = (props) => {
   return (
@@ -11,7 +12,7 @@ const NaviButton = (props) => {
 export default NaviButton;
 
 const Button = styled(NavLink)`
-  background: #6d0854;
+  background: #ff336d;
   color: white;
   font-size: 16px;
   text-transform: uppercase;
@@ -23,5 +24,5 @@ const Button = styled(NavLink)`
   border-radius: 5px;
   width: 250px;
   display: block;
-  margin: 10px auto;
+  margin: 40px auto;
 `;

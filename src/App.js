@@ -7,6 +7,8 @@ import Accordion from "./components/Accordion"
 
 import styled from "styled-components"
 
+require('dotenv').config()
+
 class App extends Component {
   render() {
     return (

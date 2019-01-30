@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 
-import Modal from "./Modal/Modal"
+import Modal from "../Modal/Modal"
 import Badge from "./Badge"
 
 import styled from "styled-components"
 
-class Productcard extends Component {
+class ProductCard extends Component {
   state = {
     isOpen: false,
   }
@@ -25,24 +25,27 @@ class Productcard extends Component {
   render() {
     const item = this.props.item;
     return (
-      <ProductCard>
+      <Container>
         <Content onClick={this.openModal}>
           <Header>
             <Price>{item.pricePoints} pont</Price>
             <Price huf>{item.priceHUF} Ft</Price>
           </Header>
           {
-            /* item.isNew ? <Badge text="Új termék" bgColor="#40b3c4" /> : null */
-            isNaN(item.amountCurrent)
-              ? <Badge text="Utolsó darabok!" bgColor="#d42929" />
-              : null
+            !item.isAvailable
+              ? <Badge text="Elfogyott" bgColor="#6d0854" />
+              : isNaN(item.amountCurrent)
+                ? <Badge text="Utolsó darabok!" bgColor="#d42929" />
+                : null
           }
           <Image src={item.img} alt="Product Image" />
           <Name>{item.name}</Name>
           {
-            isNaN(item.amountCurrent)
-              ? <Text>- {item.amountCurrent} -</Text>
-              : <Text>- {item.amountCurrent} db -</Text>
+            !item.isAvailable
+              ? <Text>Elfogyott</Text>
+              : isNaN(item.amountCurrent)
+                ? <Text>{item.amountCurrent}</Text>
+                : <Text>{item.amountCurrent} db</Text>
           }
         </Content>
         {
@@ -50,14 +53,14 @@ class Productcard extends Component {
             ? <Modal onClose={this.closeModal} item={item} isAvailable={item.isAvailable} />
             : null
         }
-      </ProductCard>
+      </Container>
     );
   }
 }
 
-export default Productcard;
+export default ProductCard;
 
-const ProductCard = styled.div`
+const Container = styled.div`
   position: relative;
   width: 190px;
   height: 100%;

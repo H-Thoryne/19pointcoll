@@ -24,8 +24,7 @@ class PointCollection extends Component {
 
   /* Runs on every other occasion when the page is loaded. It's to update state from "Töltés..." again */
   componentDidMount = () => {
-    /* fetch("http://www.avon.hu/REPSuite/static/_minisites/react_test/ippoints.json") */
-    fetch("https://api.myjson.com/bins/oncy4")
+    fetch(process.env.REACT_APP_IP_POINTS)
       .then(res => res.json())
       .then(data => this.setState({
         aws: this.validateIpPoint(window.allPoints[data.aws], true),
