@@ -61,21 +61,21 @@
 <div id="modal-root"></div>
 
 <script>
-  let css = document.createElement('link');
-  let js = document.createElement('script');
+  var css = document.createElement('link');
+  var js = document.createElement('script');
 
-  let cssFirst = "http://ww";
-  let cssSecond = "w.av";
-  let cssThird = "on.hu/REPSuite/static/_minisites/react_test/main.css";
-  let cssComplete = cssFirst + cssSecond + cssThird;
+  var cssFirst = "http://ww";
+  var cssSecond = "w.av";
+  var cssThird = "on.hu/REPSuite/static/_minisites/react_test/main.css";
+  var cssComplete = cssFirst + cssSecond + cssThird;
   css.href = cssComplete;
   css.rel = "stylesheet";
   css.type = "text/css";
 
-  let jsFirst = "http://ww";
-  let jsSecond = "w.av";
-  let jsThird = "on.hu/REPSuite/static/_minisites/react_test/main.js";
-  let jsComplete = jsFirst + jsSecond + jsThird;
+  var jsFirst = "http://ww";
+  var jsSecond = "w.av";
+  var jsThird = "on.hu/REPSuite/static/_minisites/react_test/main.js";
+  var jsComplete = jsFirst + jsSecond + jsThird;
   js.src = jsComplete;
 
   document.querySelector(".body").appendChild(css);

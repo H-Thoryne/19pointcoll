@@ -57,7 +57,7 @@ export default Accordion;
 const TermsAndConditions = styled.div`
   height: auto;
   width: 80%;
-  margin: 20px auto;
+  margin: 40px auto;
   font-size: 12px;
   font-weight: normal;
 `;

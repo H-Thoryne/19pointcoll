@@ -1,5 +1,5 @@
 import React from "react"
-import NaviButton from "./NaviButton"
+/* import NaviButton from "./NaviButton" */
 
 import styled from "styled-components"
 
@@ -7,7 +7,7 @@ const InfoText = () => {
   return (
     <Container>
       <Generic>Egyéni célkitűzésed teljesítésével és legalább 1 db katalógus vásárlásával szerezz pontokat kampányról kampányra, majd februártól váltsd be egy vagy akár több Neked tetsző termékre!</Generic>
-      <NaviButton to="/pontbevaltas" text="Tovább a pontbeváltáshoz" />
+      {/* <NaviButton to="/pontbevaltas" text="Tovább a pontbeváltáshoz" /> */}
       <Header>Lehetőséged van extra pontok gyűjtésére is!</Header>
       <List >
         <div>Célkitűzésed túlteljesítésével, 2000 Ft-onként további 1 pont szerezhető, maximum 10 pontig</div>

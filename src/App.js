@@ -14,7 +14,8 @@ class App extends Component {
     return (
       <HashRouter>
         <AppContainer>
-          <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="Banner" />
+          {/* <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="Banner" /> */}
+          <img src="https://i.imgur.com/aZ2AQ30.jpg" alt="Test"/>
           <Switch>
             <Route exact path="/" component={PointCollection} />
             <Route path="/pontgyujtes" component={PointCollection} />

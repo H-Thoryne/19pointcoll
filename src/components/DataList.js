@@ -8,20 +8,19 @@ class DataList extends Component {
     return (
       <List>
         <LeftColumn>
-          <CircleLabel>{this.props.displayPercent} %</CircleLabel>
+          <CircleLabel>{this.props.displayPercent}%</CircleLabel>
           <Circle percent={this.props.displayPercent} strokeWidth="10" strokeColor="#FF336D" trailWidth="10" trailColor="#ECECEC" />
         </LeftColumn>
         <RightColumn>
           <Label>Eddigi összmegrendelésed</Label>
-          <Content>{this.props.aws} Ft</Content>
+          <Content>{this.props.aws}</Content>
           <Label>Célkitűzésed az aktuális kampányra</Label>
-          <Content>{this.props.target} Ft</Content>
+          <Content>{this.props.target}</Content>
           <Label>Még ennyiért rendelj a teljesítéshez</Label>
           <Content>
             {
-              /* If target is achieved, then display "0 Ft" */
-              (this.props.target - this.props.aws) < 0 ? 0 : (this.props.target - this.props.aws)
-            } Ft
+              /* (this.props.target - this.props.aws) < 0 ? 0 : (this.props.target - this.props.aws) */
+            } {this.props.target}
           </Content>
         </RightColumn>
       </List>

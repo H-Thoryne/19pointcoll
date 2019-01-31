@@ -13,17 +13,16 @@ class PointCollection extends Component {
     this.state = {
       scanned: false,
       percent: 0,
-      aws: "Töltés...",
-      target: "Töltés...",
-      brochures: "Töltés...",
-      acquiredPoints: "Töltés...",
-      basePoints: "Töltés...",
+      aws: "Elérhető: február 6.",
+      target: "Elérhető: február 6.",
+      brochures: "Elérhető: február 6.",
+      acquiredPoints: "Elérhető: február 6.",
+      basePoints: "Elérhető: február 6.",
       displayPercent: 0,
     }
   }
 
-  /* Runs on every other occasion when the page is loaded. It's to update state from "Töltés..." again */
-  componentDidMount = () => {
+  /* componentDidMount = () => {
     fetch(process.env.REACT_APP_IP_POINTS)
       .then(res => res.json())
       .then(data => this.setState({
@@ -34,23 +33,16 @@ class PointCollection extends Component {
         basePoints: this.validateIpPoint(window.allPoints[data.basePoints], false)
       }, () => this.startCounter())
       )
-  }
+  } */
 
   validateIpPoint = (point, canBeZero) => {
-    // If it's not a number
     if (isNaN(point)) {
       return "ERROR: NaN"
     }
-
-    // If it's a number that CAN'T be zero but IT IS a zero
-    if (canBeZero === false && point === 0) {
+    else if (canBeZero === false && point === 0) {
       return "ERROR: ZeroException"
     }
-
-    // It IS a number that CAN be zero
-    // or
-    // It IS a number that CAN'T be zero and IS NOT zero
-    return point;
+    else return point;
   }
 
   startCounter = () => {

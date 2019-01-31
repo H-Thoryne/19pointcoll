@@ -7,11 +7,11 @@ const DataTable = (props) => {
       <Column>
         <Row>
           <Label>Minimum katalógus</Label>
-          <Content>1 db</Content>
+          <Content>Elérhető: február 6.</Content>
         </Row>
         <Row>
           <Label>A kampányban megrendelt katalógusok</Label>
-          <Content>{props.brochures} db </Content>
+          <Content>{props.brochures} </Content>
         </Row>
       </Column>
       <Column>
@@ -93,7 +93,7 @@ const Label = styled.div`
 `;
 
 const Content = styled.div`
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 100;
 `;
 
