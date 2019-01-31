@@ -13,90 +13,82 @@
   @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 </style>
 
+<!-- GI3 CTA -->
 <script>
-  /* FIXME: insert proper order processing */
-  processOrder = (p1, p2) => {
-    console.log(p1 + " 11 " + p2);
+  $(document).ready(function () {
+    campaignVal_sixdigit = (function () {
+      var currCampFull = AvonAnalyticsObjex.Profile.campaignInfo;
+      var campArr = currCampFull.split(':');
+      var oldCamp = campArr[1].replace("C", "");
+      var newCamp = ("0" + String(oldCamp)).slice(-2);
+      campArr[1] = newCamp;
+      return campArr.join("");
+    })();
+  });
+
+  function processOrder(finalName, finalCamp, finalAmount) {
+    var orderData = "LN:" + finalName + ";CM:" + finalCamp + ";Q:" + finalAmount;
+    if (console.info) {
+      console.info(orderData)
+    } else {
+      console.log(orderData)
+    }
+    ad_to_order(orderData);
   }
 </script>
 
 <script>
-  function ad_to_order_new(param) {
-    var path = parent.window.location.href;
-    var filename = path.split("/").pop(-1);
-    var rootpath = path.replace(filename, "");
-    $('#BBO_iframeContent').show();
-    $('#bbomask').show();
-    $('#bbopopup').show();
-    $('#BBO_iframeContent').attr('src', rootpath + 'buttonOffersDetails.page?KeepThis=true&prodparam=' + param + '&CurrentPage=' + filename);
-    $("#BBO_iframeContent").load(function () {
-      $("#BBO_iframeContent").contents().find("div#bbo_close_btn").css({
-        'display': 'none'
-      });
-    });
-
-    // Scroll top
-    $('html, body').animate({
-      scrollTop: 0
-    }, 400);
-    $('html, body', window.parent.document).animate({
-      scrollTop: 0
-    }, 400);
-  }
-</script>
-
-<script>
-  var rIP = {
-    IP1: "<variable name='IP1'>",
-    IP2: "<variable name='IP2'>",
-    IP3: "<variable name='IP3'>",
-    IP4: "<variable name='IP4'>",
-    IP5: "<variable name='IP5'>",
-    IP6: "<variable name='IP6'>",
-    IP7: "<variable name='IP7'>",
-    IP8: "<variable name='IP8'>",
-    IP9: "<variable name='IP9'>",
-    IP10: "<variable name='IP10'>",
-    IP11: "<variable name='IP11'>",
-    IP12: "<variable name='IP12'>",
-    IP13: "<variable name='IP13'>",
-    IP14: "<variable name='IP14'>",
-    IP15: "<variable name='IP15'>",
-    IP16: "<variable name='IP16'>",
-    IP17: "<variable name='IP17'>",
-    IP18: "<variable name='IP18'>",
-    IP19: "<variable name='IP19'>",
-    IP20: "<variable name='IP20'>",
-    IP21: "<variable name='IP21'>",
-    IP22: "<variable name='IP22'>",
-    IP23: "<variable name='IP23'>",
-    IP24: "<variable name='IP24'>",
-    IP25: "<variable name='IP25'>",
-    IP26: "<variable name='IP26'>",
-    IP27: "<variable name='IP27'>",
-    IP28: "<variable name='IP28'>",
-    IP29: "<variable name='IP29'>",
-    IP30: "<variable name='IP30'>",
-    IP31: "<variable name='IP31'>",
-    IP32: "<variable name='IP32'>",
-    IP33: "<variable name='IP33'>",
-    IP34: "<variable name='IP34'>",
-    IP35: "<variable name='IP35'>",
-    IP36: "<variable name='IP36'>",
-    IP37: "<variable name='IP37'>",
-    IP38: "<variable name='IP38'>",
-    IP39: "<variable name='IP39'>",
-    IP40: "<variable name='IP40'>",
-    IP41: "<variable name='IP41'>",
-    IP42: "<variable name='IP42'>",
-    IP43: "<variable name='IP43'>",
-    IP44: "<variable name='IP44'>",
-    IP45: "<variable name='IP45'>",
-    IP46: "<variable name='IP46'>",
-    IP47: "<variable name='IP47'>",
-    IP48: "<variable name='IP48'>",
-    IP49: "<variable name='IP49'>",
-    IP50: "<variable name='IP50'>",
+  var allPoints = {
+    ip1: 12000,
+    ip2: 10000,
+    ip3: 10000,
+    ip4: 10000,
+    ip5: 10000,
+    ip6: 10000,
+    ip7: 10000,
+    ip8: 10000,
+    ip9: 10000,
+    ip10: 10000,
+    ip11: 10000,
+    ip12: 10000,
+    ip13: 10000,
+    ip14: 10000,
+    ip15: 10000,
+    ip16: 10000,
+    ip17: 10000,
+    ip18: 10000,
+    ip19: 10000,
+    ip20: 10000,
+    ip21: 10000,
+    ip22: 10000,
+    ip23: 10000,
+    ip24: 10000,
+    ip25: 10000,
+    ip26: 10000,
+    ip27: 10000,
+    ip28: 10000,
+    ip29: 10000,
+    ip30: 10000,
+    ip31: 10000,
+    ip32: 10000,
+    ip33: 10000,
+    ip34: 10000,
+    ip35: 10000,
+    ip36: 10000,
+    ip37: 10000,
+    ip38: 10000,
+    ip39: 10000,
+    ip40: 10000,
+    ip41: 10000,
+    ip42: 10000,
+    ip43: 10000,
+    ip44: 10000,
+    ip45: 10000,
+    ip46: 10000,
+    ip47: 10000,
+    ip48: 10000,
+    ip49: 10000,
+    ip50: 10000,
   };
 </script>
 
