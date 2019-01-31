@@ -13,14 +13,14 @@ class DataList extends Component {
         </LeftColumn>
         <RightColumn>
           <Label>Eddigi összmegrendelésed</Label>
-          <Content>{this.props.aws}</Content>
+          <Content>{this.props.aws} Ft</Content>
           <Label>Célkitűzésed az aktuális kampányra</Label>
-          <Content>{this.props.target}</Content>
+          <Content>{this.props.target} Ft</Content>
           <Label>Még ennyiért rendelj a teljesítéshez</Label>
           <Content>
             {
-              /* (this.props.target - this.props.aws) < 0 ? 0 : (this.props.target - this.props.aws) */
-            } {this.props.target}
+              (this.props.target - this.props.aws) < 0 ? 0 : (this.props.target - this.props.aws)
+            } Ft
           </Content>
         </RightColumn>
       </List>

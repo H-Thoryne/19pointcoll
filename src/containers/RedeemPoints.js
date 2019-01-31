@@ -15,8 +15,8 @@ class RedeemPoints extends Component {
 
   seededCountdown = (seed, startingAmount) => {
     const dateToday = new Date();
-    const dateStart = Date.parse("2019-01-20T0:0:0");
-    const dateEnd = Date.parse("2019-02-20T0:0:0");
+    const dateStart = Date.parse("2019-01-20T00:00:00");
+    const dateEnd = Date.parse("2019-02-20T00:00:00");
     const daysTotal = Math.ceil((dateEnd - dateStart) / 86400000); /* 1000 * 3600 * 24 */
     const daysPassed = Math.floor((dateToday - dateStart) / 86400000); /* 1000 * 3600 * 24 */
     const daysRemaining = Math.ceil((dateEnd - dateToday) / 86400000); /* 1000 * 3600 * 24 */
@@ -70,7 +70,7 @@ class RedeemPoints extends Component {
   }
 
   /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
-  componentWillMount() {
+  componentDidMount() {
     fetch(process.env.REACT_APP_PRODUCT_LIST)
       .then(res => res.json())
       .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }, () => this.updateAmount()))
@@ -82,10 +82,12 @@ class RedeemPoints extends Component {
 
   /* Iterates through all 3 arrays' elements to update the value of amountCurrent */
   updateAmount = () => {
-    let low = this.state.low.map(item => ({ ...item, amountCurrent: this.seededCountdown(item.ln, item.amountAll) }))
-    let mid = this.state.mid.map(item => ({ ...item, amountCurrent: this.seededCountdown(item.ln, item.amountAll) }))
-    let high = this.state.high.map(item => ({ ...item, amountCurrent: this.seededCountdown(item.ln, item.amountAll) }))
-    this.setState({ low: low, mid: mid, high: high })
+    console.table(this.state.low)
+    this.setState({
+      low: this.state.low.map(item => ({ ...item, amountCurrent: this.seededCountdown(item.ln, item.amountAll) })),
+      mid: this.state.mid.map(item => ({ ...item, amountCurrent: this.seededCountdown(item.ln, item.amountAll) })),
+      high: this.state.high.map(item => ({ ...item, amountCurrent: this.seededCountdown(item.ln, item.amountAll) }))
+    })
   }
 
   render() {

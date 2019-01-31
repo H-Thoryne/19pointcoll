@@ -13,16 +13,18 @@ class PointCollection extends Component {
     this.state = {
       scanned: false,
       percent: 0,
-      aws: "Elérhető: február 6.",
-      target: "Elérhető: február 6.",
-      brochures: "Elérhető: február 6.",
-      acquiredPoints: "Elérhető: február 6.",
-      basePoints: "Elérhető: február 6.",
+      aws: "Töltés...",
+      target: "Töltés...",
+      brochures: "Töltés...",
+      acquiredPoints: "Töltés...",
+      basePoints: "Töltés...",
+      stillRequired: "Töltés...",
       displayPercent: 0,
+      placeholderText: ""
     }
   }
 
-  /* componentDidMount = () => {
+  componentDidMount = () => {
     fetch(process.env.REACT_APP_IP_POINTS)
       .then(res => res.json())
       .then(data => this.setState({
@@ -30,17 +32,14 @@ class PointCollection extends Component {
         target: this.validateIpPoint(window.allPoints[data.target], false),
         brochures: this.validateIpPoint(window.allPoints[data.brochures], true),
         acquiredPoints: this.validateIpPoint(window.allPoints[data.acquiredPoints], true),
-        basePoints: this.validateIpPoint(window.allPoints[data.basePoints], false)
-      }, () => this.startCounter())
-      )
-  } */
+        basePoints: this.validateIpPoint(window.allPoints[data.basePoints], false),
+        placeholderText: "Elérhető: február 6."
+      }, () => this.startCounter()))
+  }
 
   validateIpPoint = (point, canBeZero) => {
-    if (isNaN(point)) {
-      return "ERROR: NaN"
-    }
-    else if (canBeZero === false && point === 0) {
-      return "ERROR: ZeroException"
+    if (isNaN(point) || (canBeZero === false && point === 0)) {
+      return "Töltés..."
     }
     else return point;
   }
@@ -68,11 +67,11 @@ class PointCollection extends Component {
   }
 
   render() {
-    const { aws, target, brochures, acquiredPoints, basePoints, displayPercent } = this.state
+    const { aws, target, brochures, acquiredPoints, basePoints, displayPercent, stillRequired } = this.state
     return (
       <Container>
         <DataTable brochures={brochures} aws={aws} target={target} basePoints={basePoints} acquiredPoints={acquiredPoints} />
-        <DataList displayPercent={displayPercent} aws={aws} target={target} />
+        <DataList displayPercent={displayPercent} aws={aws} target={target} stillRequired={stillRequired} />
         <InfoText />
         <LinkButtons />
         {/* <div className="infobox">
