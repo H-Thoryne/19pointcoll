@@ -4,19 +4,18 @@ import styled, { keyframes } from "styled-components"
 
 const Spinner = () => {
   return (
-    <Div />
+    <Circle />
   );
 };
 
 export default Spinner;
-
 
 const rotate = keyframes`
   0% {transform: rotate(0deg); }
   100% {transform: rotate(360deg); }
 `;
 
-const Div = styled.div`
+const Circle = styled.div`
   display: block;
   width: 64px;
   height: 64px;

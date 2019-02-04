@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
 import Modal from "../Modal/Modal"
-import Badge from "./Badge"
+// import Badge from "./Badge"
 
 import styled from "styled-components"
 
@@ -22,38 +22,45 @@ class ProductCard extends Component {
     });
   }
 
+  handleDrag = (e) => {
+    console.log("I dragged")
+    e.stopPropagation()
+  }
+
   render() {
     const item = this.props.item;
     return (
-      <Container>
-        <Content onClick={this.openModal}>
+      <React.Fragment>
+        <Container onClick={this.openModal} onDrag={this.handleDrag}>
           <Header>
             <Price>{item.pricePoints} pont</Price>
             <Price huf>{item.priceHUF} Ft</Price>
           </Header>
           {
-            !item.isAvailable
+            // ! Badge
+            /* !item.isAvailable
               ? <Badge text="Elfogyott" bgColor="#6d0854" />
               : isNaN(item.amountCurrent)
                 ? <Badge text="Utolsó darabok!" bgColor="#d42929" />
-                : null
+                : null */
           }
           <Image src={item.img} alt="Product Image" />
           <Name>{item.name}</Name>
           {
-            !item.isAvailable
+            // ! Bottom counter
+            /* !item.isAvailable
               ? <Text>Elfogyott</Text>
               : isNaN(item.amountCurrent)
                 ? <Text>{item.amountCurrent}</Text>
-                : <Text>{item.amountCurrent} db</Text>
+                : <Text>{item.amountCurrent} db</Text> */
           }
-        </Content>
+        </Container>
         {
           this.state.isOpen
             ? <Modal onClose={this.closeModal} item={item} isAvailable={item.isAvailable} />
             : null
         }
-      </Container>
+      </React.Fragment>
     );
   }
 }
@@ -79,10 +86,6 @@ const Container = styled.div`
   }
 `;
 
-const Content = styled.div`
-
-`;
-
 const Header = styled.div`
   background: #59C3B2;
   padding: 5px 0;
@@ -91,6 +94,7 @@ const Header = styled.div`
 const Price = styled.div`
   font-size: ${props => props.huf ? "14px" : "16px"};
   font-weight: ${props => props.huf ? "300" : "700"};
+  margin-bottom: ${props => props.huf ? null : "3px"};
   text-align: center;
   color: white;
 `;
@@ -109,7 +113,7 @@ const Name = styled.div`
   text-align: center;
 `;
 
-const Text = styled.div`
+/* const Text = styled.div`
   margin: 10px 0 10px 5px;
   text-align: center;
-`;
+`; */

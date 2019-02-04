@@ -155,6 +155,7 @@ const Name = styled.div`
 const Description = styled.div`
   flex-grow: 0.8;
   margin-bottom: 20px;
+  text-align: justify;
 `;
 
 

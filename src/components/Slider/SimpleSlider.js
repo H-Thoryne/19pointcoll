@@ -21,6 +21,7 @@ export default class SimpleSlider extends Component {
 
   /* !FIXME: This sucks. Gets called like a billion times, find a way to update state only once, after all props have been received */
   componentWillReceiveProps = () => {
+    console.log(this.props)
     for (let i = 0; i < this.props.data.length; i++) {
       this.setState(prevState => ({
         arr: [...prevState.arr, this.props.data[i].pricePoints]
@@ -40,10 +41,11 @@ export default class SimpleSlider extends Component {
       infinite: true,
       speed: 750,
       slidesToShow: 3,
-      slidesToScroll: 2,
+      slidesToScroll: 3,
       centerMode: false,
       dots: false,
-      swipeToSlide: false,
+      swipeToSlide: true,
+      draggable: false,
       lazyLoad: true,
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />

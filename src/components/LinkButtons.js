@@ -72,7 +72,7 @@ const Button = styled.div`
   transition: all 0.3s;
   
   &::before {
-      content: '';
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
