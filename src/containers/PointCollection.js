@@ -38,7 +38,7 @@ class PointCollection extends Component {
   }
 
   validateIpPoint = (point, canBeZero) => {
-    if (isNaN(point) || (canBeZero === false && point === 0)) {
+    if (isNaN(point) || (canBeZero === false && point === 0) || point.length === 0) {
       return "Töltés..."
     }
     else return point;

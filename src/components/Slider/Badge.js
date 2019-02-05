@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react'
 
 import styled from "styled-components"
 
-class Badge extends Component {
-  render() {
-    return (
-      <Container bgColor={this.props.bgColor}>
-        <Button>{this.props.text}</Button>
-      </Container>
-    );
-  }
+
+export default function Badge(props) {
+  return (
+    <Container bgColor={props.bgColor}>
+      <Button>{props.text}</Button>
+    </Container>
+  )
 }
 
 export default Badge;

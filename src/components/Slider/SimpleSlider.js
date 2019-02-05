@@ -1,5 +1,4 @@
-import React, { Component } from "react"
-
+import React from 'react'
 import Slider from "react-slick"
 import Productcard from "./Productcard"
 import Spinner from "./Spinner"
@@ -9,65 +8,51 @@ import "../../styles/SlickSlider.scss"
 
 import styled from "styled-components"
 
-export default class SimpleSlider extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      arr: [],
-      min: 0,
-      max: 0
+export default function SimpleSlider(props) {
+  let min = 0;
+  let max = 0;
+
+  if (props.data.length !== 0) {
+    let array = [];
+    for (let i = 0; i < props.data.length; i++) {
+      array.push(props.data[i].pricePoints)
     }
+    min = Math.min.apply(null, array)
+    max = Math.max.apply(null, array)
   }
 
-  /* !FIXME: This sucks. Gets called like a billion times, find a way to update state only once, after all props have been received */
-  componentWillReceiveProps = () => {
-    console.log(this.props)
-    for (let i = 0; i < this.props.data.length; i++) {
-      this.setState(prevState => ({
-        arr: [...prevState.arr, this.props.data[i].pricePoints]
-      }), () => this.processMinMax())
-    }
+  const settings = {
+    autoplay: true,
+    autoplaySpeed: 3000,
+    infinite: true,
+    speed: 750,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    centerMode: false,
+    dots: false,
+    swipeToSlide: true,
+    draggable: false,
+    lazyLoad: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
   }
 
-  processMinMax = () => {
-    this.setState({ min: Math.min.apply(null, this.state.arr) })
-    this.setState({ max: Math.max.apply(null, this.state.arr) })
-  }
-
-  render() {
-    const settings = {
-      autoplay: false,
-      autoplaySpeed: 3000,
-      infinite: true,
-      speed: 750,
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      centerMode: false,
-      dots: false,
-      swipeToSlide: true,
-      draggable: false,
-      lazyLoad: true,
-      nextArrow: <NextArrow />,
-      prevArrow: <PrevArrow />
-    }
-
-    return (
-      <SliderContainer>
-        <Header>{this.state.min} - {this.state.max} pont</Header>
-        {
-          this.state.arr.length === 0
-            ? <Spinner />
-            : <Slider ref={slider => (this.slider = slider)} {...settings}>
-              {
-                this.props.data.map(function (item, i) {
-                  return <Productcard key={i} item={item} />
-                })
-              }
-            </Slider>
-        }
-      </SliderContainer>
-    );
-  }
+  return (
+    <SliderContainer>
+      <Header>{min} - {max} pont</Header>
+      {
+        props.data.length === 0
+          ? <Spinner />
+          : <Slider {...settings}>
+            {
+              props.data.map(function (item, i) {
+                return <Productcard key={i} item={item} />
+              })
+            }
+          </Slider>
+      }
+    </SliderContainer>
+  );
 }
 
 const SliderContainer = styled.div`

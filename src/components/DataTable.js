@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-const DataTable = (props) => {
+const DataTable = props => {
   return (
     <Table>
       <Column>

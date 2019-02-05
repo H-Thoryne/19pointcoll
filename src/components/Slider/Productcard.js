@@ -22,16 +22,11 @@ class ProductCard extends Component {
     });
   }
 
-  handleDrag = (e) => {
-    console.log("I dragged")
-    e.stopPropagation()
-  }
-
   render() {
     const item = this.props.item;
     return (
       <React.Fragment>
-        <Container onClick={this.openModal} onDrag={this.handleDrag}>
+        <Container onClick={this.openModal}>
           <Header>
             <Price>{item.pricePoints} pont</Price>
             <Price huf>{item.priceHUF} Ft</Price>

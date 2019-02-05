@@ -13,25 +13,15 @@ class RedeemPoints extends Component {
     acquiredPoints: "Töltés..."
   }
 
-
   /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
-  componentWillMount() {
+  componentDidMount() {
     fetch(process.env.REACT_APP_PRODUCT_LIST)
       .then(res => res.json())
-      .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }, () => this.updateAmount()))
+      .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }))
 
     fetch(process.env.REACT_APP_IP_POINTS)
       .then(res => res.json())
       .then(data => this.setState({ acquiredPoints: this.validateIpPoint(window.allPoints[data.acquiredPoints], true) }))
-  }
-
-  /* Iterates through all 3 arrays' elements to update the value of amountCurrent */
-  updateAmount = () => {
-    this.setState({
-      low: this.state.low,
-      mid: this.state.mid,
-      high: this.state.high
-    })
   }
 
   validateIpPoint = (point, canBeZero) => {

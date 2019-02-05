@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Circle } from 'rc-progress'
 
 import styled from "styled-components"
 
-class DataList extends Component {
-  render() {
-    return (
-      <List>
-        <LeftColumn>
-          <CircleLabel>{this.props.displayPercent}%</CircleLabel>
-          <Circle percent={this.props.displayPercent} strokeWidth="10" strokeColor="#FF336D" trailWidth="10" trailColor="#ECECEC" />
-        </LeftColumn>
-        <RightColumn>
-          <Label>Eddigi összmegrendelésed</Label>
-          <Content>{this.props.aws} Ft</Content>
-          <Label>Célkitűzésed az aktuális kampányra</Label>
-          <Content>{this.props.target} Ft</Content>
-          <Label>Még ennyiért rendelj a teljesítéshez</Label>
-          <Content>
-            {
-              (this.props.target - this.props.aws) < 0 ? 0 : (this.props.target - this.props.aws)
-            } Ft
+const DataList = props => {
+  return (
+    <List>
+      <LeftColumn>
+        <CircleLabel>{props.displayPercent}%</CircleLabel>
+        <Circle percent={props.displayPercent} strokeWidth="10" strokeColor="#FF336D" trailWidth="10" trailColor="#ECECEC" />
+      </LeftColumn>
+      <RightColumn>
+        <Label>Eddigi összmegrendelésed</Label>
+        <Content>{props.aws} Ft</Content>
+        <Label>Célkitűzésed az aktuális kampányra</Label>
+        <Content>{props.target} Ft</Content>
+        <Label>Még ennyiért rendelj a teljesítéshez</Label>
+        <Content>
+          {
+            (props.target - props.aws) < 0 ? 0 : (props.target - props.aws)
+          } Ft
           </Content>
-        </RightColumn>
-      </List>
-    );
-  }
+      </RightColumn>
+    </List>
+  );
 }
 
 export default DataList;
