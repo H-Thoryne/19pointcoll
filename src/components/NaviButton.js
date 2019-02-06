@@ -22,7 +22,14 @@ const Button = styled(NavLink)`
 
   padding: 10px 15px;
   border-radius: 5px;
-  width: 250px;
+  width: 280px;
   display: block;
   margin: 40px auto;
+  transition: all 0.3s;
+
+  &:hover {
+    text-decoration: none;
+    transform: scale(1.05, 1.05);
+    transition: all 0.3s;
+  }
 `;

@@ -1,57 +1,82 @@
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700);
+</style>
 
 <script>
-  var rIP = {
-    IP1: "<variable name='IP1'>",
-    IP2: "<variable name='IP2'>",
-    IP3: "<variable name='IP3'>",
-    IP4: "<variable name='IP4'>",
-    IP5: "<variable name='IP5'>",
-    IP6: "<variable name='IP6'>",
-    IP7: "<variable name='IP7'>",
-    IP8: "<variable name='IP8'>",
-    IP9: "<variable name='IP9'>",
-    IP10: "<variable name='IP10'>",
-    IP11: "<variable name='IP11'>",
-    IP12: "<variable name='IP12'>",
-    IP13: "<variable name='IP13'>",
-    IP14: "<variable name='IP14'>",
-    IP15: "<variable name='IP15'>",
-    IP16: "<variable name='IP16'>",
-    IP17: "<variable name='IP17'>",
-    IP18: "<variable name='IP18'>",
-    IP19: "<variable name='IP19'>",
-    IP20: "<variable name='IP20'>",
-    IP21: "<variable name='IP21'>",
-    IP22: "<variable name='IP22'>",
-    IP23: "<variable name='IP23'>",
-    IP24: "<variable name='IP24'>",
-    IP25: "<variable name='IP25'>",
-    IP26: "<variable name='IP26'>",
-    IP27: "<variable name='IP27'>",
-    IP28: "<variable name='IP28'>",
-    IP29: "<variable name='IP29'>",
-    IP30: "<variable name='IP30'>",
-    IP31: "<variable name='IP31'>",
-    IP32: "<variable name='IP32'>",
-    IP33: "<variable name='IP33'>",
-    IP34: "<variable name='IP34'>",
-    IP35: "<variable name='IP35'>",
-    IP36: "<variable name='IP36'>",
-    IP37: "<variable name='IP37'>",
-    IP38: "<variable name='IP38'>",
-    IP39: "<variable name='IP39'>",
-    IP40: "<variable name='IP40'>",
-    IP41: "<variable name='IP41'>",
-    IP42: "<variable name='IP42'>",
-    IP43: "<variable name='IP43'>",
-    IP44: "<variable name='IP44'>",
-    IP45: "<variable name='IP45'>",
-    IP46: "<variable name='IP46'>",
-    IP47: "<variable name='IP47'>",
-    IP48: "<variable name='IP48'>",
-    IP49: "<variable name='IP49'>",
-    IP50: "<variable name='IP50'>"
+  $(document).ready(function () {
+    campaignVal_sixdigit = (function () {
+      var currCampFull = AvonAnalyticsObjex.Profile.campaignInfo;
+      var campArr = currCampFull.split(':');
+      var oldCamp = campArr[1].replace("C", "");
+      var newCamp = ("0" + String(oldCamp)).slice(-2);
+      campArr[1] = newCamp;
+      return campArr.join("");
+    })();
+  });
+
+  function processOrder(finalName, finalCamp, finalAmount) {
+    var orderData = "LN:" + finalName + ";CM:" + finalCamp + ";Q:" + finalAmount;
+    if (console.info) {
+      console.info(orderData)
+    } else {
+      console.log(orderData)
+    }
+    ad_to_order(orderData);
+  }
+</script>
+
+<script>
+  var allPoints = {
+    ip1: "<variable name='IP1'>",
+    ip2: "<variable name='IP2'>",
+    ip3: "<variable name='IP3'>",
+    ip4: "<variable name='IP4'>",
+    ip5: "<variable name='IP5'>",
+    ip6: "<variable name='IP6'>",
+    ip7: "<variable name='IP7'>",
+    ip8: "<variable name='IP8'>",
+    ip9: "<variable name='IP9'>",
+    ip10: "<variable name='IP10'>",
+    ip11: "<variable name='IP11'>",
+    ip12: "<variable name='IP12'>",
+    ip13: "<variable name='IP13'>",
+    ip14: "<variable name='IP14'>",
+    ip15: "<variable name='IP15'>",
+    ip16: "<variable name='IP16'>",
+    ip17: "<variable name='IP17'>",
+    ip18: "<variable name='IP18'>",
+    ip19: "<variable name='IP19'>",
+    ip20: "<variable name='IP20'>",
+    ip21: "<variable name='IP21'>",
+    ip22: "<variable name='IP22'>",
+    ip23: "<variable name='IP23'>",
+    ip24: "<variable name='IP24'>",
+    ip25: "<variable name='IP25'>",
+    ip26: "<variable name='IP26'>",
+    ip27: "<variable name='IP27'>",
+    ip28: "<variable name='IP28'>",
+    ip29: "<variable name='IP29'>",
+    ip30: "<variable name='IP30'>",
+    ip31: "<variable name='IP31'>",
+    ip32: "<variable name='IP32'>",
+    ip33: "<variable name='IP33'>",
+    ip34: "<variable name='IP34'>",
+    ip35: "<variable name='IP35'>",
+    ip36: "<variable name='IP36'>",
+    ip37: "<variable name='IP37'>",
+    ip38: "<variable name='IP38'>",
+    ip39: "<variable name='IP39'>",
+    ip40: "<variable name='IP40'>",
+    ip41: "<variable name='IP41'>",
+    ip42: "<variable name='IP42'>",
+    ip43: "<variable name='IP43'>",
+    ip44: "<variable name='IP44'>",
+    ip45: "<variable name='IP45'>",
+    ip46: "<variable name='IP46'>",
+    ip47: "<variable name='IP47'>",
+    ip48: "<variable name='IP48'>",
+    ip49: "<variable name='IP49'>",
+    ip50: "<variable name='IP50'>"
   };
 </script>
 
@@ -66,7 +91,7 @@
 
   var cssFirst = "http://ww";
   var cssSecond = "w.av";
-  var cssThird = "on.hu/REPSuite/static/_minisites/react_test/main.css";
+  var cssThird = "on.hu/REPSuite/static/_minisites/react_test2/main.css";
   var cssComplete = cssFirst + cssSecond + cssThird;
   css.href = cssComplete;
   css.rel = "stylesheet";
@@ -74,7 +99,7 @@
 
   var jsFirst = "http://ww";
   var jsSecond = "w.av";
-  var jsThird = "on.hu/REPSuite/static/_minisites/react_test/main.js";
+  var jsThird = "on.hu/REPSuite/static/_minisites/react_test2/main.js";
   var jsComplete = jsFirst + jsSecond + jsThird;
   js.src = jsComplete;
 

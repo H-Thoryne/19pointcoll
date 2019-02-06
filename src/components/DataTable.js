@@ -1,17 +1,17 @@
 import React from "react"
 import styled from "styled-components"
 
-const DataTable = (props) => {
+const DataTable = props => {
   return (
     <Table>
       <Column>
         <Row>
           <Label>Minimum katalógus</Label>
-          <Content>Elérhető: február 6.</Content>
+          <Content>1 db</Content>
         </Row>
         <Row>
           <Label>A kampányban megrendelt katalógusok</Label>
-          <Content>{props.brochures} </Content>
+          <Content>{props.brochures} db</Content>
         </Row>
       </Column>
       <Column>
@@ -93,7 +93,7 @@ const Label = styled.div`
 `;
 
 const Content = styled.div`
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 100;
 `;
 

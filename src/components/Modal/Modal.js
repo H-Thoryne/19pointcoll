@@ -6,13 +6,6 @@ import Carousel from "./Carousel"
 import MainImage from "./MainImage";
 
 export default class Modal extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      itemAmount: 1,
-    }
-  }
-
   modalRoot = document.getElementById("modal-root")
 
   handleOrder = (ln, campNr, amount) => {
@@ -60,7 +53,7 @@ export default class Modal extends Component {
             <LineNumber>Cikkszám: <span>{item.ln}</span></LineNumber>
             {
               item.isAvailable
-                ? <PurchaseButton onClick={() => this.handleOrder(item.ln, window.campaignVal_sixdigit, this.state.itemAmount)}>Megrendelem</PurchaseButton>
+                ? <PurchaseButton onClick={() => this.handleOrder(item.ln, window.campaignVal_sixdigit, 1)}>Megrendelem</PurchaseButton>
                 : <DisabledButton>Elfogyott</DisabledButton>
             }
           </RightContent>
@@ -155,6 +148,7 @@ const Name = styled.div`
 const Description = styled.div`
   flex-grow: 0.8;
   margin-bottom: 20px;
+  text-align: justify;
 `;
 
 
