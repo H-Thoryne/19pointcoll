@@ -28,9 +28,9 @@ class PointCollection extends Component {
     fetch(process.env.REACT_APP_IP_POINTS)
       .then(res => res.json())
       .then(data => this.setState({
-        aws: this.validateIpPoint(window.allPoints[data.aws], true),
+        aws: this.validateIpPointBrochure(window.allPoints[data.aws], true),
         target: this.validateIpPoint(window.allPoints[data.target], false),
-        brochures: this.validateIpPoint(window.allPoints[data.brochures], true),
+        brochures: this.validateIpPointBrochure(window.allPoints[data.brochures], true),
         acquiredPoints: this.validateIpPoint(window.allPoints[data.acquiredPoints], true),
         basePoints: this.validateIpPoint(window.allPoints[data.basePoints], false),
         placeholderText: "Elérhető: február 6."
@@ -44,8 +44,19 @@ class PointCollection extends Component {
     else return point;
   }
 
+  /* FIXME: Temporary funciton to display 0 instead of "-" */
+  validateIpPointBrochure = (point, canBeZero) => {
+    if (point === "-") {
+      return 0
+    }
+    if (isNaN(point) || (canBeZero === false && point === 0) || point.length === 0) {
+      return "Töltés..."
+    }
+    else return point;
+  }
+
   startCounter = () => {
-    const percentVar = this.state.percent + 1;
+    const percentVar = this.state.percent + 0.49;
     if (percentVar >= 100) {
       this.setState({ percent: 100 });
       this.setState({ displayPercent: 100 });

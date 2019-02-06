@@ -475,7 +475,7 @@
     "amountAll": 30,
     "amountCurrent": 0,
     "isNew": false,
-    "isAvailable": false,
+    "isAvailable": true,
     "imgSecondary": []
   }]
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 
 import SimpleSlider from "../components/Slider/SimpleSlider"
 import NaviButton from "../components/NaviButton"
+import Productcard from "../components/Slider/Productcard"
 
 import styled from "styled-components"
 
@@ -44,6 +45,11 @@ class RedeemPoints extends Component {
         </Table>
         <Spacer />
         <NaviButton to="/pontgyujtes" text="Vissza a pontgyűjtéshez" />
+        {/* <CardDump>
+          {low.map(item => {
+            return <Productcard key={item.ln} item={item} />
+          })}
+        </CardDump> */}
         <div>
           <SimpleSlider section="high" data={high} />
           <SimpleSlider section="mid" data={mid} />
@@ -55,6 +61,13 @@ class RedeemPoints extends Component {
 }
 
 export default RedeemPoints;
+
+/* const CardDump = styled.div`
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-around
+`; */
 
 const Container = styled.div`
   position: relative;
