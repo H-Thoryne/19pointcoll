@@ -145,7 +145,7 @@
     "ln": 86769,
     "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86769.jpg",
     "priceHUF": 899,
-    "pricePoints": 10,
+    "pricePoints": 20,
     "dateStart": "2019-01-01T00:00:00",
     "dateEnd": "2019-01-30T00:00:00",
     "amountAll": 30,
@@ -267,7 +267,7 @@
     "imgSecondary": []
   }, {
     "name": "Nagy méretű puha törölköző ",
-    "description": "Színe: krém, mérete: 70x140 cm, 100% pamut",
+    "description": "Színe: barna, mérete: 70x140 cm, 100% pamut",
     "ln": 86918,
     "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86918.jpg",
     "priceHUF": 1749,
@@ -281,7 +281,7 @@
     "imgSecondary": []
   }, {
     "name": "Nagy méretű puha törölköző ",
-    "description": "Színe: barna, mérete: 70x140 cm, 100% pamut",
+    "description": "Színe: krém, mérete: 70x140 cm, 100% pamut",
     "ln": 86926,
     "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86926.jpg",
     "priceHUF": 1749,
@@ -475,7 +475,7 @@
     "amountAll": 30,
     "amountCurrent": 0,
     "isNew": false,
-    "isAvailable": false,
+    "isAvailable": true,
     "imgSecondary": []
   }]
 }
