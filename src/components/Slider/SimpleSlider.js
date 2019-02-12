@@ -9,19 +9,7 @@ import "../../styles/SlickSlider.scss"
 import styled from "styled-components"
 
 export default function SimpleSlider(props) {
-  let min = 0;
-  let max = 0;
-
-  if (props.data.length !== 0) {
-    let array = [];
-    for (let i = 0; i < props.data.length; i++) {
-      array.push(props.data[i].pricePoints)
-    }
-    min = Math.min.apply(null, array)
-    max = Math.max.apply(null, array)
-  }
-
-  const settings = {
+  const sliderSetting = {
     autoplay: true,
     autoplaySpeed: 5000,
     infinite: true,
@@ -36,21 +24,35 @@ export default function SimpleSlider(props) {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
   }
+  const { data, loading } = props
+  let sliderContent;
+  let min = 0;
+  let max = 0;
+
+  if (data === null || loading) {
+    sliderContent = <Spinner />
+  } else {
+    let array = [];
+    for (let i = 0; i < props.data.length; i++) {
+      array.push(props.data[i].pricePoints)
+    }
+    min = Math.min.apply(null, array)
+    max = Math.max.apply(null, array)
+
+    sliderContent =
+      <Slider {...sliderSetting}>
+        {
+          props.data.map(function (item, i) {
+            return <Productcard key={i} item={item} />
+          })
+        }
+      </Slider>
+  }
 
   return (
     <SliderContainer>
       <Header>{min} - {max} pont</Header>
-      {
-        props.data.length === 0
-          ? <Spinner />
-          : <Slider {...settings}>
-            {
-              props.data.map(function (item, i) {
-                return <Productcard key={i} item={item} />
-              })
-            }
-          </Slider>
-      }
+      {sliderContent}
     </SliderContainer>
   );
 }

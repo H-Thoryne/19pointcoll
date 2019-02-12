@@ -1,25 +1,23 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
+// import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import SimpleSlider from "../components/Slider/SimpleSlider"
-import NaviButton from "../components/NaviButton"
-import Productcard from "../components/Slider/Productcard"
+import SimpleSlider from "../../components/Slider/SimpleSlider"
+import NaviButton from "../../components/NaviButton"
+// import Productcard from "../components/Slider/Productcard"
+
+import { fetchProducts } from "../../actions/productActions"
 
 import styled from "styled-components"
 
 class RedeemPoints extends Component {
-  state = {
-    low: [],
-    mid: [],
-    high: [],
-    acquiredPoints: "Töltés..."
-  }
+  // static propTypes = {
+  //   prop: PropTypes
+  // }
 
   /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
   componentDidMount() {
-    fetch(process.env.REACT_APP_PRODUCT_LIST)
-      .then(res => res.json())
-      .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }))
-
+    this.props.fetchProducts()
     fetch(process.env.REACT_APP_IP_POINTS)
       .then(res => res.json())
       .then(data => this.setState({ acquiredPoints: this.validateIpPoint(window.allPoints[data.acquiredPoints], true) }))
@@ -36,12 +34,12 @@ class RedeemPoints extends Component {
   }
 
   render() {
-    const { acquiredPoints, high, mid, low } = this.state
+    const { high, mid, low, loading } = this.props.products
     return (
       <Container>
         <Table>
           <Label>Beváltható pontjaid</Label>
-          <Content>{acquiredPoints}</Content>
+          {/* <Content>{acquiredPoints}</Content> */}
         </Table>
         <Spacer />
         <NaviButton to="/pontgyujtes" text="Vissza a pontgyűjtéshez" />
@@ -50,17 +48,23 @@ class RedeemPoints extends Component {
             return <Productcard key={item.ln} item={item} />
           })}
         </CardDump> */}
-        <div>
-          <SimpleSlider section="high" data={high} />
-          <SimpleSlider section="mid" data={mid} />
-          <SimpleSlider section="low" data={low} />
-        </div>
+        <SimpleSlider section="high" loading={loading} data={high} />
+        <SimpleSlider section="mid" loading={loading} data={mid} />
+        <SimpleSlider section="low" loading={loading} data={low} />
       </Container>
     );
   }
 }
 
-export default RedeemPoints;
+const mapStateToProps = (state) => ({
+  products: state.products
+})
+
+// const mapDispatchToProps = {
+
+// }
+
+export default connect(mapStateToProps, { fetchProducts })(RedeemPoints);
 
 /* const CardDump = styled.div`
 display: flex;
@@ -92,10 +96,10 @@ const Label = styled.div`
   margin-bottom: 10px;
 `;
 
-const Content = styled.div`
-  font-size: 30px;
-  font-weight: 100;
-`;
+// const Content = styled.div`
+//   font-size: 30px;
+//   font-weight: 100;
+// `;
 
 const Spacer = styled.div`
 padding-top: 80px
