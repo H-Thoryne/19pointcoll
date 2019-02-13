@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Provider } from "react-redux"
 
-import Accordion from "./components/common/Accordion"
-import Landing from "./components/common/Landing"
+import Accordion from "./components/layout/Accordion"
+import Landing from "./components/layout/Landing"
 
 import store from './store'
 
@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <AppContainer>
-          <img src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="Banner" />
+          <Banner src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="Banner" />
           <Landing />
           <Accordion />
         </AppContainer>
@@ -26,6 +26,8 @@ class App extends Component {
 
 export default App
 
+const Banner = styled.img`
+`;
 
 const AppContainer = styled.div`
   font-family: "Roboto", sans-serif !important;

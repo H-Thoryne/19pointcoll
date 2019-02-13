@@ -1,21 +1,18 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
-import SimpleSlider from "../../components/Slider/SimpleSlider"
-import NaviButton from "../../components/NaviButton"
-// import Productcard from "../components/Slider/Productcard"
-
 import { fetchProducts } from "../../actions/productActions"
+
+import SimpleSlider from "../slider/SimpleSlider"
+import NaviButton from "../common/NaviButton"
 
 import styled from "styled-components"
 
-class RedeemPoints extends Component {
+class Redeem extends Component {
   // static propTypes = {
   //   prop: PropTypes
   // }
 
-  /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
   componentDidMount() {
     this.props.fetchProducts()
     fetch(process.env.REACT_APP_IP_POINTS)
@@ -60,11 +57,7 @@ const mapStateToProps = (state) => ({
   products: state.products
 })
 
-// const mapDispatchToProps = {
-
-// }
-
-export default connect(mapStateToProps, { fetchProducts })(RedeemPoints);
+export default connect(mapStateToProps, { fetchProducts })(Redeem);
 
 /* const CardDump = styled.div`
 display: flex;

@@ -17,6 +17,9 @@ export const fetchPoints = () => dispatch => {
         placeholderText: data.placeholderText
       }
     }))
+    .then(() => {
+      return Promise.resolve()
+    })
 }
 
 export const setPointsLoading = () => {

@@ -5,8 +5,8 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 
 import { fetchPoints } from '../../actions/ipActions'
 
-import PointCollection from "../collection/PointCollection"
-import RedeemPoints from "../redeem/RedeemPoints";
+import Collection from "../collection/Collection"
+import Redeem from "../redeem/Redeem";
 
 class Landing extends Component {
   // static propTypes = {
@@ -21,9 +21,9 @@ class Landing extends Component {
     return (
       <HashRouter>
         <Switch>
-          <Route exact path="/" component={PointCollection} />
-          <Route path="/pontgyujtes" component={PointCollection} />
-          <Route path="/pontbevaltas" component={RedeemPoints} />
+          <Route exact path="/" component={Collection} />
+          <Route path="/pontgyujtes" component={Collection} />
+          <Route path="/pontbevaltas" component={Redeem} />
         </Switch>
       </HashRouter>
     )

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import Modal from "../Modal/Modal"
+import Modal from "../modal/Modal"
 // import Badge from "./Badge"
 
 import styled from "styled-components"

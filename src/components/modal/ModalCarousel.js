@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from "styled-components"
-import MainImage from "./MainImage";
+import MainImage from "./ModalImage";
 
 class Carousel extends Component {
   constructor(props) {

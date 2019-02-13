@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-const LinkButtons = () => {
+const CollectionLinks = () => {
   return (
     <Container>
       <Button>
@@ -20,7 +20,7 @@ const LinkButtons = () => {
   );
 };
 
-export default LinkButtons;
+export default CollectionLinks;
 
 const Container = styled.div`
   display: flex;

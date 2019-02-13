@@ -1,9 +1,9 @@
 import React from "react"
-import NaviButton from "../NaviButton"
+import NaviButton from "../common/NaviButton"
 
 import styled from "styled-components"
 
-const InfoText = () => {
+const ProfileText = () => {
   return (
     <Container>
       <Generic>Egyéni célkitűzésed teljesítésével és legalább 1 db katalógus vásárlásával szerezz pontokat kampányról kampányra, majd februártól váltsd be egy vagy akár több Neked tetsző termékre!</Generic>
@@ -17,7 +17,7 @@ const InfoText = () => {
   );
 };
 
-export default InfoText;
+export default ProfileText;
 
 const Container = styled.div`
   width: 80%;

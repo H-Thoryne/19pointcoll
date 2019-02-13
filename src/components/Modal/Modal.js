@@ -2,8 +2,8 @@ import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import styled from "styled-components"
 
-import Carousel from "./Carousel"
-import MainImage from "./MainImage";
+import Carousel from "./ModalCarousel"
+import MainImage from "./ModalImage";
 
 export default class Modal extends Component {
   modalRoot = document.getElementById("modal-root")
