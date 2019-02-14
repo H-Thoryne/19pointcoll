@@ -1,5 +1,5 @@
 import React from "react"
-import NaviButton from "../common/NaviButton"
+import NaviButton from "../layout/NaviButton"
 
 import styled from "styled-components"
 

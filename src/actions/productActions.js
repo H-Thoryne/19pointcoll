@@ -17,13 +17,5 @@ export const fetchProducts = () => dispatch => {
 export const setProductsLoading = () => {
   return {
     type: PRODUCTS_LOADING
-  };
-};
-
-// // Clear errors
-// export const clearErrors = () => {
-//   return {
-//     type: CLEAR_ERRORS
-//   };
-// };
-
+  }
+}

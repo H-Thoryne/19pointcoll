@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Circle } from 'rc-progress'
+import React, { Component } from "react"
+// import PropTypes from "prop-types"
+import { connect } from "react-redux"
+import { Circle } from "rc-progress"
 
 import styled from "styled-components"
-import { isNullOrUndefined } from 'util';
 
 class DataList extends Component {
   // static propTypes = {
@@ -16,15 +15,11 @@ class DataList extends Component {
     percent: 0,
   }
 
-  componentWillReceiveProps = nextProps => {
-    if ((!isNullOrUndefined(nextProps.ip.aws) && !isNaN(nextProps.ip.aws)) && (!isNullOrUndefined(nextProps.ip.target) && !isNaN(nextProps.ip.aws))) {
-      this.startCounter()
-    }
-  }
-
   componentDidMount = () => {
+    const { loading, aws, target } = this.props.ip
     this._isMounted = true
-    if ((!isNullOrUndefined(this.props.ip.aws) && !isNaN(this.props.ip.aws)) && (!isNullOrUndefined(this.props.ip.target) && !isNaN(this.props.ip.aws))) {
+    
+    if (!loading && !isNaN(aws) && !isNaN(target)) {
       this.startCounter()
     }
   }
@@ -151,7 +146,7 @@ const Table = styled.div`
   flex-wrap: nowrap;
 
   &::before {
-    content: '';
+    content: "";
     background: black;
     height: 80%;
     width: 1px;
@@ -177,7 +172,7 @@ const Row = styled.div`
   }
 
   &:first-child::before {
-    content: '';
+    content: "";
     background: lightgray;
     height: 1px;
     width: 80%;

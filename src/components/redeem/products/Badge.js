@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react"
 
 import styled from "styled-components"
-
 
 export default function Badge(props) {
   return (
@@ -10,8 +9,6 @@ export default function Badge(props) {
     </Container>
   )
 }
-
-export default Badge;
 
 const Container = styled.div`
   background-color: ${props => props.bgColor || "red"};

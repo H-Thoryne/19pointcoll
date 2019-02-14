@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchProducts } from "../../actions/productActions"
+import { changeView } from "../../actions/viewActions"
 
-import SimpleSlider from "../slider/SimpleSlider"
-import NaviButton from "../common/NaviButton"
+import ChangeView from './ChangeView';
+
+import Products from "./products/Products"
+import NaviButton from "../layout/NaviButton"
 
 import styled from "styled-components"
 
@@ -32,39 +35,32 @@ class Redeem extends Component {
 
   render() {
     const { high, mid, low, loading } = this.props.products
+    const { acquiredPoints } = this.props.ip
+
     return (
       <Container>
         <Table>
           <Label>Beváltható pontjaid</Label>
-          {/* <Content>{acquiredPoints}</Content> */}
+          <Content>{acquiredPoints}</Content>
         </Table>
         <Spacer />
         <NaviButton to="/pontgyujtes" text="Vissza a pontgyűjtéshez" />
-        {/* <CardDump>
-          {low.map(item => {
-            return <Productcard key={item.ln} item={item} />
-          })}
-        </CardDump> */}
-        <SimpleSlider section="high" loading={loading} data={high} />
-        <SimpleSlider section="mid" loading={loading} data={mid} />
-        <SimpleSlider section="low" loading={loading} data={low} />
+        <ChangeView />
+        <button onClick={this.props.changeView}>Switch</button>
+        <Products section="high" loading={loading} data={high} />
+        <Products section="mid" loading={loading} data={mid} />
+        <Products section="low" loading={loading} data={low} />
       </Container>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  products: state.products
+  products: state.products,
+  ip: state.ip
 })
 
-export default connect(mapStateToProps, { fetchProducts })(Redeem);
-
-/* const CardDump = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-around
-`; */
+export default connect(mapStateToProps, { fetchProducts, changeView })(Redeem);
 
 const Container = styled.div`
   position: relative;
@@ -89,10 +85,10 @@ const Label = styled.div`
   margin-bottom: 10px;
 `;
 
-// const Content = styled.div`
-//   font-size: 30px;
-//   font-weight: 100;
-// `;
+const Content = styled.div`
+  font-size: 30px;
+  font-weight: 100;
+`;
 
 const Spacer = styled.div`
 padding-top: 80px
