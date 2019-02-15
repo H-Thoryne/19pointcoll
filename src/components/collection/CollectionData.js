@@ -5,7 +5,7 @@ import { Circle } from "rc-progress"
 
 import styled from "styled-components"
 
-class DataList extends Component {
+class CollectionData extends Component {
   // static propTypes = {
   //   prop: PropTypes
   // }
@@ -129,7 +129,7 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DataList)
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionData)
 
 
 

@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { Component } from "react"
+// import PropTypes from "prop-types"
+import { connect } from "react-redux"
 import { fetchProducts } from "../../actions/productActions"
-import { changeView } from "../../actions/viewActions"
 
-import ChangeView from './ChangeView';
 
 import Products from "./products/Products"
+import ChangeView from "./ChangeView"
 import NaviButton from "../layout/NaviButton"
 
 import styled from "styled-components"
 
-class Redeem extends Component {
+class RedeemPoints extends Component {
   // static propTypes = {
   //   prop: PropTypes
   // }
@@ -38,7 +37,7 @@ class Redeem extends Component {
     const { acquiredPoints } = this.props.ip
 
     return (
-      <Container>
+      <Redeem>
         <Table>
           <Label>Beváltható pontjaid</Label>
           <Content>{acquiredPoints}</Content>
@@ -46,11 +45,10 @@ class Redeem extends Component {
         <Spacer />
         <NaviButton to="/pontgyujtes" text="Vissza a pontgyűjtéshez" />
         <ChangeView />
-        <button onClick={this.props.changeView}>Switch</button>
         <Products section="high" loading={loading} data={high} />
         <Products section="mid" loading={loading} data={mid} />
         <Products section="low" loading={loading} data={low} />
-      </Container>
+      </Redeem>
     );
   }
 }
@@ -60,9 +58,9 @@ const mapStateToProps = (state) => ({
   ip: state.ip
 })
 
-export default connect(mapStateToProps, { fetchProducts, changeView })(Redeem);
+export default connect(mapStateToProps, { fetchProducts })(RedeemPoints);
 
-const Container = styled.div`
+const Redeem = styled.div`
   position: relative;
 `;
 

@@ -71,10 +71,10 @@ export class Products extends Component {
     }
 
     return (
-      <Container>
+      <ProductsContainer>
         <Header>{min} - {max} pont</Header>
         {sliderContent}
-      </Container>
+      </ProductsContainer>
     );
   }
 }
@@ -98,8 +98,8 @@ justify-content: flex-start;
 padding: 0 45px;
 `;
 
-const Container = styled.div`
-  margin-top: 50px;
+const ProductsContainer = styled.div`
+  margin-bottom: 50px;
 `;
 
 const Header = styled.div`

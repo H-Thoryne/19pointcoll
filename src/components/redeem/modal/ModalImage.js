@@ -12,6 +12,10 @@ const MainImage = (props) => {
 
 export default MainImage;
 
+
+
+
+
 const Container = styled.div`
   position: relative;
 `;
