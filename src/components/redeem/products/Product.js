@@ -1,11 +1,11 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import Modal from "../Modal/Modal"
+import Modal from "../modal/Modal"
 // import Badge from "./Badge"
 
 import styled from "styled-components"
 
-class ProductCard extends Component {
+class CarouselProductcard extends Component {
   state = {
     isOpen: false,
   }
@@ -24,9 +24,10 @@ class ProductCard extends Component {
 
   render() {
     const item = this.props.item;
+
     return (
       <React.Fragment>
-        <Container onClick={this.openModal}>
+        <Container carouselView={this.props.carouselView} onClick={this.openModal}>
           <Header>
             <Price>{item.pricePoints} pont</Price>
             <Price huf>{item.priceHUF} Ft</Price>
@@ -60,13 +61,14 @@ class ProductCard extends Component {
   }
 }
 
-export default ProductCard;
+export default (CarouselProductcard)
 
 const Container = styled.div`
   position: relative;
   width: 190px;
   height: 100%;
-  margin: 25px 0px 25px 15px;
+  /* margin: 25px 30px; */
+  margin: ${props => props.carouselView ? "25px 0px 25px 15px" : "25px 15px"};
   overflow: hidden;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
   transition: 0.2s all ease;

@@ -1,14 +1,12 @@
-import React from 'react';
+import React from "react"
 
 import styled, { keyframes } from "styled-components"
 
-const Spinner = () => {
+export default function Spinner() {
   return (
     <Circle />
-  );
-};
-
-export default Spinner;
+  )
+}
 
 const rotate = keyframes`
   0% {transform: rotate(0deg); }

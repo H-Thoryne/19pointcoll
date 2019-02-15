@@ -1,25 +1,22 @@
 import React, { Component } from "react"
+// import PropTypes from "prop-types"
+import { connect } from "react-redux"
+import { fetchProducts } from "../../actions/productActions"
 
-import SimpleSlider from "../components/Slider/SimpleSlider"
-import NaviButton from "../components/NaviButton"
-import Productcard from "../components/Slider/Productcard"
+
+import Products from "./products/Products"
+import ChangeView from "./ChangeView"
+import NaviButton from "../layout/NaviButton"
 
 import styled from "styled-components"
 
 class RedeemPoints extends Component {
-  state = {
-    low: [],
-    mid: [],
-    high: [],
-    acquiredPoints: "Töltés..."
-  }
+  // static propTypes = {
+  //   prop: PropTypes
+  // }
 
-  /* Get the data from server. then send it off to get the amounts updated from 0 to their actual fake amounts. */
   componentDidMount() {
-    fetch(process.env.REACT_APP_PRODUCT_LIST)
-      .then(res => res.json())
-      .then(json => this.setState({ low: json.low, mid: json.mid, high: json.high }))
-
+    this.props.fetchProducts()
     fetch(process.env.REACT_APP_IP_POINTS)
       .then(res => res.json())
       .then(data => this.setState({ acquiredPoints: this.validateIpPoint(window.allPoints[data.acquiredPoints], true) }))
@@ -36,40 +33,34 @@ class RedeemPoints extends Component {
   }
 
   render() {
-    const { acquiredPoints, high, mid, low } = this.state
+    const { high, mid, low, loading } = this.props.products
+    const { acquiredPoints } = this.props.ip
+
     return (
-      <Container>
+      <Redeem>
         <Table>
           <Label>Beváltható pontjaid</Label>
           <Content>{acquiredPoints}</Content>
         </Table>
         <Spacer />
         <NaviButton to="/pontgyujtes" text="Vissza a pontgyűjtéshez" />
-        {/* <CardDump>
-          {low.map(item => {
-            return <Productcard key={item.ln} item={item} />
-          })}
-        </CardDump> */}
-        <div>
-          <SimpleSlider section="high" data={high} />
-          <SimpleSlider section="mid" data={mid} />
-          <SimpleSlider section="low" data={low} />
-        </div>
-      </Container>
+        <ChangeView />
+        <Products section="high" loading={loading} data={high} />
+        <Products section="mid" loading={loading} data={mid} />
+        <Products section="low" loading={loading} data={low} />
+      </Redeem>
     );
   }
 }
 
-export default RedeemPoints;
+const mapStateToProps = (state) => ({
+  products: state.products,
+  ip: state.ip
+})
 
-/* const CardDump = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-around
-`; */
+export default connect(mapStateToProps, { fetchProducts })(RedeemPoints);
 
-const Container = styled.div`
+const Redeem = styled.div`
   position: relative;
 `;
 

@@ -1,0 +1,5 @@
+export const FETCH_PRODUCTS = "FETCH_PRODUCTS"
+export const FETCH_IPS = "FETCH_IPS"
+export const PRODUCTS_LOADING = "PRODUCTS_LOADING"
+export const POINTS_LOADING = "POINTS_LOADING"
+export const CHANGE_VIEW = "CHANGE_VIEW"

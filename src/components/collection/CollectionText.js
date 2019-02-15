@@ -1,9 +1,9 @@
 import React from "react"
-import NaviButton from "./NaviButton"
+import NaviButton from "../layout/NaviButton"
 
 import styled from "styled-components"
 
-const InfoText = () => {
+const CollectionText = () => {
   return (
     <Container>
       <Generic>Egyéni célkitűzésed teljesítésével és legalább 1 db katalógus vásárlásával szerezz pontokat kampányról kampányra, majd februártól váltsd be egy vagy akár több Neked tetsző termékre!</Generic>
@@ -17,7 +17,7 @@ const InfoText = () => {
   );
 };
 
-export default InfoText;
+export default CollectionText;
 
 const Container = styled.div`
   width: 80%;
@@ -36,6 +36,7 @@ const Header = styled.div`
   font-weight: 500;
   margin-top: 40px;
 `;
+
 const List = styled.div`
   margin: 10px 0 0 20px;
 
