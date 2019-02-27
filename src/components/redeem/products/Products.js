@@ -35,13 +35,13 @@ export class Products extends Component {
     }
 
     const { data, loading } = this.props
-    const { isCarousel } = this.props.isCarousel
+    const { isCarousel, viewLoading } = this.props.isCarousel
 
     let sliderContent;
     let min = 0;
     let max = 0;
 
-    if (data === null || loading) {
+    if (data === null || loading || viewLoading) {
       sliderContent = <Spinner />
     } else {
       let array = [];
@@ -84,11 +84,7 @@ const mapStateToProps = (state) => ({
   isCarousel: state.isCarousel
 })
 
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Products)
+export default connect(mapStateToProps, null)(Products)
 
 const CardDump = styled.div`
 display: flex;
