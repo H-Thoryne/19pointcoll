@@ -66,15 +66,15 @@ class CollectionData extends Component {
   render() {
     const { aws, target, brochures, acquiredPoints, basePoints, stillRequired } = this.props.ip
 
-    let brochureText
+    // let brochureText
     let basePointText
     let awsText
     let targetText
     let stillRequiredText
 
-    isNaN(brochures)
-      ? brochureText = <TableContent isNaN>{brochures}</TableContent>
-      : brochureText = <TableContent>{brochures} db</TableContent>
+    // isNaN(brochures)
+    //   ? brochureText = <TableContent isNaN>{brochures}</TableContent>
+    //   : brochureText = <TableContent>{brochures} db</TableContent>
 
     isNaN(basePoints)
       ? basePointText = <TableContent isNaN>{basePoints}</TableContent>
@@ -97,26 +97,16 @@ class CollectionData extends Component {
     return (
       <>
         <Table>
-          <Column>
-            <Row>
-              <TableLabel>Minimum katalógus</TableLabel>
-              <TableContent>1 db</TableContent>
-            </Row>
-            <Row>
-              <TableLabel>A kampányban megrendelt katalógusok</TableLabel>
-              {brochureText}
-            </Row>
-          </Column>
-          <Column>
-            <Row>
-              <TableLabel>Beváltható pontjaid</TableLabel>
-              <TableContent>{acquiredPoints}</TableContent>
-            </Row>
-            <Row>
+          <Row>
+            <Column>
               <TableLabel>A kampányban szerezhető alappontok</TableLabel>
               {basePointText}
-            </Row>
-          </Column>
+            </Column>
+            <Column>
+              <TableLabel>Beváltható pontjaid</TableLabel>
+              <TableContent>{acquiredPoints}</TableContent>
+            </Column>
+          </Row>
         </Table>
 
         <List>
@@ -143,13 +133,7 @@ const mapStateToProps = (state) => ({
   ip: state.ip
 })
 
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CollectionData)
-
-
+export default connect(mapStateToProps, null)(CollectionData)
 
 const Table = styled.div`
   width: 500px;
@@ -160,8 +144,6 @@ const Table = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
   background: white;
-  display: flex;
-  flex-wrap: nowrap;
 
   &::before {
     content: "";
@@ -176,32 +158,21 @@ const Table = styled.div`
 `;
 
 const Column = styled.div`
-  display: block;
+  /* display: block; */
   position: relative;
-  flex: 1 50%;
+  flex: 50%;
   min-width: 0;
 `;
 
 const Row = styled.div`
   margin: 15px 0;
+  display: flex;
+  flex-wrap: nowrap;
 
-  &:first-child {
-    margin-bottom: 25px;
-  }
-
-  &:first-child::before {
-    content: "";
-    background: lightgray;
-    height: 1px;
-    width: 80%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
 `;
 
 const TableLabel = styled.div`
+  height: 28px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.3px;
@@ -239,7 +210,7 @@ const List = styled.div`
   display: flex;
   flex-wrap: nowrap;
   width: 80%;
-  padding-top: 180px;
+  padding-top: 110px;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
