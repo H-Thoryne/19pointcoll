@@ -17,25 +17,11 @@ class RedeemPoints extends Component {
 
   componentDidMount() {
     this.props.fetchProducts()
-    fetch(process.env.REACT_APP_IP_POINTS)
-      .then(res => res.json())
-      .then(data => this.setState({ acquiredPoints: this.validateIpPoint(window.allPoints[data.acquiredPoints], true) }))
-  }
-
-  validateIpPoint = (point, canBeZero) => {
-    if (isNaN(point)) {
-      return "ERROR: NaN"
-    }
-    if (canBeZero === false && point === 0) {
-      return "ERROR: ZeroException"
-    }
-    return point;
   }
 
   render() {
     const { high, mid, low, loading } = this.props.products
     const { acquiredPoints } = this.props.ip
-
     return (
       <Redeem>
         <Table>
@@ -89,5 +75,5 @@ const Content = styled.div`
 `;
 
 const Spacer = styled.div`
-padding-top: 80px
+padding-top: 60px
 `;

@@ -1,0 +1,15 @@
+{
+  "name": "XXXX",
+  "description": "XXXX",
+  "ln": 0000,
+  "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/0000.jpg",
+  "priceHUF": 1111,
+  "pricePoints": 1111,
+  "dateStart": "2019-01-01T00:00:00",
+  "dateEnd": "2019-01-30T00:00:00",
+  "amountAll": 30,
+  "amountCurrent": 0,
+  "isNew": false,
+  "isAvailable": true,
+  "imgSecondary": []
+}

@@ -18,7 +18,7 @@ class CollectionData extends Component {
   componentDidMount = () => {
     const { loading, aws, target } = this.props.ip
     this._isMounted = true
-    
+
     if (!loading && !isNaN(aws) && !isNaN(target)) {
       this.startCounter()
     }
@@ -62,8 +62,38 @@ class CollectionData extends Component {
     }
   }
 
+
   render() {
-    const { aws, target, brochures, acquiredPoints, basePoints } = this.props.ip
+    const { aws, target, brochures, acquiredPoints, basePoints, stillRequired } = this.props.ip
+
+    let brochureText
+    let basePointText
+    let awsText
+    let targetText
+    let stillRequiredText
+
+    isNaN(brochures)
+      ? brochureText = <TableContent isNaN>{brochures}</TableContent>
+      : brochureText = <TableContent>{brochures} db</TableContent>
+
+    isNaN(basePoints)
+      ? basePointText = <TableContent isNaN>{basePoints}</TableContent>
+      : brochures > 1 && aws > target
+        ? basePointText = <TableContentWithCheckMark>{basePoints}</TableContentWithCheckMark>
+        : basePointText = <TableContent>{basePoints}</TableContent>
+
+    isNaN(aws)
+      ? awsText = <TableContent>{aws}</TableContent>
+      : awsText = <TableContent>{aws} Ft</TableContent>
+
+    isNaN(target)
+      ? targetText = <TableContent>{target}</TableContent>
+      : targetText = <TableContent>{target} Ft</TableContent>
+
+    isNaN(stillRequired)
+      ? stillRequiredText = <TableContent>{stillRequired}</TableContent>
+      : stillRequiredText = <TableContent>{stillRequired} Ft</TableContent>
+
     return (
       <>
         <Table>
@@ -74,7 +104,7 @@ class CollectionData extends Component {
             </Row>
             <Row>
               <TableLabel>A kampányban megrendelt katalógusok</TableLabel>
-              <TableContent>{brochures} db</TableContent>
+              {brochureText}
             </Row>
           </Column>
           <Column>
@@ -84,11 +114,7 @@ class CollectionData extends Component {
             </Row>
             <Row>
               <TableLabel>A kampányban szerezhető alappontok</TableLabel>
-              {
-                brochures > 1 && aws > target
-                  ? <TableContentWithCheckMark>{basePoints}</TableContentWithCheckMark>
-                  : <TableContent>{basePoints}</TableContent>
-              }
+              {basePointText}
             </Row>
           </Column>
         </Table>
@@ -100,19 +126,11 @@ class CollectionData extends Component {
           </LeftColumn>
           <RightColumn>
             <ListLabel>Eddigi összmegrendelésed</ListLabel>
-            <ListContent>{aws} Ft</ListContent>
+            <ListContent>{awsText}</ListContent>
             <ListLabel>Célkitűzésed az aktuális kampányra</ListLabel>
-            <ListContent>{target} Ft</ListContent>
+            <ListContent>{targetText}</ListContent>
             <ListLabel>Még ennyiért rendelj a teljesítéshez</ListLabel>
-            <ListContent>
-              {
-                isNaN(target) || isNaN(aws)
-                  ? `Not a Number`
-                  : target - aws < 0
-                    ? `0 Ft`
-                    : `${target - aws} Ft`
-              }
-            </ListContent>
+            <ListContent>{stillRequiredText}</ListContent>
           </RightColumn>
         </List>
       </>
@@ -192,7 +210,7 @@ const TableLabel = styled.div`
 `;
 
 const TableContent = styled.div`
-  font-size: 30px;
+  font-size: ${props => props.isNaN ? "20px" : "30px"};
   font-weight: 100;
 `;
 
