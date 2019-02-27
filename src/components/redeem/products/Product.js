@@ -27,7 +27,7 @@ class CarouselProductcard extends Component {
 
     return (
       <React.Fragment>
-        <Container carouselView={this.props.carouselView} onClick={this.openModal}>
+        <Container carouselView={this.props.carouselView} onClick={(this.openModal)}>
           <Header>
             <Price>{item.pricePoints} pont</Price>
             <Price huf>{item.priceHUF} Ft</Price>
@@ -66,7 +66,7 @@ export default (CarouselProductcard)
 const Container = styled.div`
   position: relative;
   width: 190px;
-  height: 100%;
+  height: 293px;
   /* margin: 25px 30px; */
   margin: ${props => props.carouselView ? "25px 0px 25px 15px" : "25px 15px"};
   overflow: hidden;
@@ -103,7 +103,7 @@ const Image = styled.img`
 `;
 
 const Name = styled.div`
-  margin: 10px 0 10px 5px;
+  margin-top: 10px;
   font-size: 14px;
   font-weight: bold;
   height: 34px;

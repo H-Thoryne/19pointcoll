@@ -50,18 +50,18 @@ const Wrapper = styled.div`
   width: 88%;
   margin: 0 auto;
   display: flex;
-  justify-content: flex-end
+  justify-content: flex-end;
 `;
 
 const Text = styled.div`
-  color: lightgray;
+  color: #646464;
   margin: auto 10px auto 0;
 `;
 
 const Rectangle = styled.div`
   height: 7px;
   width: 25px;
-  background: ${props => props.isActive ? "#ff336d" : "lightgray"};
+  background: ${props => props.isActive ? "#FF336D" : "lightgray"};
 `;
 
 const Rectangles = styled.div`
@@ -74,14 +74,14 @@ padding: 0;
 cursor: pointer;
 
   &:hover ${Rectangle}{
-    background: ${props => props.isActive ? "#ff336d" : "darkgray"};
+    background: ${props => props.isActive ? "#FF336D" : "#646464"};
   }
 `;
 
 const Square = styled.div`
   height: 7px;
   width: 7px;
-  background: ${props => props.isActive ? "lightgray" : "#ff336d"};
+  background: ${props => props.isActive ? "lightgray" : "#FF336D"};
 `;
 
 const Row = styled.div`
@@ -98,6 +98,6 @@ const Squares = styled.div`
   cursor: pointer;
 
   &:hover ${Square}{
-    background: ${props => props.isActive ? "darkgray" : "#ff336d"};
+    background: ${props => props.isActive ? "#646464" : "#FF336D"};
   }
 `;
