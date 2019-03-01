@@ -182,6 +182,7 @@ const TableLabel = styled.div`
 
 const TableContent = styled.div`
   font-size: ${props => props.isNaN ? "20px" : "30px"};
+  line-height: ${props => props.isNaN ? "36px" : "1"};
   font-weight: 100;
 `;
 

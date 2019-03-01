@@ -6,7 +6,7 @@ import styled from "styled-components"
 const CollectionText = () => {
   return (
     <Container>
-      <Generic>Egyéni célkitűzésed teljesítésével és legalább 1 db katalógus vásárlásával szerezz pontokat kampányról kampányra, majd februártól váltsd be egy vagy akár több Neked tetsző termékre!</Generic>
+      <Generic>Egyéni célkitűzésed teljesítésével szerezz pontokat kampányról kampányra, majd váltsd be egy vagy akár több Neked tetsző termékre!</Generic>
       <NaviButton to="/pontbevaltas" text="Tovább a pontbeváltáshoz" />
       <Header>Lehetőséged van extra pontok gyűjtésére is!</Header>
       <List >
@@ -26,7 +26,7 @@ const Container = styled.div`
 `;
 
 const Generic = styled.div`
-  text-align: justify;
+  text-align: center;
   margin-bottom: 20px;
 `;
 

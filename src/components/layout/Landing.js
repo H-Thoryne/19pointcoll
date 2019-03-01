@@ -7,6 +7,7 @@ import { fetchPoints } from '../../actions/ipActions'
 
 import Collection from "../collection/Collection"
 import Redeem from "../redeem/Redeem";
+import Test from '../test/Test'
 
 class Landing extends Component {
   // static propTypes = {
@@ -24,6 +25,7 @@ class Landing extends Component {
           <Route exact path="/" component={Collection} />
           <Route path="/pontgyujtes" component={Collection} />
           <Route path="/pontbevaltas" component={Redeem} />
+          <Route path="/test" component={Test} />
         </Switch>
       </HashRouter>
     )
