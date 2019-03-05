@@ -1,22 +1,22 @@
-import { CHANGE_VIEW, VIEW_LOADING } from "../actions/types"
+import { VIEW_CHANGE, VIEW_LOADING } from "../actions/types"
 
 const initialState = {
   isCarousel: true,
-  viewLoading: false
+  loading: false
 }
 
 export default (state = initialState, { type }) => {
   switch (type) {
-    case CHANGE_VIEW:
+    case VIEW_CHANGE:
       return {
         ...state,
         isCarousel: !state.isCarousel,
-        viewLoading: false
+        loading: false
       }
     case VIEW_LOADING:
       return {
         ...state,
-        viewLoading: true
+        loading: true
       }
     default:
       return state

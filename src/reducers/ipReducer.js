@@ -1,4 +1,4 @@
-import { FETCH_IPS, POINTS_LOADING } from "../actions/types"
+import { POINTS_FETCH, POINTS_LOADING } from "../actions/types"
 
 const initialState = {
   aws: "Töltés...",
@@ -18,7 +18,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         loading: true
       }
-    case FETCH_IPS:
+    case POINTS_FETCH:
       return {
         ...state,
         aws: payload.aws,

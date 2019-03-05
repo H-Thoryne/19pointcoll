@@ -238,34 +238,6 @@
     "isAvailable": true,
     "imgSecondary": []
   }, {
-    "name": "TTA My Everything testápoló szuflé (200 ml) ",
-    "description": "",
-    "ln": 86959,
-    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86959.jpg",
-    "priceHUF": 39,
-    "pricePoints": 6,
-    "dateStart": "2019-01-01T00:00:00",
-    "dateEnd": "2019-01-30T00:00:00",
-    "amountAll": 30,
-    "amountCurrent": 0,
-    "isNew": false,
-    "isAvailable": true,
-    "imgSecondary": []
-  }, {
-    "name": "Treasures Of The Desert arcradír (75 ml) ",
-    "description": "",
-    "ln": 86967,
-    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86967.jpg",
-    "priceHUF": 19,
-    "pricePoints": 5,
-    "dateStart": "2019-01-01T00:00:00",
-    "dateEnd": "2019-01-30T00:00:00",
-    "amountAll": 30,
-    "amountCurrent": 0,
-    "isNew": false,
-    "isAvailable": true,
-    "imgSecondary": []
-  }, {
     "name": "Ana sál",
     "description": "Szövött női sál kék madár mintával. Poliészter, csak kézzel mosható, alacsony hőfokon vasalható. Hossza: 190 cm Szélessége: 45 cm.",
     "ln": 86991,
@@ -349,7 +321,7 @@
     "isNew": false,
     "isAvailable": true,
     "imgSecondary": []
-  },{
+  }, {
     "name": "Rowenta hajvasaló",
     "description": "Ez a megbízható hajvasaló akár 200 °C-on is használható a frizura gyorsabb és hatékonyabb formázása érdekében. A kerámia felület tökéletes simulást biztosít vasalás közben, és ragyogó csillogást eredményez. 360°-ban forgatható tápkábel a jobb kezelésért, gyors bemelegedés.",
     "ln": 87973,

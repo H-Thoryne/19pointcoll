@@ -1,25 +1,21 @@
-import { PRODUCTS_FETCH, PRODUCTS_LOADING } from "../actions/types"
+import { SURVEYPRODUCTS_FETCH, SURVEYPRODUCTS_LOADING } from "../actions/types"
 
 const initialState = {
-  low: [],
-  mid: [],
-  high: [],
+  products: [],
   loading: false
 }
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case PRODUCTS_LOADING:
+    case SURVEYPRODUCTS_LOADING:
       return {
         ...state,
         loading: true
       }
-    case PRODUCTS_FETCH:
+    case SURVEYPRODUCTS_FETCH:
       return {
         ...state,
-        low: payload.low,
-        mid: payload.mid,
-        high: payload.high,
+        products: payload,
         loading: false
       }
     default:

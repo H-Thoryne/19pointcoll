@@ -35,13 +35,12 @@ export class Products extends Component {
     }
 
     const { data, loading } = this.props
-    const { isCarousel, viewLoading } = this.props.isCarousel
 
     let sliderContent;
     let min = 0;
     let max = 0;
 
-    if (data === null || loading || viewLoading) {
+    if (data === null || loading || this.props.view.loading) {
       sliderContent = <Spinner />
     } else {
       let array = [];
@@ -51,7 +50,7 @@ export class Products extends Component {
       min = Math.min.apply(null, array)
       max = Math.max.apply(null, array)
 
-      if (!isCarousel) {
+      if (!this.props.viewisCarousel) {
         sliderContent =
           <CardDump>
             {data.map((item, i) => {
@@ -81,7 +80,7 @@ export class Products extends Component {
 
 
 const mapStateToProps = (state) => ({
-  isCarousel: state.isCarousel
+  view: state.view
 })
 
 export default connect(mapStateToProps, null)(Products)

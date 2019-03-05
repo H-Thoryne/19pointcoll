@@ -1,5 +1,5 @@
 import {
-  FETCH_IPS,
+  POINTS_FETCH,
   POINTS_LOADING,
 } from "./types"
 
@@ -30,7 +30,7 @@ export const fetchPoints = () => dispatch => {
       }
     })
     .then(() => dispatch({
-      type: FETCH_IPS,
+      type: POINTS_FETCH,
       payload: processed
     }))
 }

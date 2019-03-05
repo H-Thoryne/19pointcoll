@@ -1,36 +1,49 @@
-import React, { Component } from "react"
 
-export default class Test extends Component {
+import React, { Component } from 'react'
+// import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { fetchSruveyProducts, checkLocalStorage } from '../../actions/surveyActions'
+
+export class Test extends Component {
+  // static propTypes = {
+  //   prop: PropTypes
+  // }
+
   state = {
     store: "",
     campInfo: "",
+    votes: []
   }
-  componentDidMount = () => {
-    this.setState({ campInfo: window.AvonAnalyticsObjex.Profile.campaignInfo }, () => console.log("hi") )
-    // console.log(window.AvonAnalyticsObjex.Profile.campaignInfo)
-    let currentStorage = localStorage.getItem(this.state.campInfo)
-    if (currentStorage) {
-      this.setState({ store: currentStorage })
-      let str = currentStorage.substring(0, currentStorage.length - 1); // "12345.0"
-      console.log("found")
-      console.log(str)
-    } else {
-      console.log("not found")
-    }
 
-    localStorage.getItem(this.state.campInfo)
+  componentDidMount = () => {
+    this.props.checkLocalStorage()
+    this.props.fetchSruveyProducts()
   }
 
   createStorage = () => {
-    localStorage.setItem(this.state.campInfo, "value")
+    localStorage.setItem(window.AvonAnalyticsObjex.Profile.campaignInfo, "value")
   }
 
   deleteStorage = () => {
-    localStorage.removeItem(this.state.campInfo)
+    localStorage.removeItem(window.AvonAnalyticsObjex.Profile.campaignInfo)
   }
 
   clearStorage = () => {
     localStorage.clear()
+  }
+
+  isItChecked = e => {
+    let newVotes = []
+
+    if (e.target.checked && !this.state.votes.includes(e.target.name)) {
+      newVotes = [...this.state.votes, e.target.name]
+      this.setState({ votes: newVotes })
+    } else if (!e.target.checked) {
+      newVotes = this.state.votes.filter(vote => vote !== e.target.name)
+      this.setState({ votes: newVotes })
+    } else {
+      console.log("Dafuck you tryina do?")
+    }
   }
 
   render() {
@@ -40,7 +53,24 @@ export default class Test extends Component {
         <button onClick={this.createStorage}>Create</button>
         <button onClick={this.deleteStorage}>Delete</button>
         <button onClick={this.clearStorage}>Clear</button>
-      </div>
+        <div>
+          {this.props.products.map(item => {
+            return <div key={item.index}>
+              <div>----------------------------</div>
+              <img height="50px" width="50px" src={item.img} alt="Img" />
+              <div>{item.name}</div>
+              <div>{item.index}</div>
+              <input name={item.index} onClick={this.isItChecked} type="checkbox" />
+            </div>
+          })}
+        </div>
+      </div >
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  products: state.survey.products
+})
+
+export default connect(mapStateToProps, { fetchSruveyProducts, checkLocalStorage })(Test)

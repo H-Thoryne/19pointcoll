@@ -1,5 +1,5 @@
 import {
-  FETCH_PRODUCTS,
+  PRODUCTS_FETCH,
   PRODUCTS_LOADING
 } from "./types"
 
@@ -8,7 +8,7 @@ export const fetchProducts = () => dispatch => {
   fetch(process.env.REACT_APP_PRODUCT_LIST)
     .then(res => res.json())
     .then(data => dispatch({
-      type: FETCH_PRODUCTS,
+      type: PRODUCTS_FETCH,
       payload: data
     }))
 }
