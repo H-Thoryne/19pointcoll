@@ -10,17 +10,29 @@ class CollectionData extends Component {
   //   prop: PropTypes
   // }
   _isMounted = false
+  _started = false
   state = {
     displayPercent: 0,
     percent: 0,
   }
 
   componentDidMount = () => {
-    const { loading, aws, target } = this.props.ip
     this._isMounted = true
-
-    if (!loading && !isNaN(aws) && !isNaN(target)) {
+    if (!isNaN(this.props.ip.target)) {
       this.startCounter()
+      console.log("Starting from CDM")
+      this._started = true
+    }
+  }
+
+  componentDidUpdate = () => {
+    if (!this._started) {
+      const { loading, aws } = this.props.ip
+      if (!loading && aws > 0) {
+        this.startCounter()
+        console.log("Starting from CDU")
+        this._started = true
+      }
     }
   }
 
@@ -58,10 +70,9 @@ class CollectionData extends Component {
         displayPercent: Math.round(percentVar)
       })
 
-      this.timeout = setTimeout(this.startCounter, 50)
+      this.timeout = setTimeout(this.startCounter, 25)
     }
   }
-
 
   render() {
     const { aws, target, brochures, acquiredPoints, basePoints, stillRequired } = this.props.ip

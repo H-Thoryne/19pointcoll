@@ -1,7 +1,7 @@
 import { POINTS_FETCH, POINTS_LOADING } from "../actions/types"
 
 const initialState = {
-  aws: "Töltés...",
+  aws: 0,
   target: "Töltés...",
   brochures: "Töltés...",
   acquiredPoints: "Töltés...",

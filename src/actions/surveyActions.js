@@ -2,11 +2,13 @@ import {
   SURVEYPRODUCTS_FETCH,
   SURVEYPRODUCTS_LOADING,
   SURVEYPRODUCTS_UPDATEVOTES,
-  SURVEYPRODUCTS_UPDATESTATUS
+  SURVEYPRODUCTS_UPDATESTATUS,
+  SURVEYPRODUCTS_ERROR,
+  SURVEYPRODUCTS_CLEARERROR
 } from "./types"
 
 const campInfo = window.AvonAnalyticsObjex.Profile.campaignInfo
-const storageName = `storeVote${campInfo.substring(campInfo.length - 3)}`
+const storageName = `storeVotes${campInfo.substring(campInfo.length - 3)}`
 const StatusEnum = {
   notyetvoted: "notyetvoted",
   freshlyvoted: "freshlyvoted",
@@ -15,7 +17,7 @@ const StatusEnum = {
 
 export const fetchSurveyProducts = () => dispatch => {
   dispatch(setSurveyProductsLoadin())
-  fetch("https://api.myjson.com/bins/bonvi")
+  fetch("https://api.myjson.com/bins/bonvi", { cache: "no-cache" })
     .then(res => res.json())
     .then(data => dispatch({
       type: SURVEYPRODUCTS_FETCH,
@@ -24,9 +26,8 @@ export const fetchSurveyProducts = () => dispatch => {
 }
 
 export const checkLocalStorage = () => dispatch => {
-  let currentStorage = localStorage.getItem(campInfo)
+  let currentStorage = localStorage.getItem(storageName)
 
-  console.log(storageName)
   if (currentStorage) {
     dispatch({
       type: SURVEYPRODUCTS_UPDATESTATUS,
@@ -40,34 +41,38 @@ export const checkLocalStorage = () => dispatch => {
   }
 }
 
-export const toggleCheckmark = (e, votes) => dispatch => {
+export const toggleCheckmark = (votes, item, error, products) => dispatch => {
   let newVotes = []
 
-  // Check if 3 images have already been selected
-  // TODO: If yes, send error message
-  if (votes.length >= 3 && e.target.checked) {
-    e.target.checked = false
-    console.log("More than 3 votes")
-    return
-  }
-
-  // Toggle the checkmark and add/remove item from "votes" array 
-  if (e.target.checked) {
-    newVotes = [...votes, e.target.name]
-  } else if (!e.target.checked) {
-    newVotes = votes.filter(vote => vote !== e.target.name)
+  // Clean up errors
+  if (error) dispatch(clearErrors())
+  // Check if 3 images have already been selected. If so, throw an error.
+  if (votes.length >= 3 && !item.isChecked) { return dispatch(createError("Legfeljebb 3 db terméket választhatsz ki!")) }
+  // Reverse checkmark
+  item.isChecked = !item.isChecked
+  // Update the specific product in the array
+  products.forEach(product => { if (product.index === item.index) product = item })
+  // Add/remove item from 'votes' array
+  if (item.isChecked === true) {
+    newVotes = [...votes, item.index]
+  } else if (item.isChecked === false) {
+    newVotes = votes.filter(vote => vote !== item.index)
   } else {
-    console.log("ERROR::toggleCheckmark()");
+    newVotes = votes
   }
 
   dispatch({
     type: SURVEYPRODUCTS_UPDATEVOTES,
-    payload: newVotes
+    payload: {
+      votes: newVotes,
+      products: products
+    }
   })
 }
 
 export const submitVotes = votes => dispatch => {
   if (votes.length !== 3) {
+    dispatch(createError("Válassz ki 3 terméket!"))
     console.log("There must always be 3 votes in Winterfell")
   } else {
     console.log(`Successful vote: ${votes}`)
@@ -75,7 +80,7 @@ export const submitVotes = votes => dispatch => {
       type: SURVEYPRODUCTS_UPDATESTATUS,
       payload: StatusEnum.freshlyvoted
     })
-    localStorage.setItem(window.AvonAnalyticsObjex.Profile.campaignInfo, votes)
+    localStorage.setItem(storageName, votes)
   }
 }
 
@@ -85,14 +90,15 @@ export const setSurveyProductsLoadin = () => {
   }
 }
 
-// let newVotes = []
+export const clearErrors = () => {
+  return {
+    type: SURVEYPRODUCTS_CLEARERROR
+  }
+}
 
-// if (e.target.checked && !this.state.votes.includes(e.target.name)) {
-//   newVotes = [...this.state.votes, e.target.name]
-//   this.setState({ votes: newVotes })
-// } else if (!e.target.checked) {
-//   newVotes = this.state.votes.filter(vote => vote !== e.target.name)
-//   this.setState({ votes: newVotes })
-// } else {
-//   console.log("Dafuck you tryina do?")
-// }
+export const createError = text => {
+  return {
+    type: SURVEYPRODUCTS_ERROR,
+    payload: text
+  }
+}

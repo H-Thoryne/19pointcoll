@@ -5,7 +5,7 @@ import {
 
 export const fetchProducts = () => dispatch => {
   dispatch(setProductsLoading())
-  fetch(process.env.REACT_APP_PRODUCT_LIST)
+  fetch(process.env.REACT_APP_PRODUCT_LIST, { cache: "no-cache" })
     .then(res => res.json())
     .then(data => dispatch({
       type: PRODUCTS_FETCH,
