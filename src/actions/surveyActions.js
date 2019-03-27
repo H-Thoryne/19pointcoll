@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {
   SURVEYPRODUCTS_FETCH,
   SURVEYPRODUCTS_LOADING,
@@ -8,7 +9,7 @@ import {
 } from "./types"
 
 const campInfo = window.AvonAnalyticsObjex.Profile.campaignInfo
-const storageName = `storeVotes${campInfo.substring(campInfo.length - 3)}`
+const storageName = `storedVotes${campInfo.substring(campInfo.length - 3)}`
 const StatusEnum = {
   notyetvoted: "notyetvoted",
   freshlyvoted: "freshlyvoted",
@@ -17,11 +18,14 @@ const StatusEnum = {
 
 export const fetchSurveyProducts = () => dispatch => {
   dispatch(setSurveyProductsLoadin())
-  fetch("https://api.myjson.com/bins/bonvi", { cache: "no-cache" })
+  fetch(process.env.REACT_APP_SURVEY_LIST, { cache: "no-cache" })
     .then(res => res.json())
     .then(data => dispatch({
       type: SURVEYPRODUCTS_FETCH,
-      payload: data.map(item => ({ ...item, isChecked: false }))
+      payload: {
+        products: data.products.map(item => ({ ...item, isChecked: false })),
+        campcode: data.campcode
+      }
     }))
 }
 
@@ -44,17 +48,14 @@ export const checkLocalStorage = () => dispatch => {
 export const toggleCheckmark = (votes, item, error, products) => dispatch => {
   let newVotes = []
 
-  // Clean up errors
   if (error) dispatch(clearErrors())
-  // Check if 3 images have already been selected. If so, throw an error.
-  if (votes.length >= 3 && !item.isChecked) { return dispatch(createError("Legfeljebb 3 db terméket választhatsz ki!")) }
-  // Reverse checkmark
+
   item.isChecked = !item.isChecked
-  // Update the specific product in the array
+
   products.forEach(product => { if (product.index === item.index) product = item })
-  // Add/remove item from 'votes' array
   if (item.isChecked === true) {
     newVotes = [...votes, item.index]
+    newVotes.sort()
   } else if (item.isChecked === false) {
     newVotes = votes.filter(vote => vote !== item.index)
   } else {
@@ -71,11 +72,22 @@ export const toggleCheckmark = (votes, item, error, products) => dispatch => {
 }
 
 export const submitVotes = votes => dispatch => {
-  if (votes.length !== 3) {
-    dispatch(createError("Válassz ki 3 terméket!"))
-    console.log("There must always be 3 votes in Winterfell")
+  if (votes.length === 0) {
+    dispatch(createError("Kérjük, legalább egy terméket válassz ki!"))
+    console.log("There must always be a Product in Winterfell!")
   } else {
-    console.log(`Successful vote: ${votes}`)
+    votes = votes.toString()
+    votes = votes.replace(/,/g, "+")
+    axios.get("orderTrackingEInvoice.page", {
+      params: {
+        msgTyp: "SURVTEST",
+        msgTxt: votes,
+        action: "logLinkDetails"
+      }
+    })
+      .then(() => console.log(`Successful vote: ${votes}`))
+      .catch(err => console.log(err))
+
     dispatch({
       type: SURVEYPRODUCTS_UPDATESTATUS,
       payload: StatusEnum.freshlyvoted

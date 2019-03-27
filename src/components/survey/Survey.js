@@ -4,20 +4,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkLocalStorage } from '../../actions/surveyActions'
 
-import Alreadyvoted from './Alreadyvoted';
-import Freshlyvoted from './Freshlyvoted';
-import Notyetvoted from './Notyetvoted';
+import Products from './Products'
+
+import styled from 'styled-components'
 
 export class Test extends Component {
   // static propTypes = {
   //   prop: PropTypes
   // }
-
-  state = {
-    store: "",
-    campInfo: "",
-    votes: []
-  }
 
   componentDidMount = () => {
     this.props.checkLocalStorage()
@@ -29,39 +23,33 @@ export class Test extends Component {
 
   render() {
     let voteContent
-    let errorMessage
 
     if (this.props.status === "notyetvoted") {
       voteContent =
-        <Notyetvoted />
+        <Products />
     } else if (this.props.status === "alreadyvoted") {
       voteContent =
-        <Alreadyvoted />
+        <Message>Ebben a hónapban már játszottál. <br></br> Látogass vissza a következő kampányban!</Message>
     } else if (this.props.status === "freshlyvoted") {
       voteContent =
-        <Freshlyvoted />
-    }
-
-    if (this.props.error.length !== 0) {
-      errorMessage =
-        <div>{this.props.error}</div>
+        <Message>Köszönjük, hogy részt veszel játékunkban!</Message>
     }
 
     return (
       <div>
-        <div>#main#</div>
-        <div>short description & how it works</div>
-        <div>{voteContent}</div>
-        <button onClick={this.clearStorage}>Clear</button>
-        {errorMessage}
-      </div >
+        <Title>Gyere és játssz velünk!</Title>
+        <Description>
+          Az alábbi termékek közül jelölj meg legalább egyet, amelyet a következő kampányok során a választható termékek közé sorolhatunk. Kattints a termékekre a kiválasztáshoz, majd az oldal alján taláható Elküldés gombbal véglegesítsd a szavazatodat!
+        </Description>
+        <>{voteContent}</>
+        <ClearButton onClick={this.clearStorage}>Clear</ClearButton>
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  status: state.survey.status,
-  error: state.survey.error
+  status: state.survey.status
 })
 
 const mapDispatchToProps = {
@@ -69,3 +57,28 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Test)
+
+const Title = styled.div`
+  font-size: 26px;
+  font-weight:500;
+  margin: 30px 0;
+  text-align: center;
+  color:#ff336d;
+`;
+
+const Description = styled.div`
+  margin: 40px 60px;
+  text-align: justify;
+  line-height: 1.3;
+`;
+
+const Message = styled.div`
+  font-size:22px;
+  font-weight: bold;
+  margin: 40px 0;
+  text-align: center;
+`;
+
+const ClearButton = styled.button`
+  display: none;
+`;

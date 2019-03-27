@@ -25,7 +25,8 @@ export default (state = initialState, { type, payload }) => {
     case SURVEYPRODUCTS_FETCH:
       return {
         ...state,
-        products: payload,
+        products: payload.products,
+        campcode: payload.campcode,
         loading: false
       }
     case SURVEYPRODUCTS_UPDATEVOTES:

@@ -50,7 +50,7 @@ export class Products extends Component {
       min = Math.min.apply(null, array)
       max = Math.max.apply(null, array)
 
-      if (!this.props.viewisCarousel) {
+      if (!this.props.view.isCarousel) {
         sliderContent =
           <CardDump>
             {data.map((item, i) => {

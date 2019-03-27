@@ -1,0 +1,24 @@
+{
+  "products": [{
+    "name": "Avon Random Product Name",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86652.jpg",
+    "index": "C04-01"
+  }, {
+    "name": "Avon Random Product Name",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86652.jpg",
+    "index": "C04-02"
+  }, {
+    "name": "Avon Random Product Name",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86652.jpg",
+    "index": "C04-03"
+  }, {
+    "name": "Avon Random Product Name",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86652.jpg",
+    "index": "C04-04"
+  }, {
+    "name": "Avon Random Product Name",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86652.jpg",
+    "index": "C04-05"
+  }],
+  "campcode": "SURVTEST"
+}
