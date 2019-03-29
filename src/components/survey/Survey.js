@@ -42,7 +42,6 @@ export class Test extends Component {
           Az alábbi termékek közül jelölj meg legalább egyet, amelyet a következő kampányok során a választható termékek közé sorolhatunk. Kattints a termékekre a kiválasztáshoz, majd az oldal alján taláható Elküldés gombbal véglegesítsd a szavazatodat!
         </Description>
         <>{voteContent}</>
-        <ClearButton onClick={this.clearStorage}>Clear</ClearButton>
       </div>
     )
   }
@@ -77,8 +76,4 @@ const Message = styled.div`
   font-weight: bold;
   margin: 40px 0;
   text-align: center;
-`;
-
-const ClearButton = styled.button`
-  display: none;
 `;

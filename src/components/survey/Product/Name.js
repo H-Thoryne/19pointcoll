@@ -6,6 +6,7 @@ const Name = styled.div`
   pointer-events: none;
   user-select: none;
   text-align: center;
+  margin: 10px 0;
 `;
 
 export default Name;

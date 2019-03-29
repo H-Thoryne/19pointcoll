@@ -77,7 +77,6 @@ export const submitVotes = votes => dispatch => {
     console.log("There must always be a Product in Winterfell!")
   } else {
     votes = votes.toString()
-    votes = votes.replace(/,/g, "+")
     axios.get("orderTrackingEInvoice.page", {
       params: {
         msgTyp: "SURVTEST",
