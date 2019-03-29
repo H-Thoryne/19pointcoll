@@ -8,6 +8,10 @@ const CollectionText = () => {
     <Container>
       <Generic>Egyéni célkitűzésed teljesítésével szerezz pontokat kampányról kampányra, majd váltsd be egy vagy akár több Neked tetsző termékre!</Generic>
       <NaviButton to="/pontbevaltas" text="Tovább a pontbeváltáshoz" />
+      <div>
+        <NewSign>Újdonság!</NewSign>
+        <NaviButton to="/szavazas" text="Tovább a szavazáshoz" />
+      </div>
       <Header>Lehetőséged van extra pontok gyűjtésére is!</Header>
       <List >
         <div>Célkitűzésed túlteljesítésével, 2000 Ft-onként további 1 pont szerezhető, maximum 10 pontig</div>
@@ -23,6 +27,13 @@ const Container = styled.div`
   width: 80%;
   margin: 50px auto;
   line-height: 1.3;
+`;
+
+const NewSign = styled.div`
+  position: absolute;
+  left: 10%;
+  font-size: 28px;
+  color: #ff336d;
 `;
 
 const Generic = styled.div`

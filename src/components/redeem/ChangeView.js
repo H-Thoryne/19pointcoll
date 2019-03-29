@@ -8,7 +8,7 @@ import styled from "styled-components"
 
 class ChangeView extends Component {
   render() {
-    let isCarousel = this.props.isCarousel.isCarousel ? 1 : 0
+    let isCarousel = this.props.view.isCarousel ? 1 : 0
     return (
       <Wrapper >
         <Text>Nézet váltása</Text>
@@ -40,7 +40,7 @@ class ChangeView extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isCarousel: state.isCarousel
+  view: state.view
 })
 
 export default connect(mapStateToProps, { changeView })(ChangeView)

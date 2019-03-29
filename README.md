@@ -15,9 +15,3 @@ splitChunks: {
 // https://twitter.com/wSokra/status/969679223278505985
 runtimeChunk: false,
 ```
-
-
-
-
-- TODO: Add overlays (Elfogyott, utolsó darabok, stb...) to Productcard
-- FIXME: if brosi IP kötőjel resulting in Error: NaN (make it 0)

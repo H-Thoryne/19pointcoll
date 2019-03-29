@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, PRODUCTS_LOADING } from "../actions/types"
+import { PRODUCTS_FETCH, PRODUCTS_LOADING } from "../actions/types"
 
 const initialState = {
   low: [],
@@ -14,7 +14,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         loading: true
       }
-    case FETCH_PRODUCTS:
+    case PRODUCTS_FETCH:
       return {
         ...state,
         low: payload.low,

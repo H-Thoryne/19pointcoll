@@ -1,0 +1,44 @@
+{
+  "products": [{
+    "name": "Polley pénztárca rózsaszín",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-01.jpg",
+    "index": "C04-01"
+  }, {
+    "name": "Polley táska rózsaszín    ",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-02.jpg",
+    "index": "C04-02"
+  }, {
+    "name": "Polley pénztárca szürke ",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-03.jpg",
+    "index": "C04-03"
+  }, {
+    "name": "Polley táska szürke",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-04.jpg",
+    "index": "C04-04"
+  }, {
+    "name": "Catherine Lansfield utazó táska",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-05.jpg",
+    "index": "C04-05"
+  }, {
+    "name": "Catherine Lansfield vállon átvethető táska",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-06.jpg",
+    "index": "C04-06"
+  }, {
+    "name": "Lalana Műszörme fogantyús táska",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-07.jpg",
+    "index": "C04-07"
+  }, {
+    "name": "Lalana velúr táska",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-08.jpg",
+    "index": "C04-08"
+  }, {
+    "name": "Fiorelli Iris vállon átvethető táska",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-09.jpg",
+    "index": "C04-09"
+  }, {
+    "name": "Fiorelli Iris pénztárca",
+    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/survey/C04-10.jpg",
+    "index": "C04-10"
+  }],
+  "campcode": "SURVTEST"
+}

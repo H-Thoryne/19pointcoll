@@ -1,5 +1,5 @@
 import {
-  CHANGE_VIEW,
+  VIEW_CHANGE,
   VIEW_LOADING
 } from "./types"
 
@@ -7,7 +7,7 @@ export const changeView = () => dispatch => {
   dispatch(setViewLoading())
   setTimeout(() => {
     dispatch({
-      type: CHANGE_VIEW
+      type: VIEW_CHANGE
     })
   }, 200);
 }
