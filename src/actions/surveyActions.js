@@ -8,7 +8,7 @@ import {
   SURVEYPRODUCTS_CLEARERROR
 } from "./types"
 
-const campInfo = window.AvonAnalyticsObjex.Profile.campaignInfo
+const campInfo = "2019:C4"
 const storageName = `storedVotes${campInfo.substring(campInfo.length - 3)}`
 const StatusEnum = {
   notyetvoted: "notyetvoted",
