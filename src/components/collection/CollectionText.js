@@ -16,6 +16,9 @@ const CollectionText = () => {
       <List >
         <div>Célkitűzésed túlteljesítésével, 2000 Ft-onként további 1 pont szerezhető, maximum 10 pontig</div>
         <div>Két egymást követő kampányban teljesített célkitűzésedért plusz 5 pont szerezhető</div>
+        <div>Rendelj legalább 3500 Ft értékben az AVON Interaktív Katalóguson keresztül és szerezz 10 plusz pontot a májusi kampányban</div>
+        <div>Áprilisban bármelyik AVON Online Akadémia tréning elvégzéséért cserébe 1 pontot adunk Neked ajándékba, maximum 5 plusz pontig</div>
+        <div>Végezd el az <strong>összes</strong> AVON Online Akadémia tréninget áprilisban, és május elején nem 5, hanem 10 plusz pont a jutalmad, amit a pontgyűjtő programunk keretein belül használhatsz fel.</div>
       </List>
     </Container>
   );
