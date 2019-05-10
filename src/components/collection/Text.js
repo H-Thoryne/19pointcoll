@@ -1,17 +1,14 @@
 import React from "react"
-import NaviButton from "../layout/NaviButton"
+import NaviButton from "../NaviButton"
 
 import styled from "styled-components"
 
-const CollectionText = () => {
+const Text = () => {
   return (
     <Container>
       <Generic>Egyéni célkitűzésed teljesítésével szerezz pontokat kampányról kampányra, majd váltsd be egy vagy akár több Neked tetsző termékre!</Generic>
-      <NaviButton to="/pontbevaltas" text="Tovább a pontbeváltáshoz" />
-      <div>
-        <NewSign>Újdonság!</NewSign>
-        <NaviButton to="/szavazas" text="Tovább a szavazáshoz" />
-      </div>
+      <NaviButton to="/hu-home/product-catalog/rep-support/pointcollection-products" text="Tovább a pontbeváltáshoz" />
+      {/* <NaviButton to="#" text="Tovább a szavazáshoz" /> */}
       <Header>Lehetőséged van extra pontok gyűjtésére is!</Header>
       <List >
         <div>Célkitűzésed túlteljesítésével, 2000 Ft-onként további 1 pont szerezhető, maximum 10 pontig</div>
@@ -24,19 +21,16 @@ const CollectionText = () => {
   );
 };
 
-export default CollectionText;
+export default Text;
 
 const Container = styled.div`
   width: 80%;
   margin: 50px auto;
   line-height: 1.3;
-`;
 
-const NewSign = styled.div`
-  position: absolute;
-  left: 10%;
-  font-size: 28px;
-  color: #ff336d;
+  @media (max-width: 700px){
+    width: 95%;
+  }
 `;
 
 const Generic = styled.div`
@@ -49,6 +43,10 @@ const Header = styled.div`
   font-size: 20px;
   font-weight: 500;
   margin-top: 40px;
+
+  @media(max-width: 700px){
+    font-size: 16px;
+  }
 `;
 
 const List = styled.div`

@@ -8,7 +8,7 @@ import { validatePoint } from "../util/validatePoint"
 export const fetchPoints = () => dispatch => {
   let processed = {}
   dispatch(setPointsLoading())
-  fetch(process.env.REACT_APP_IP_POINTS,  { cache: "no-cache" })
+  fetch(process.env.REACT_APP_IP_POINTS)
     .then(res => res.json())
     .then(data => {
       if (data.placeholderText) {
@@ -20,12 +20,13 @@ export const fetchPoints = () => dispatch => {
         processed.stillRequired = data.placeholderText
         processed.acquiredPoints = parseInt(validatePoint(window.allPoints[data.acquiredPoints], "acquiredPoints"))
       } else {
-        processed.aws = parseInt(validatePoint(window.allPoints[data.aws], "aws"))
-        processed.target = parseInt(validatePoint(window.allPoints[data.target], "target"))
-        processed.brochures = parseInt(validatePoint(window.allPoints[data.brochures], "brochures"))
-        processed.basePoints = parseInt(validatePoint(window.allPoints[data.basePoints], "basePoints"))
+        console.log("Normal display of points")
+        processed.aws = parseInt(validatePoint(window.allPoints[data.aws].replace(/\s+/g, ''), "aws"))
+        processed.target = parseInt(validatePoint(window.allPoints[data.target].replace(/\s+/g, ''), "target"))
+        processed.brochures = parseInt(validatePoint(window.allPoints[data.brochures].replace(/\s+/g, ''), "brochures"))
+        processed.basePoints = parseInt(validatePoint(window.allPoints[data.basePoints].replace(/\s+/g, ''), "basePoints"))
         processed.stillRequired = processed.target - processed.aws < 0 ? 0 : processed.target - processed.aws
-        processed.acquiredPoints = parseInt(validatePoint(window.allPoints[data.acquiredPoints], "acquiredPoints"))
+        processed.acquiredPoints = parseInt(validatePoint(window.allPoints[data.acquiredPoints].replace(/\s+/g, ''), "acquiredPoints"))
         // processed.placeholderText = data.placeholderText || "Töltés..."
       }
     })

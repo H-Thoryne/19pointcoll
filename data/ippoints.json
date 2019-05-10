@@ -1,7 +1,7 @@
 {
-  "aws": "ip25",
-  "target": "ip35",
+  "aws": "ip29",
+  "target": "ip36",
   "acquiredPoints": "ip49",
-  "basePoints": "ip45",
+  "basePoints": "ip37",
   "placeholderText": ""
 }

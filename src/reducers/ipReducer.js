@@ -14,6 +14,7 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case POINTS_LOADING:
+      console.log("loading")
       return {
         ...state,
         loading: true

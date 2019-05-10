@@ -1,26 +1,26 @@
 import React from "react"
 import styled from "styled-components"
 
-const CollectionLinks = () => {
+const Links = () => {
   return (
     <Container>
       <Button>
         <Background />
-        <Link href="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/pontgyujto_szabalyzat.pdf" target="_blank" rel="noopener noreferrer">Szabályzat</Link>
+        <Link href="/dam/hu-home/minisites/pointcollection/pontgyujto_szabalyzat.pdf" target="_blank" rel="noopener noreferrer">Szabályzat</Link>
       </Button>
       <Button>
         <Background />
-        <Link href="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/gyakran_ismetelt_kerdesek.pdf" target="_blank" rel="noopener noreferrer">GY.I.K.</Link>
+        <Link href="/dam/hu-home/minisites/pointcollection/gyakran_ismetelt_kerdesek.pdf" target="_blank" rel="noopener noreferrer">GY.I.K.</Link>
       </Button>
       <Button>
         <Background />
-        <Link href="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/szorolap.pdf" target="_blank" rel="noopener noreferrer">Digitális szórólap</Link>
+        <Link href="/dam/hu-home/minisites/pointcollection/szorolap.pdf" target="_blank" rel="noopener noreferrer">Digitális szórólap</Link>
       </Button>
     </Container>
   );
 };
 
-export default CollectionLinks;
+export default Links;
 
 const Container = styled.div`
   display: flex;
@@ -30,6 +30,10 @@ const Container = styled.div`
   text-align: center;
   margin: 20px 40px;
   padding: 0;
+
+  @media (max-width: 700px){
+    flex-direction: column;
+  }
 `;
 
 const Background = styled.div`
@@ -102,5 +106,9 @@ const Button = styled.div`
     &:hover ${Background} {
       opacity: 1;
       transform: scale(1, 1);
+    }
+
+    @media (max-width: 700px){
+      margin: 10px auto;
     }
 `;

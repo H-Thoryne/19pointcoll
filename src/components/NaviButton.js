@@ -1,17 +1,17 @@
 import React from "react"
-import { NavLink } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import styled from "styled-components"
 
 const NaviButton = (props) => {
   return (
-    <Button to={props.to}>{props.text} </Button>
+    <Button href={props.to}>{props.text} </Button>
   );
 };
 
 export default NaviButton;
 
-const Button = styled(NavLink)`
+const Button = styled.a`
   background: #ff336d;
   color: white;
   font-size: 16px;

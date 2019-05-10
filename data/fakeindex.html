@@ -1,108 +1,65 @@
-<style>
-  @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700);
-</style>
-
-<script>
-  $(document).ready(function () {
-    campaignVal_sixdigit = (function () {
-      var currCampFull = AvonAnalyticsObjex.Profile.campaignInfo;
-      var campArr = currCampFull.split(':');
-      var oldCamp = campArr[1].replace("C", "");
-      var newCamp = ("0" + String(oldCamp)).slice(-2);
-      campArr[1] = newCamp;
-      return campArr.join("");
-    })();
-  });
-
-  function processOrder(finalName, finalCamp, finalAmount) {
-    var orderData = "LN:" + finalName + ";CM:" + finalCamp + ";Q:" + finalAmount;
-    if (console.info) {
-      console.info(orderData)
-    } else {
-      console.log(orderData)
-    }
-    ad_to_order(orderData);
-  }
-</script>
-
-<script>
+<script type="text/javascript">
   var allPoints = {
-    ip1: "<variable name='IP1'>",
-    ip2: "<variable name='IP2'>",
-    ip3: "<variable name='IP3'>",
-    ip4: "<variable name='IP4'>",
-    ip5: "<variable name='IP5'>",
-    ip6: "<variable name='IP6'>",
-    ip7: "<variable name='IP7'>",
-    ip8: "<variable name='IP8'>",
-    ip9: "<variable name='IP9'>",
-    ip10: "<variable name='IP10'>",
-    ip11: "<variable name='IP11'>",
-    ip12: "<variable name='IP12'>",
-    ip13: "<variable name='IP13'>",
-    ip14: "<variable name='IP14'>",
-    ip15: "<variable name='IP15'>",
-    ip16: "<variable name='IP16'>",
-    ip17: "<variable name='IP17'>",
-    ip18: "<variable name='IP18'>",
-    ip19: "<variable name='IP19'>",
-    ip20: "<variable name='IP20'>",
-    ip21: "<variable name='IP21'>",
-    ip22: "<variable name='IP22'>",
-    ip23: "<variable name='IP23'>",
-    ip24: "<variable name='IP24'>",
-    ip25: "<variable name='IP25'>",
-    ip26: "<variable name='IP26'>",
-    ip27: "<variable name='IP27'>",
-    ip28: "<variable name='IP28'>",
-    ip29: "<variable name='IP29'>",
-    ip30: "<variable name='IP30'>",
-    ip31: "<variable name='IP31'>",
-    ip32: "<variable name='IP32'>",
-    ip33: "<variable name='IP33'>",
-    ip34: "<variable name='IP34'>",
-    ip35: "<variable name='IP35'>",
-    ip36: "<variable name='IP36'>",
-    ip37: "<variable name='IP37'>",
-    ip38: "<variable name='IP38'>",
-    ip39: "<variable name='IP39'>",
-    ip40: "<variable name='IP40'>",
-    ip41: "<variable name='IP41'>",
-    ip42: "<variable name='IP42'>",
-    ip43: "<variable name='IP43'>",
-    ip44: "<variable name='IP44'>",
-    ip45: "<variable name='IP45'>",
-    ip46: "<variable name='IP46'>",
-    ip47: "<variable name='IP47'>",
-    ip48: "<variable name='IP48'>",
-    ip49: "<variable name='IP49'>",
-    ip50: "<variable name='IP50'>"
+    ip1: "${IP1!0}",
+    ip2: "${IP2!0}",
+    ip3: "${IP3!0}",
+    ip4: "${IP4!0}",
+    ip5: "${IP5!0}",
+    ip6: "${IP6!0}",
+    ip7: "${IP7!0}",
+    ip8: "${IP8!0}",
+    ip9: "${IP9!0}",
+    ip10: "${IP10!0}",
+    ip11: "${IP11!0}",
+    ip12: "${IP12!0}",
+    ip13: "${IP13!0}",
+    ip14: "${IP14!0}",
+    ip15: "${IP15!0}",
+    ip16: "${IP16!0}",
+    ip17: "${IP17!0}",
+    ip18: "${IP18!0}",
+    ip19: "${IP19!0}",
+    ip20: "${IP20!0}",
+    ip21: "${IP21!0}",
+    ip22: "${IP22!0}",
+    ip23: "${IP23!0}",
+    ip24: "${IP24!0}",
+    ip25: "${IP25!0}",
+    ip26: "${IP26!0}",
+    ip27: "${IP27!0}",
+    ip28: "${IP28!0}",
+    ip29: "${IP29!0}",
+    ip30: "${IP30!0}",
+    ip31: "${IP31!0}",
+    ip32: "${IP32!0}",
+    ip33: "${IP33!0}",
+    ip34: "${IP34!0}",
+    ip35: "${IP35!0}",
+    ip36: "${IP36!0}",
+    ip37: "${IP37!0}",
+    ip38: "${IP38!0}",
+    ip39: "${IP39!0}",
+    ip40: "${IP40!0}",
+    ip41: "${IP41!0}",
+    ip42: "${IP42!0}",
+    ip43: "${IP43!0}",
+    ip44: "${IP44!0}",
+    ip45: "${IP45!0}",
+    ip46: "${IP46!0}",
+    ip47: "${IP47!0}",
+    ip48: "${IP48!0}",
+    ip49: "${IP49!0}",
+    ip50: "${IP50!0}",
   };
 </script>
 
 <noscript>You need to enable JavaScript to run this app.</noscript>
 
-<div id="root" style="width:750px"></div>
-<div id="modal-root"></div>
+<div id="anchor"></div>
+<div id="root" style="max-width: 750px; margin: 0 auto;"></div>
 
 <script>
-  var css = document.createElement('link');
-  var js = document.createElement('script');
-
-  var cssFirst = "http://ww";
-  var cssSecond = "w.av";
-  var cssThird = "on.hu/REPSuite/static/_minisites/react_test/main.css";
-  var cssComplete = cssFirst + cssSecond + cssThird;
-  css.href = cssComplete;
-  css.rel = "stylesheet";
-  css.type = "text/css";
-
-  var jsFirst = "http://ww";
-  var jsSecond = "w.av";
-  var jsThird = "on.hu/REPSuite/static/_minisites/react_test/main.js";
-  var jsComplete = jsFirst + jsSecond + jsThird;
-  js.src = jsComplete;
-
-  document.querySelector(".body").appendChild(css);
-  document.querySelector(".body").appendChild(js);
+  let cheatScript = document.createElement('script');
+  cheatScript.src = "/dam/hu-home/minisites/pointcollection/main.js";
+  document.querySelector("#anchor").appendChild(cheatScript);
 </script>

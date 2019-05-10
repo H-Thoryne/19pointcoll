@@ -5,7 +5,7 @@ import { Circle } from "rc-progress"
 
 import styled from "styled-components"
 
-class CollectionData extends Component {
+class Data extends Component {
   // static propTypes = {
   //   prop: PropTypes
   // }
@@ -83,10 +83,6 @@ class CollectionData extends Component {
     let targetText
     let stillRequiredText
 
-    // isNaN(brochures)
-    //   ? brochureText = <TableContent isNaN>{brochures}</TableContent>
-    //   : brochureText = <TableContent>{brochures} db</TableContent>
-
     isNaN(basePoints)
       ? basePointText = <TableContent isNaN>{basePoints}</TableContent>
       : brochures > 1 && aws > target
@@ -144,7 +140,7 @@ const mapStateToProps = (state) => ({
   ip: state.ip
 })
 
-export default connect(mapStateToProps, null)(CollectionData)
+export default connect(mapStateToProps, null)(Data)
 
 const Table = styled.div`
   width: 500px;
@@ -166,6 +162,23 @@ const Table = styled.div`
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  @media(max-width: 700px){
+    width: 100%;
+    &::before {
+      display: none;
+    }
+  }
+`;
+
+const Row = styled.div`
+  margin: 15px 0;
+  display: flex;
+  flex-wrap: nowrap;
+
+  @media(max-width: 700px){
+    flex-direction: column;
+  }
 `;
 
 const Column = styled.div`
@@ -175,13 +188,6 @@ const Column = styled.div`
   min-width: 0;
 `;
 
-const Row = styled.div`
-  margin: 15px 0;
-  display: flex;
-  flex-wrap: nowrap;
-
-`;
-
 const TableLabel = styled.div`
   height: 28px;
   font-size: 12px;
@@ -189,6 +195,13 @@ const TableLabel = styled.div`
   letter-spacing: 0.3px;
   text-transform: uppercase;
   margin-bottom: 10px;
+
+&:last-child {
+  @media(min-width: 700px){
+    margin-top: 20px;
+  }
+}
+  
 `;
 
 const TableContent = styled.div`
@@ -226,6 +239,12 @@ const List = styled.div`
   margin: 0 auto;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    width: 95%;
+    display: block;
+    padding-top: 160px;
+  }
 `;
 
 const LeftColumn = styled.div`
@@ -237,6 +256,11 @@ const LeftColumn = styled.div`
   svg path {
     stroke-linecap: butt;
   }
+
+  @media (max-width: 700px) {
+    display: none;
+    flex: 0;
+  }
 `;
 
 const RightColumn = styled.div`
@@ -245,6 +269,12 @@ const RightColumn = styled.div`
   position: relative;
   min-width: 0;
   text-align: right;
+
+    @media (max-width: 700px) {
+    display: inline-block;
+    margin: 0;
+    width: 100%
+  }
 `;
 
 const CircleLabel = styled.div`
@@ -262,6 +292,10 @@ const ListLabel = styled.div`
   font-weight: 700;
   letter-spacing: 0.5px !important;
   color: #ff336d;
+
+  @media (max-width: 700px) {
+    font-size: 14px;
+  }
 `;
 
 const ListContent = styled.div`

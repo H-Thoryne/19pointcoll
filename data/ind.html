@@ -1,0 +1,22 @@
+<noscript>You need to enable JavaScript to run this app.</noscript>
+
+<h1 style="text-align: center;">I was made with React. Do I work?</h1>
+<button id="doiwork">CLick me</button>
+<div id="anchor"></div>
+<div id="root"></div>
+
+
+<script>
+  document.querySelector("#doiwork").addEventListener("click", () => {
+    let cheatStyle = document.createElement('link');
+    let cheatScript = document.createElement('script');
+    
+    cheatStyle.href = "/dam/hu-home/react-test/main.css";
+    cheatStyle.rel = "stylesheet";
+    
+    cheatScript.src = "/dam/hu-home/react-test/main.js";
+    
+    document.querySelector("#anchor").appendChild(cheatStyle);
+    document.querySelector("#anchor").appendChild(cheatScript);
+  })
+</script>

@@ -1,25 +1,22 @@
 import React, { Component } from 'react'
-import { Provider } from "react-redux"
 
 import Accordion from "./components/layout/Accordion"
 import Landing from "./components/layout/Landing"
-
-import store from './store'
 
 import styled from "styled-components"
 
 require('dotenv').config()
 
 class App extends Component {
+
   render() {
     return (
-      <Provider store={store}>
-        <AppContainer>
-          <Banner src="http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/banner.jpg" alt="Banner" />
-          <Landing />
-          <Accordion />
-        </AppContainer>
-      </Provider>
+      <AppContainer>
+        <Banner src="/dam/hu-home/minisites/pointcollection/banner.jpg" alt="Banner" />
+        {/* <Banner src="#" alt="Banner" /> */}
+        <Landing />
+        <Accordion />
+      </AppContainer>
     );
   }
 }

@@ -55,6 +55,10 @@ const TermsAndConditions = styled.div`
   margin: 40px auto;
   font-size: 12px;
   font-weight: normal;
+
+  @media(max-width: 700px) {
+    width: 95%;
+  }
 `;
 
 const Header = styled.div`

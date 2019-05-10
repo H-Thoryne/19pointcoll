@@ -1,6 +1,9 @@
 export const validatePoint = (point, type) => {
   const errorMessage = "Error..."
 
+  // point = point.replace(/\s+/g, '')
+  // point = parseInt(point)
+
   switch (type) {
     case "aws":
     case "brochures":

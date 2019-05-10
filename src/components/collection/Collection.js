@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
-import CollectionLinks from './CollectionLinks';
-import CollectionText from './CollectionText';
-import CollectionData from './CollectionData';
+import CollectionLinks from "./Links"
+import CollectionText from "./Text"
+import CollectionData from "./Data"
 
 import styled from "styled-components"
 
