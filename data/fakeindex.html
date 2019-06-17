@@ -1,65 +1,27 @@
-<script type="text/javascript">
+<script>
   var allPoints = {
-    ip1: "${IP1!0}",
-    ip2: "${IP2!0}",
-    ip3: "${IP3!0}",
-    ip4: "${IP4!0}",
-    ip5: "${IP5!0}",
-    ip6: "${IP6!0}",
-    ip7: "${IP7!0}",
-    ip8: "${IP8!0}",
-    ip9: "${IP9!0}",
-    ip10: "${IP10!0}",
-    ip11: "${IP11!0}",
-    ip12: "${IP12!0}",
-    ip13: "${IP13!0}",
-    ip14: "${IP14!0}",
-    ip15: "${IP15!0}",
-    ip16: "${IP16!0}",
-    ip17: "${IP17!0}",
-    ip18: "${IP18!0}",
-    ip19: "${IP19!0}",
-    ip20: "${IP20!0}",
-    ip21: "${IP21!0}",
-    ip22: "${IP22!0}",
-    ip23: "${IP23!0}",
-    ip24: "${IP24!0}",
-    ip25: "${IP25!0}",
-    ip26: "${IP26!0}",
-    ip27: "${IP27!0}",
-    ip28: "${IP28!0}",
-    ip29: "${IP29!0}",
-    ip30: "${IP30!0}",
-    ip31: "${IP31!0}",
-    ip32: "${IP32!0}",
-    ip33: "${IP33!0}",
-    ip34: "${IP34!0}",
-    ip35: "${IP35!0}",
-    ip36: "${IP36!0}",
-    ip37: "${IP37!0}",
-    ip38: "${IP38!0}",
-    ip39: "${IP39!0}",
-    ip40: "${IP40!0}",
-    ip41: "${IP41!0}",
-    ip42: "${IP42!0}",
-    ip43: "${IP43!0}",
-    ip44: "${IP44!0}",
-    ip45: "${IP45!0}",
-    ip46: "${IP46!0}",
-    ip47: "${IP47!0}",
-    ip48: "${IP48!0}",
-    ip49: "${IP49!0}",
-    ip50: "${IP50!0}",
+    aws: "${IP29}",
+    target: "${IP36}",
+    basePoints: "${IP37}",
+    acquiredPoints: "${IP49}",
   };
+  var weekendOffer = true;
 </script>
 
 <noscript>You need to enable JavaScript to run this app.</noscript>
 
 <div id="anchor"></div>
+<div id="modal-root"></div>
 <div id="root" style="max-width: 750px; margin: 0 auto;"></div>
 
 <script>
   let cheatScript = document.createElement('script');
   cheatScript.src = "/dam/hu-home/minisites/pointcollection/main.js";
   document.querySelector("#anchor").appendChild(cheatScript);
+
+  let cheatCSS = document.createElement('link');
+  cheatCSS.rel = 'stylesheet';
+  cheatCSS.type = 'text/css';
+  cheatCSS.href = "/dam/hu-home/minisites/pointcollection/main.css";
+  document.querySelector("#anchor").appendChild(cheatCSS);
 </script>

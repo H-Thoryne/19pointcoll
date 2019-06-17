@@ -3,8 +3,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { fetchPoints } from '../../actions/ipActions'
+import { fetchProducts } from "../../actions/productActions"
 
 import Collection from "../collection/Collection"
+import Redeem from "../redeem/Redeem"
 
 class Landing extends Component {
   // static propTypes = {
@@ -13,11 +15,15 @@ class Landing extends Component {
 
   componentDidMount = () => {
     this.props.fetchPoints()
+    this.props.fetchProducts()
   }
 
   render() {
     return (
-      <Collection />
+      <>
+        <Collection />
+        <Redeem />
+      </>
     )
   }
 }
@@ -26,4 +32,4 @@ const mapStateToProps = (state) => ({
   ip: state.ip
 })
 
-export default connect(mapStateToProps, { fetchPoints })(Landing)
+export default connect(mapStateToProps, { fetchPoints, fetchProducts })(Landing)
