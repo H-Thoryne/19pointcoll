@@ -23,375 +23,47 @@
 </script> -->
 
 <script>
+  var placeholderText = "Hamarosan...";
   var allPoints = {
     aws: "10 000",
     target: "10 000",
     basePoints: "10 000",
     acquiredPoints: "10 000",
   };
-</script>
 
-<script>
-  var weekendOffer = true;
-  var weekendProducts = [{
-    "name": "Avon True arcpirosító (6 g) ",
-    "description": "Árnyalat: Peach",
-    "ln": 86611,
-    "priceHUF": 79,
-    "pricePoints": 12,
-    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86611.jpg"
+  window.calendarProducts = [{
+    "name": "Avon Cherish női parfüm",
+    "description": "Avon Cherish női parfüm 50ml",
+    "ln": 88724,
+    "priceHUF": 99,
+    "pricePoints": 25,
+    "available": true,
+    "img": "https://www2.avon.hu/dam/hu-home/minisites/pointcollection/img/88724.jpg"
   }, {
-    "name": "Avon True arcpirosító (6 g)",
-    "description": "Árnyalat: Deep Plum",
-    "ln": 86629,
-    "priceHUF": 69,
-    "pricePoints": 12,
-    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86629.jpg"
+    "name": "Avon Luck női parfüm",
+    "description": "Avon Luck női parfüm 50ml",
+    "ln": 88740,
+    "priceHUF": 99,
+    "pricePoints": 25,
+    "available": true,
+    "img": "https://www2.avon.hu/dam/hu-home/minisites/pointcollection/img/88740.jpg"
   }, {
-    "name": "Avon True arcpirosító (6 g) ",
-    "description": "Árnyalat: Classic Aura",
-    "ln": 86637,
-    "priceHUF": 69,
-    "pricePoints": 12,
-    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86637.jpg"
+    "name": "TTA Tomorrow parfüm",
+    "description": "TTA Tomorrow parfüm 50ml",
+    "ln": 86736,
+    "priceHUF": 99,
+    "pricePoints": 30,
+    "available": true,
+    "img": "https://www2.avon.hu/dam/hu-home/minisites/pointcollection/img/86736.jpg"
   }, {
-    "name": "Aquavibe Love Now kölni (100 ml)",
-    "description": "",
-    "ln": 86603,
-    "priceHUF": 129,
-    "pricePoints": 14,
-    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86603.jpg"
-  }, {
-    "name": "Anita pénztárca ",
-    "description": "Színe:szürke, körben cipzáros, belül szeparált cipzáros zsebekkel, mérete: 19x10 cm",
-    "ln": 86744,
-    "priceHUF": 1229,
-    "pricePoints": 15,
-    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86744.jpg"
-  }, {
-    "name": "Midnight Luxe pénztárca",
-    "description": "Kék színű krokodilbőr hatású pénztárca, cipzáros zsebbel, dekoratív lánccal, 4 kártyatartó rekesz, érmetartó zseb. 19,4x9,6x2,6 cm.",
-    "ln": 86777,
-    "priceHUF": 799,
-    "pricePoints": 10,
-    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86777.jpg"
-  }, {
-    "name": "Catalina karkötő",
-    "description": "Hajlított, arany színű, fém karkötő, kb 8,5 m széles, teljes hosszúsága körben 17 cm, két darab 2 és 2,5 cm átmerőjű akril gyönggyel a végeken.",
-    "ln": 87726,
-    "priceHUF": 419,
-    "pricePoints": 10,
-    "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/87726.jpg"
+    "name": "Life Colour parfüm",
+    "description": "Life Colour parfüm 50ml",
+    "ln": 88617,
+    "priceHUF": 99,
+    "pricePoints": 30,
+    "available": true,
+    "img": "https://www2.avon.hu/dam/hu-home/minisites/pointcollection/img/88617.jpg"
   }]
-</script>
-
-<script>
-  var products = {
-    "low": [{
-      "name": "Avon True arcpirosító (6 g) ",
-      "description": "Árnyalat: Peach",
-      "ln": 86611,
-      "priceHUF": 79,
-      "pricePoints": 12,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86611.jpg"
-    }, {
-      "name": "Avon True arcpirosító (6 g)",
-      "description": "Árnyalat: Deep Plum",
-      "ln": 86629,
-      "priceHUF": 69,
-      "pricePoints": 12,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86629.jpg"
-    }, {
-      "name": "Avon True arcpirosító (6 g) ",
-      "description": "Árnyalat: Classic Aura",
-      "ln": 86637,
-      "priceHUF": 69,
-      "pricePoints": 12,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86637.jpg"
-    }, {
-      "name": "Aquavibe Love Now kölni (100 ml)",
-      "description": "",
-      "ln": 86603,
-      "priceHUF": 129,
-      "pricePoints": 14,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86603.jpg"
-    }, {
-      "name": "Anita pénztárca ",
-      "description": "Színe:szürke, körben cipzáros, belül szeparált cipzáros zsebekkel, mérete: 19x10 cm",
-      "ln": 86744,
-      "priceHUF": 1229,
-      "pricePoints": 15,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86744.jpg"
-    }, {
-      "name": "Midnight Luxe pénztárca",
-      "description": "Kék színű krokodilbőr hatású pénztárca, cipzáros zsebbel, dekoratív lánccal, 4 kártyatartó rekesz, érmetartó zseb. 19,4x9,6x2,6 cm.",
-      "ln": 86777,
-      "priceHUF": 799,
-      "pricePoints": 10,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86777.jpg"
-    }, {
-      "name": "Catalina karkötő",
-      "description": "Hajlított, arany színű, fém karkötő, kb 8,5 m széles, teljes hosszúsága körben 17 cm, két darab 2 és 2,5 cm átmerőjű akril gyönggyel a végeken.",
-      "ln": 87726,
-      "priceHUF": 419,
-      "pricePoints": 10,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/87726.jpg"
-    }, {
-      "name": "Wellneo fűthető masszírozó",
-      "description": "Felmelegíti a lábaid, és közben kényeztető, relaxáló talpmasszázst nyújt.",
-      "ln": 87981,
-      "priceHUF": 5799,
-      "pricePoints": 12,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/87981.jpg"
-    }, {
-      "name": "Dormeo párna + takaró szett",
-      "description": "A Dormeo legpuhább takarója és párnája. Takaró: 130x190 cm",
-      "ln": 87999,
-      "priceHUF": 5499,
-      "pricePoints": 21,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/87999.jpg"
-    }, {
-      "name": "Konyhai tároló dobozok ",
-      "description": "4 db-os szett, fekete írható felülettel, Avon logóval, 9,7x13,1-14,6 cm, fém",
-      "ln": 86843,
-      "priceHUF": 3799,
-      "pricePoints": 15,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86843.jpg"
-    }, {
-      "name": "Keshi selyemsál",
-      "description": "Mr. Kenzo Takadával együttműködve tervezett tiszta selyem sál. Anyaga: 100 % selyem, mérete: 200x45 cm. ",
-      "ln": 87858,
-      "priceHUF": 1499,
-      "pricePoints": 15,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/87858.jpg"
-    }, {
-      "name": "TTA My Everything testápoló szuflé (200 ml)",
-      "description": "",
-      "ln": 86959,
-      "priceHUF": 39,
-      "pricePoints": 6,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86959.jpg"
-    }, {
-      "name": "TTA My Everything For HIM",
-      "description": "TTA My Everything for Him kölni 75 ml",
-      "ln": 86058,
-      "priceHUF": 149,
-      "pricePoints": 14,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86058.jpg"
-    }, {
-      "name": "Avon Sensuelle parfüm 50 ml ",
-      "description": "",
-      "ln": 88328,
-      "priceHUF": 99,
-      "pricePoints": 15,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88328.jpg"
-    }, {
-      "name": "Avon Dreams parfüm 50 ml ",
-      "description": "",
-      "ln": 88336,
-      "priceHUF": 99,
-      "pricePoints": 15,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88336.jpg"
-    }, {
-      "name": "Casa Di Rosa Tintorin sál ",
-      "description": "Casa Di Rosa női sál 180x70cm",
-      "ln": 88484,
-      "priceHUF": 699,
-      "pricePoints": 25,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88484.jpg"
-    }, {
-      "name": "Heather óra ",
-      "description": "A számlap átmérője 2,3 cm, az óraház átmérője 2,8 cm, az ezüst színű szíj 1,1x15,5-21,3 cm",
-      "ln": 88492,
-      "priceHUF": 1199,
-      "pricePoints": 30,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88492.jpg"
-    }],
-    "mid": [{
-      "name": "Orla Kiely óra ",
-      "description": "Designer óra, bőrszíjjal, hosszúsága 15.3 cm és 19,5 cm közötti, díszdobozban",
-      "ln": 86868,
-      "priceHUF": 599,
-      "pricePoints": 54,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86868.jpg"
-    }, {
-      "name": "Anew Beauty box ",
-      "description": "A doboz tartalma: 1db Anew Platinum nappali krém, 2 db Anew Platinum instant szemkörnyékápoló minta, 1 db Anew Essential fátyolmaszk, 2 db Anew Clinical sötét foltok elleni precíziós szérum minta, 1 db Anew Clinical Defend & Repair ékszakai regeneráló arckrém, 1 db Anew Clinical bőrtónusjavító szérum, 2 db Anew Clinical arctisztító maszk antioxidánsokkal minta, 1 db Anew portfóliót bemutató eladási segédlet, 1 db Anew füzet",
-      "ln": 86934,
-      "priceHUF": 899,
-      "pricePoints": 50,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86934.jpg"
-    }, {
-      "name": "Anita táska ",
-      "description": "Színe: szürke, méretei: 27,7 cmx30,5x10 cm",
-      "ln": 86710,
-      "priceHUF": 1699,
-      "pricePoints": 43,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86710.jpg"
-    }, {
-      "name": "Orella táska",
-      "description": "Anyaga: PVC, színe: bézs, mérete: 40 x 33 x 28 cm. Szélessége 8,5 cm. Mágneses zárral, belül 2 lapos és egy cipzáras zsebbel, vállpántja 63,6 cm ",
-      "ln": 87841,
-      "priceHUF": 329,
-      "pricePoints": 35,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/87841.jpg"
-    }, {
-      "name": "Bethany táska",
-      "description": "Bordó táska két zsebbel az elején és 1-1 zsebbel az oldalán. Cipzárral zárható, két belső zsebbel (egy cipzáras) és egy mobiltartóval. Anyaga: PVC, mérete: 36x15x14,5 cm, a fül hossza 15 cm. ",
-      "ln": 87882,
-      "priceHUF": 799,
-      "pricePoints": 40,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/87882.jpg"
-    }, {
-      "name": "Journey táska",
-      "description": "Piros színű PVC táska fekete színű béléssel. 100% poliészter, 39 x 20 x 33 cm",
-      "ln": 86033,
-      "priceHUF": 1499,
-      "pricePoints": 55,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86033.jpg"
-    }, {
-      "name": "Kapucnis köntös bézs ",
-      "description": "100% pamut, méret: S-M, szín: bézs",
-      "ln": 86074,
-      "priceHUF": 6499,
-      "pricePoints": 43,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86074.jpg"
-    }, {
-      "name": "Kapucnis köntös barna ",
-      "description": "100% pamut, méret: S-M, szín: barna",
-      "ln": 86082,
-      "priceHUF": 6499,
-      "pricePoints": 43,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86082.jpg"
-    }, {
-      "name": "Kapucnis köntös bézs ",
-      "description": "100 % pamut, Méret: L-XL, Szín: bézs",
-      "ln": 86090,
-      "priceHUF": 6499,
-      "pricePoints": 43,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86090.jpg"
-    }, {
-      "name": "Kapucnis köntös barna ",
-      "description": "100 % pamut, Méret: L-XL, Szín: barna",
-      "ln": 86108,
-      "priceHUF": 6499,
-      "pricePoints": 43,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86108.jpg"
-    }, {
-      "name": "Maggioni táska ",
-      "description": "Casa Di Rosa, rózsaszínű női táska arany színű fém részletekkel. Levehető hosszú pánttal, 32,5x16,5x24,5 cm",
-      "ln": 86116,
-      "priceHUF": 2799,
-      "pricePoints": 45,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86116.jpg"
-    }, {
-      "name": "Ágynemű szett bézs pöttyös",
-      "description": "100% pamut, paplan méret: 140x200 cm, párna méret: 60x80 cm",
-      "ln": 86124,
-      "priceHUF": 3499,
-      "pricePoints": 42,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86124.jpg"
-    }, {
-      "name": "Ágynemű szett szürke ",
-      "description": "100% pamut, paplan méret:140x200 cm, párna méret: 60x80 cm",
-      "ln": 86132,
-      "priceHUF": 3499,
-      "pricePoints": 42,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86132.jpg"
-    }, {
-      "name": "Ágynemű szett bézs pöttyös ",
-      "description": "100% pamut, paplan méret:200x220 cm, párna méret: 2db 60x80 cm",
-      "ln": 86140,
-      "priceHUF": 5499,
-      "pricePoints": 52,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86140.jpg"
-    }, {
-      "name": "Ágynemű szett lila pöttyös ",
-      "description": "100% pamut, paplan méret:200x220 cm, párna méret: 2db 60x80 cm",
-      "ln": 86157,
-      "priceHUF": 5499,
-      "pricePoints": 52,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86157.jpg"
-    }, {
-      "name": "Ágynemű szett szürke ",
-      "description": "100% pamut, paplan méret: 200x220 cm, párna méret: 2db 60x80 cm",
-      "ln": 86165,
-      "priceHUF": 5499,
-      "pricePoints": 52,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86165.jpg"
-    }, {
-      "name": "Ágynemű szett pink virág ",
-      "description": "100% pamut, paplan méret: 200x220 cm, párna méret: 2db 60x80 cm",
-      "ln": 86173,
-      "priceHUF": 5499,
-      "pricePoints": 52,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86173.jpg"
-    }, {
-      "name": "Kikyo táska ",
-      "description": "Mr Kenzo Takada által tervezett női táska 27.5 x12 x 20cm",
-      "ln": 88344,
-      "priceHUF": 99,
-      "pricePoints": 65,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88344.jpg"
-    }, {
-      "name": "Brigetta óra ",
-      "description": "Aranyszínű fém szíjjal, leopárdmintával. A szíj mérete a kivehető szemeknek köszönhetően állítható. Szíj mérete: 1,1 x 18,2 - 19,7 cm. Számlap átmérője: 2,5 cm, óraház átmérője: 3,1 cm.",
-      "ln": 88351,
-      "priceHUF": 99,
-      "pricePoints": 45,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88351.jpg"
-    }, {
-      "name": "Darrah táska ",
-      "description": "Piros színű. Anyaga: PVC. Mérete: 41 x 13 x 24 cm. Fül magassága: 17 cm.",
-      "ln": 88393,
-      "priceHUF": 99,
-      "pricePoints": 40,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88393.jpg"
-    }, {
-      "name": "Finola utazó táska ",
-      "description": "Korall színű utazó táska, az elülső zseb lehajtható, anyaga PVC, 34x57 cm",
-      "ln": 88401,
-      "priceHUF": 99,
-      "pricePoints": 50,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88401.jpg"
-    }, {
-      "name": "Anita Green táska ",
-      "description": "Nagy méretű vállon átvethető női táska mágnes zárral, 3 nagy rekesszel, 29,5x22,5 cm",
-      "ln": 88443,
-      "priceHUF": 99,
-      "pricePoints": 60,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88443.jpg"
-    }, {
-      "name": "Rosetti pénztárca ",
-      "description": "Fekete pénztárca, 1 cippzáros zseb és 8 kártyatartó rekesz 9,5x20x14cm",
-      "ln": 88468,
-      "priceHUF": 429,
-      "pricePoints": 45,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/88468.jpg"
-    }],
-    "high": [{
-      "name": "Tefal Blendforce turmixgép ",
-      "description": "Teljesítmény: 500W, keverőtál mérete: 1,5 liter, változtatható sebességszabályozás, könnyen tisztítható",
-      "ln": 86835,
-      "priceHUF": 9999,
-      "pricePoints": 142,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86835.jpg"
-    }, {
-      "name": "T by TW design táska",
-      "description": "Prémium minőség, kifinomult tervezés, designer minta, 33x23x11,5 cm",
-      "ln": 86702,
-      "priceHUF": 1389,
-      "pricePoints": 85,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86702.jpg"
-    }, {
-      "name": "Nutribullet Blue 600 turmixgép",
-      "description": "Turmixok, krémlevelek, smoothiek elkészítésére alkalmas, jeget is aprít, 0,7 literes turmixpohárral",
-      "ln": 86827,
-      "priceHUF": 9999,
-      "pricePoints": 143,
-      "img": "http://www.avon.hu/REPSuite/static/_minisites/19pointcollection/img/86827.jpg"
-    }]
-  }
 </script>
 
 <body>

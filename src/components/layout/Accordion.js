@@ -27,6 +27,8 @@ class Accordion extends Component {
           this.state.accordionOpen ? (
             <List>
               <li className="redtext">A program visszavonásig érvényes. A program zárása előtt legalább 30 nappal e-mailben és a Tanácsadói oldaladon tájékoztatunk. A pontbeváltásra a programzárás napjától számítva további 30 napig lesz lehetőséged.</li>
+              <li>Amennyiben szeptember, október, november kampányok alatt összmegrendelésed meghaladja a 225 000 Ft-ot, úgy addigi pontjaidat tovább viheted az 1. negyedévre.</li>
+              <li> Amennyiben ezen időszak alatt az összemegrendelésed nem éri el a 225 000 Ft-ot, úgy addigi pontjaidat 2019. decemberi kampány végéig felhasználhatod. Azt követően törlődnek. </li>
               <li>Egyéni összmegrendelés célkitűzésed meghatározásánál korábbi megrendeléseidet vettük figyelembe.</li>
               <li>Minél nagyobb az átlagmegrendelésed, annál több pontra lehetsz jogosult.</li>
               <li>A megrendelések kampányonként adódnak össze.</li>
